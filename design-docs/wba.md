@@ -29,7 +29,7 @@ I accept this WBA
 
 #### WBA Acceptance
 
-`<Please add the line of acceptance here>`
+I accept this WBA 
 
 ### Team tasks
 
@@ -39,5 +39,5 @@ I accept this WBA
 
 Naavin Ravinthran - I accept this WBA
 Yi Zhen Nicholas Wong - I accept this WBA
-`<Please add the line of acceptance here>`  
-`<Please add the line of acceptance here>`
+Yu Zhang Ooi - I accept this WBA
+
