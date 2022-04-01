@@ -11,7 +11,7 @@ Dates are YYYY-MM-DD.
 
 #### WBA Acceptance
 
-`<Please add the line of acceptance here>`
+I accept this WBA
 
 ### Yi Zhen Nicholas Wong
 
@@ -37,6 +37,6 @@ Dates are YYYY-MM-DD.
 
 #### WBA Acceptance
 
-`<Please add the line of acceptance here>`  
+Naavin Ravinthran - I accept this WBA  
 `<Please add the line of acceptance here>`  
 `<Please add the line of acceptance here>`
