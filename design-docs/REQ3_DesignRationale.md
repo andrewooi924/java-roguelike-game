@@ -8,7 +8,8 @@ For reference, here are the class diagrams and sequence diagrams.
 
 ## Sequence Diagram
 
-![req3 sequence diagram]()
+![req3 sequence diagram](./REQ3_sequence_01.png)
+![req3 sequence diagram](./REQ3_sequence_02.png)
 
 ## Rationale
 The Koopa and Goomba are enemies that appear in the game that can attack

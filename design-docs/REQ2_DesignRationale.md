@@ -26,9 +26,6 @@ The Exit class will be used to retrieve all the directions that the Player
 can move to and the Location class will extend upon that and get the type
 of ground to verify that the ground is a Wall or a Tree that the Player
 can attempt to jump onto.
-The Exit and Location classes will be particularly useful in differentiating 
-the different grounds when new Ground objects with different heights and 
-depths can be added to the game without interfering with existing grounds.
 
 
 
