@@ -8,6 +8,8 @@ For reference, here are the class diagrams and the sequence diagrams.
 
 ## Sequence Diagram
 
+![req6 sequence diagram](./REQ6_sequence.png "REQ6 Sequence Diagram")
+
 ## Rationale
 
 A Toad is an interactable entity that has a physical manifestation on the game
