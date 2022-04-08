@@ -1,0 +1,26 @@
+# REQ 3: Enemies Design Rationale
+
+For reference, here are the class diagrams and sequence diagrams.
+
+## Class Diagram
+
+![req3 class diagram](./REQ3_class.png "REQ2 Class Diagram")
+
+## Sequence Diagram
+
+![req3 sequence diagram]()
+
+## Rationale
+The Koopa and Goomba are enemies that appear in the game that can attack
+the Player. The Koopa and Goomba classes instantiate the following classes:</br></br>
+(1). WanderBehaviour: It is used to allow the enemies to wander around the map.</br>
+(2). FollowBehaviour: It is used to make the enemies follow the Player if the Player
+is standing next to them.</br>
+(3). AttackBehaviour: It is used to make the enemies automatically attack the Player
+if the Player is standing next to them.</br></br>
+The AttackBehaviour class creates the KickAction class which is used by a Goomba
+to kick(attack) the Player and the PunchAction class which is used by a Koopa
+to punch(attack) the Player.</br></br>
+The AttackAction class which is used by the Player to attack enemies will drop
+create a new SuperMushroom object after the Player breaks a Koopa shell with 
+a Wrench.
