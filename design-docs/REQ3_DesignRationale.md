@@ -4,7 +4,7 @@ For reference, here are the class diagrams and sequence diagrams.
 
 ## Class Diagram
 
-![req3 class diagram](./REQ3_class.png "REQ2 Class Diagram")
+![req3 class diagram](./REQ3_class.png "REQ3 Class Diagram")
 
 ## Sequence Diagram
 

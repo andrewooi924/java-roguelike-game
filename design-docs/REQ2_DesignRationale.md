@@ -8,7 +8,7 @@ For reference, here are the class diagrams and sequence diagrams.
 
 ## Sequence Diagram
 
-![req2 sequence diagram](./REQ2_sequence.png "REQ3 Sequence Diagram")
+![req2 sequence diagram](./REQ2_sequence.png "REQ2 Sequence Diagram")
 
 ## Rationale
 
