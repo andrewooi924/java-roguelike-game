@@ -17,11 +17,11 @@ high grounds. It extends the Action abstract class so that it can override
 the methods inside to allow the Player to perform a jump.  
   
 The JumpActorAction class has 3 dependencies:  
-(1). GameMap, which is used to always track where the Player's current 
+1. GameMap, which is used to always track where the Player's current 
 location is.   
-(2). Actor, which contains many methods that the JumpActorAction class 
+2. Actor, which contains many methods that the JumpActorAction class 
 can use to get and modify information about the Player.   
-(3). Location, which is used to represent the location of the Player and 
+3. Location, which is used to represent the location of the Player and 
 the types of ground (Wall and Tree).    
   
 The Exit class will be used to retrieve all the directions that the Player
