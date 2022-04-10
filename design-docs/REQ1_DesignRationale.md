@@ -1,4 +1,4 @@
-# REQ1:Let it grow! :deciduous_tree:
+# REQ1:Let it grow! :deciduous_tree: Design Rationale
 
 For reference, here are the class diagrams and the sequence diagrams.
 

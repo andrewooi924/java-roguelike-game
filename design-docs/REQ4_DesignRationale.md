@@ -1,4 +1,4 @@
-# REQ4: Magical Items
+# REQ4: Magical Items :mushroom: Design Rationale
 
 For reference, here are the class diagrams and the sequence diagrams.
 

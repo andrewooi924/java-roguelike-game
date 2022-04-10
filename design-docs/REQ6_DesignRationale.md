@@ -1,4 +1,4 @@
-# REQ6: Design Rationale
+# REQ6: Monologue :speech_balloon: Design Rationale
 
 For reference, here are the class diagrams and the sequence diagrams.
 
