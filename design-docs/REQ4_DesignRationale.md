@@ -10,6 +10,8 @@ For reference, here are the class diagrams and the sequence diagrams.
 
 ![req4 sequence diagram](./REQ4_sequence.png "REQ4 Sequence Diagram")
 
+![req4 sequence diagram2](./REQ4_sequence2.png "REQ4 Sequence Diagram 2")
+
 ## Rationale
 
 The Consumable interface will have two methods that need to be implemented.
