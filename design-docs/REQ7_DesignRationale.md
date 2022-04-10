@@ -21,8 +21,11 @@ Resettable interface to each of them, and all the classes will perform their res
 allows our Reset code to not have complicated code to reset every enemy, item, and so on. This provides
 extensibility for the code as the future code is only required to implement their reset and not Reset Manager.
 
+
 A major design flaw for this REQ is that Reset does not really utilize the meaning of Action. In the
 execute function, it doesn’t even use the parameters given to it but instead just calls the
 ResetManager to perform the resetting of instances. However, it does not seem that there is
 another way to design this class since we need this Reset to be an Action so it could be registered in
-the Player’s action as one of the actions available and able to reset the game. 
+the Player’s action as one of the actions available and able to reset the game. The advantage of creating
+an additional class of Reset is that it follows the single responsibility principle whereby the Reset
+Manager only manages the reset while the Reset class is an Action which runs the Reset Manager.
