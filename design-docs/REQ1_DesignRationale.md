@@ -10,6 +10,14 @@ For reference, here are the class diagrams and the sequence diagrams.
 
 ![req1 sequence diagram](./REQ1_sequence.png "REQ1 Sequence Diagram")
 
+Note that the `<<creates>>` relations aren't necessarily needed in the diagram,
+as stated on edstem that since it isn't the main focus and simply creates it
+with `new Goomba()`, but I added it in for clarity.
+
+Also note that Goomba and Koopa extends Actors, and Dirt extends Ground. I
+omitted that because that portion wasn't relevant to explanation of this
+design.
+
 ## Rationale
 
 A Coin extends an Item, like in the real world, it is a physical "thing" that
@@ -70,6 +78,24 @@ need to be done; The coins items are destroyed as you insert it into your wallet
 You can't have "special" coins that do things, for example, imagine wanting "red coins"
 that besides adding to your balance, gives you an invincibility status
 for a period of time.
+
+### PickUpCoinAction
+
+The PickUpCoinAction was needed instead of just using the default
+`PickUpItemAction` that the Item class returns in `getPickUpAction`.
+The reason for this is that special behaviur needs to be put in place besides
+just picking up the item and placing it into your inventory. We need to add in
+the amount of that coin into the balance of the actor as well, and then remove
+it from the inventory. Nevertheless, it is still the action of picking up an
+item, with some common characteristics between it, such as the menu description
+of picking up the item, and the removal of the item from the map after picking
+it up, as such, we decide to extend this class to re-use its functionality.
+
+If you're wondering about the dependency on `Status` for PickUpCoin action,
+it's to check if the actor is allowed to handle money with a `CAN_MANAGE_MONEY`
+status to see if it is possible to add money to wallet of the actor or not. An
+example would be perhaps if there was a debuff to cause Mario not to be able to
+pick up any coins for X amount of turns.
 
 ### Design of Tree
 
