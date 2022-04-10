@@ -6,7 +6,7 @@ For reference, here are the class diagrams and the sequence diagrams.
 
 ![req1 class diagram](./REQ1_class.png "REQ1 Class Diagram")
 
-## Sequence Diagram
+## Sequence Diagram (Tree's tick method)
 
 ![req1 sequence diagram](./REQ1_sequence.png "REQ1 Sequence Diagram")
 
@@ -70,3 +70,29 @@ need to be done; The coins items are destroyed as you insert it into your wallet
 You can't have "special" coins that do things, for example, imagine wanting "red coins"
 that besides adding to your balance, gives you an invincibility status
 for a period of time.
+
+### Design of Tree
+
+Looking at the sequence diagram for the tree's `tick()` method, you can see how
+long it is with a lot of alternating logic on class communication depending on what
+stage the tree is at.
+
+An Alternative design would be to have separate classes for different stages of
+a Tree, and each time it needs to grow, the tree would remove itself from the
+map and replace itself with the next stage of the tree.
+
+The way the sequence diagram would then look would be to have 3
+separate sequence diagrams, each quite short, and all with less width than this
+sequence diagram, because it would not need to worry about the classes that it
+won't communicate with in that current stage, for example, in a Sprout sequence
+diagram, it won't have a `coin :Coin` or `koopa :Koopa` because those are only
+interacted wi th in the other stages. This is quite nice as we can separate the
+concerns of the behaviour of different stages of the tree into separate
+classes. If we were want to change some of the behaviour of a particular stage
+of the tree (e.g: Sprout) , we could do it in the Sprout class instead which is specifically
+single responsibility for that stage of the tree.
+
+The problem with that approach is that it would be harder to have the common
+attributes shared across all the tree stage classes. For example, what if we
+want to give trees a HP bar and ability to be punched down in any stage of the
+tree? Then, all three classes would need to be modified to account for this.
