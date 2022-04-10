@@ -96,3 +96,11 @@ The problem with that approach is that it would be harder to have the common
 attributes shared across all the tree stage classes. For example, what if we
 want to give trees a HP bar and ability to be punched down in any stage of the
 tree? Then, all three classes would need to be modified to account for this.
+Hence, we use a TreeState enum to keep track of the tree's stage of growth
+instead.
+
+The reason for a GroundCharacteristic enum is to check for fertile grounds
+on the surrounding. In the Dirt class (not pictured), the constructor would
+add the capability of it being FERTILE. This way, it would be easy to extend in
+the future, if we have other types of ground besides dirt that we want to be
+fertile enough to grow trees on.
