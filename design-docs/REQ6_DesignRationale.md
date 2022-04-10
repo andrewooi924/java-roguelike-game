@@ -46,7 +46,7 @@ For example, if we were to only want to add a line of dialogue when the actor
 doesn't have a specific status, we can make the method `addDialogue(dialogueString, status)`. So for talking about invincibility for example, `addDialogue("Eat a power star to become invincible!", Status.POWER_STAR)`. But what about if we want a condition
 in that an actor needs to not have an item in an inventory? Create a new
 `addDialogue(dialogueString, item)` method? What about more advanced logic,
-such as `You need item X but not item Y and also have status Z for this status to appear`, or if we want to add other conditions not reliant on inventory and
+such as "You need item X but not item Y and also have status Z for this status to appear", or if we want to add other conditions not reliant on inventory and
 status, such as if we want to add a condition based on the Actor's location, we
 would need to have another `addDialogue` method. This is the reason that it is
 currently coded in MonologueAction.
