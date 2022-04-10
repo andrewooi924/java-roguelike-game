@@ -17,7 +17,7 @@ The Consumable interface will have two methods that need to be implemented.
 1. effect() - This will return the `Status` that consuming it will give. For
    example, consuming a SuperMushroom would give it a TALL status, so this
    would return `Status.TALL`
-2. execute(Actor, GameMap) - This will execute when the item is eaten. The
+2. consume(Actor, GameMap) - This will execute when the item is eaten. The
    reason for having this is that we want to allow for custom code to be run
    depending on the class implementing it. For example, PowerStar not only
    inflicts a status (perhaps called a `POWER_STAR` status, or perhaps an INVINCIBLE
@@ -27,7 +27,8 @@ The Consumable interface will have two methods that need to be implemented.
    what PowerStar does.
 
 Note that we could just handle adding the effect of consuming the item in
-execute(), but we want to make sure that all Consumables have an effect.
+consume(), but we want to make sure that all Consumables have an effect, hence
+the effect() method.
 
 A ConsumeAction was created as well to let the player eat the item. It has
 an association with the Consumable that it is meant to eat.
