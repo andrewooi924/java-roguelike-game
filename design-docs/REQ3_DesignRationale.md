@@ -12,6 +12,17 @@ For reference, here are the class diagrams and sequence diagrams.
 ![req3 sequence diagram](./REQ3_sequence_02.png)
 
 ## Rationale
+
+My approach for this was to create a new status in the Status enumeration class and 
+add it as a capability to both Koopa and Goomba to have them attack the Player similar to
+the status HOSTILE_TO_ENEMY used by the Player. The Koopa and Goomba will then utilise
+the PunchAction and KickAction classes respectively to attack the Player. The PunchAction
+and KickAction classes will generate a random probability and compare it to the hit rate
+of the attack, if it is within the range of the hit rate, the Player will take damage.
+My previous approach for this was to have the Koopa and Goomba have the capability
+HOSTILE_TO_ENEMY but this would have resulted in the Koopa and Goomba attacking themselves
+instead of the Player which was why I went with this approach.
+  
 The Koopa and Goomba are enemies that appear in the game that can attack
 the Player. The Koopa and Goomba classes instantiate the following classes:    
   
