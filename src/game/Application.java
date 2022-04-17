@@ -51,7 +51,13 @@ public class Application {
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
 
-			world.run();
+		final int MAP_WIDTH  = map.get(0).length();
+		final int MAP_HEIGHT = map.size();
+
+		// TO-DO: Add a WALL around Toad.
+		gameMap.at(MAP_WIDTH/2, MAP_HEIGHT/2).addActor(new Toad());
+
+		world.run();
 
 	}
 }
