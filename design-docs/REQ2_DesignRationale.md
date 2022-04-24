@@ -16,7 +16,7 @@ My previous approach for this was to have the program check the Player's surroun
 and give the Player to option to jump to those high grounds. However, that approach resulted in a lot
 of messy and repeating code which would have heavily violated the DRY principle. 
 
-Thus, my new approach for this was to instead have the classes Tree and Wall extend a new class I 
+Thus, my new approach for this was to instead have the classes Tree and Wall extend an abstract class I 
 created called HigherGround so the program could identify both as one single higher ground entity
 which would negate the repetition of code. The rest of the approach is similar to my previous one 
 wherein when the Player chooses to jump to the high ground in the menu, the program will generate
