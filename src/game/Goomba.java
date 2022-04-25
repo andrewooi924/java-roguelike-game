@@ -10,18 +10,22 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
 /**
  * A little fungus guy.
  */
 public class Goomba extends Actor {
 	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+	private Random random = new Random();
 
 	/**
 	 * Constructor.
 	 */
 	public Goomba() {
-		super("Goomba", 'g', 50);
+		super("Goomba", 'g', 20); //updated from 50hp -> 20hp
 		this.behaviours.put(10, new WanderBehaviour());
+		this.addCapability(Status.HOSTILE_TO_PLAYER);
 	}
 
 	/**
@@ -40,6 +44,10 @@ public class Goomba extends Actor {
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this,direction));
 		}
+		if (otherActor instanceof Player) {
+			this.behaviours.put(8, new FollowBehaviour(otherActor));
+			this.behaviours.put(9, new AttackBehaviour(otherActor));
+		}
 		return actions;
 	}
 
@@ -49,6 +57,11 @@ public class Goomba extends Actor {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		final double SUICIDE_PROB = 0.10;
+		if (random.nextDouble() <= SUICIDE_PROB){
+			map.removeActor(this);
+			return new DoNothingAction();
+		}
 		for(Behaviour Behaviour : behaviours.values()) {
 			Action action = Behaviour.getAction(this, map);
 			if (action != null)
@@ -56,5 +69,4 @@ public class Goomba extends Actor {
 		}
 		return new DoNothingAction();
 	}
-
 }
