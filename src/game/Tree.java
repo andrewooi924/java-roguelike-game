@@ -64,8 +64,7 @@ public class Tree extends HigherGround {
                     break;
                 case SAPLING:
                     if (random.nextDouble() <= COIN_SPAWN_PROB) {
-                        // Uncomment when coin code is completed.
-                        // location.addItem(new Coin(COIN_DEFAULT_AMOUNT));
+                        location.addItem(new Coin(COIN_DEFAULT_AMOUNT));
                     }
                     break;
                 case MATURE:
