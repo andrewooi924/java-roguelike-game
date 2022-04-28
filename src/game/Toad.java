@@ -1,6 +1,6 @@
 package game;
 
-        import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.Action;
         import edu.monash.fit2099.engine.actions.ActionList;
         import edu.monash.fit2099.engine.actions.DoNothingAction;
         import edu.monash.fit2099.engine.actors.Actor;
@@ -10,11 +10,7 @@ package game;
 public class Toad extends Actor {
 
     /**
-     * Constructor.
-     *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
+     * Constructor
      */
     public Toad() {
         super("Toad", 'O', 10);
@@ -29,7 +25,9 @@ public class Toad extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList ret = new ActionList();
         Action talk = new MonologueAction(this);
-
+        ret.add(new TradingAction(new Wrench()));
+        ret.add(new TradingAction(new SuperMushroom()));
+        ret.add(new TradingAction(new PowerStar()));
         ret.add(talk);
         return ret;
     }

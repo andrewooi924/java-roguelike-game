@@ -6,8 +6,8 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 /**
  * A class that contains the attributes of a Wrench item.
  */
-public class Wrench extends Item implements Weapon {
-
+public class Wrench extends Item implements Weapon, Tradable {
+    private int price = 200;
     /***
      * Constructor.
      */
@@ -28,5 +28,15 @@ public class Wrench extends Item implements Weapon {
     @Override
     public String verb(){
         return "wrenches";
+    }
+
+    @Override
+    public int getPrice() {
+        return this.price;
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
     }
 }
