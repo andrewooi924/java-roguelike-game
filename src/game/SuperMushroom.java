@@ -58,4 +58,5 @@ public class SuperMushroom extends Item implements Consumable, Tradable {
     public Item getItem() {
         return this;
     }
+
 }

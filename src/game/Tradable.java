@@ -8,4 +8,5 @@ public interface Tradable {
 
     Item getItem();
 
+    String toString();
 }

@@ -45,19 +45,20 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
+			final int MARIO_POS_X = 44;
+			final int MARIO_POS_Y = 10;
 			Actor mario = new Player("Player", 'm', 100);
-			world.addPlayer(mario, gameMap.at(42, 10));
+			world.addPlayer(mario, gameMap.at(MARIO_POS_X, MARIO_POS_Y));
+			gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new PowerStar());
+			gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new SuperMushroom());
 
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
 
-		final int MAP_WIDTH  = map.get(0).length();
-		final int MAP_HEIGHT = map.size();
+			// TO-DO: Add a WALL around Toad.
+			gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
 
-		// TO-DO: Add a WALL around Toad.
-		gameMap.at(MAP_WIDTH/2, MAP_HEIGHT/2).addActor(new Toad());
-
-		world.run();
+			world.run();
 
 	}
 }
