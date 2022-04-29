@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Tree extends HigherGround {
+public class Tree extends HigherGround implements Resettable {
     private int age;
     private Random random;
     TreeState treeState;
@@ -23,6 +23,7 @@ public class Tree extends HigherGround {
         this.treeState = TreeState.SPROUT;
         this.random = new Random();
         this.addCapability(GroundCharacteristics.JUMPABLE);
+        registerInstance();
     }
 
 
@@ -157,5 +158,13 @@ public class Tree extends HigherGround {
         }
         // Should never happen
         return "Tree";
+    }
+
+    /**
+     * Adds the RESETTABLE status to this tree instance
+     */
+    @Override
+    public void resetInstance() {
+        this.addCapability(Status.RESETTABLE);
     }
 }

@@ -1,7 +1,24 @@
 package game;
 
+/**
+ * A wallet system to keep coins
+ */
 public interface WalletKeeper {
-    public int getWalletBalance();
-    public void addToWallet(int amount);
-    public void deductFromWallet(int amount);
+    /**
+     * Returns the balance of the actor
+     * @return an integer representing the wallet balance
+     */
+    int getWalletBalance();
+
+    /**
+     * Adds an amount to the wallet
+     * @param amount - an integer
+     */
+    void addToWallet(int amount);
+
+    /**
+     * Deducts an amount from the wallet
+     * @param amount - an integer
+     */
+    void deductFromWallet(int amount);
 }

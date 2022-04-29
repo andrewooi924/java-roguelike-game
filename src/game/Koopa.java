@@ -23,7 +23,7 @@ public class Koopa extends Actor implements Resettable{
         super("Koopa", 'K', 100);
         this.behaviours.put(10, new WanderBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-        ResetManager.getInstance().appendResetInstance(this);
+        registerInstance();
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Koopa extends Actor implements Resettable{
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (this.hasCapability(Status.RESETTABLE)) {
-            map.removeActor(this);
+            map.removeActor(this); // removes this instance if reset operation is called
             this.removeCapability(Status.RESETTABLE);
         }
         else {
@@ -68,7 +68,9 @@ public class Koopa extends Actor implements Resettable{
         return new DoNothingAction();
     }
 
-
+    /**
+     * Adds the RESETTABLE capability to this instance
+     */
     @Override
     public void resetInstance() {
         this.addCapability(Status.RESETTABLE);

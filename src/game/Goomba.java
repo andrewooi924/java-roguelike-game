@@ -15,7 +15,7 @@ import java.util.Random;
 /**
  * A little fungus guy.
  */
-public class Goomba extends Actor {
+public class Goomba extends Actor implements Resettable{
 	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 	private Random random = new Random();
 
@@ -26,6 +26,7 @@ public class Goomba extends Actor {
 		super("Goomba", 'g', 20); //updated from 50hp -> 20hp
 		this.behaviours.put(10, new WanderBehaviour());
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
+		registerInstance();
 	}
 
 	/**
@@ -57,16 +58,29 @@ public class Goomba extends Actor {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		final double SUICIDE_PROB = 0.10;
-		if (random.nextDouble() <= SUICIDE_PROB){
+		if (this.hasCapability(Status.RESETTABLE)) {
 			map.removeActor(this);
+			this.removeCapability(Status.RESETTABLE);
+		} else {
+			final double SUICIDE_PROB = 0.10;
+			if (random.nextDouble() <= SUICIDE_PROB) {
+				map.removeActor(this);
+				return new DoNothingAction();
+			}
+			for (Behaviour Behaviour : behaviours.values()) {
+				Action action = Behaviour.getAction(this, map);
+				if (action != null)
+					return action;
+			}
+		}
 			return new DoNothingAction();
-		}
-		for(Behaviour Behaviour : behaviours.values()) {
-			Action action = Behaviour.getAction(this, map);
-			if (action != null)
-				return action;
-		}
-		return new DoNothingAction();
+	}
+
+	/**
+	 * Adds the RESETTABLE capability to this instance
+	 */
+	@Override
+	public void resetInstance() {
+		this.addCapability(Status.RESETTABLE);
 	}
 }
