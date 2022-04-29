@@ -60,6 +60,18 @@ public class PowerStar extends Item implements Consumable, Tradable {
         }
     }
 
+    @Override
+    /**
+     * After 10 turns, the effect will be removed and removed from the map.
+     * @param currentLocation The location of this Item on the map.
+     */
+    public void tick(Location currentLocation) {
+        age++;
+        if (age >= EXPIRY_TURNS) {
+            currentLocation.removeItem(this);
+        }
+    }
+
     /**
      * The player consuming the PowerStar
      * @param actor the player consuming the item
