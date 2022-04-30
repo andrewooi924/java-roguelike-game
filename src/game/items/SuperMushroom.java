@@ -13,7 +13,7 @@ import game.actions.ConsumeAction;
  */
 public class SuperMushroom extends Item implements Consumable, Tradable {
     private Action consumeAction;
-    private int price = 600;
+    private int price = 400;
 
 
     /***

@@ -16,7 +16,7 @@ public class PowerStar extends Item implements Consumable, Tradable {
     private int age = 0;
     private final int EXPIRY_TURNS = 10;
     private Action consumeAction;
-    private int price = 400;
+    private int price = 600;
 
     /**
      * Constructor and also adds the action that the player can consume it

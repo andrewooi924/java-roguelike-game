@@ -19,7 +19,7 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 
 	private final Menu menu = new Menu();
 	private int balance = 0;
-	private int resetTimes = 1;
+	private boolean resetTimes = true;
 	/**
 	 * Constructor.
 	 *
@@ -48,15 +48,14 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 		Location playerPos = map.locationOf(this);
-		display.println(this + this.printHp() + " at " + "(" + playerPos.x() + ", " + playerPos.y() + ")");
+		display.println("Mario" + this.printHp() + " at " + "(" + playerPos.x() + ", " + playerPos.y() + ")");
 		display.println("wallet: $" + this.getWalletBalance());
 		// return/print the console menu
 		if (this.hasCapability(Status.POWER_STAR)) {
 			display.println("Mario is INVINCIBLE!");
 		}
-		if (resetTimes > 0) {
+		if (resetTimes) {
 			actions.add(new ResetAction());
-			resetTimes -= 1;
 		}
 		return menu.showMenu(this, actions, display);
 	}
@@ -102,6 +101,7 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 	 */
 	@Override
 	public void resetInstance() {
+		resetTimes = false;
 		heal(getMaxHp());
 		this.removeCapability(Status.POWER_STAR);
 		this.removeCapability(Status.TALL);
