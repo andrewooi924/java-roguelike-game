@@ -10,7 +10,7 @@ For reference, here are the class diagrams and sequence diagrams.
 
 ![req5 sequence diagram](./REQ5_sequence.png "REQ5 Sequence Diagram")
 
-## Rationale
+## Rationale  
 In summary, Toad is an interactive actor who the player can interact with. When designing the code, I have
 decided that Toad will have the code to perform trading with the Player instead of the Player having
 the code as it will have too many responsibilities. By creating a dependency injector for the Toad class called
@@ -29,7 +29,7 @@ Repeat Yourself(DRY) and only created one Trading class where it can be used by 
 items. For this code, I also made it such that the Player can keep buying the same item and they will
 be added to the inventory.  
 
-###TradingAction Class  
+### TradingAction Class    
 Purpose: An action to be performed when the player decides to trade with Toad   
 <b><u>Single Responsibility Principle</b></u>: It's sole responsibility is to provide the buying option to the player
 if they decide to choose to buy the item from Toad and perform the execution of it by checking and
@@ -37,14 +37,13 @@ deducting the coins from the player!
 <b><u>Open-Closed Principle</b></u>: This is followed since it will be easy to just add more methods
 to it, for example: adding a discount to certain items  
 <b><u>Liskov Substitution Principle</b></u>: This is followed as well, as we extended from the Action class  
-<b><u>Interface Segregation Principle</b></u>: I implemented the Tradable interface to allow items
-which are tradable to be sold by Toad, as some items in the future may not be sold by Toad.  
+<b><u>Interface Segregation Principle</b></u>: None 
 <b><u>Dependency Inversion Principle</b></u>:  I created the Tradable interface so to follow this principle.
 The main reason behind it is that, instead of this class having to depend on a full Item instance where
 it does not utilize the entire methods of it. It can instead be dependent on an Interface
 which only requires the certain methods of the item. For example, getting the price of the item!
 
-###Toad Class
+### Toad Class  
 Purpose: To perform trading with the Player  
 <b><u>Single Responsibility Principle</b></u>: Perform trading with player and is not required
 to know what items to trade or what actions to be added to its allowableActions  
@@ -58,7 +57,7 @@ Thus, we decided that it will be better to make Toad an Actor.
 <b><u>Interface Segregation Principle</b></u>: No interface created   
 <b><u>Dependency Inversion Principle</b></u>: None
 
-###TradableInjector Class
+### TradableInjector Class  
 Purpose: It's a Dependency Injector class to instantiate tradable items and actions for the Toad class which
 also reduces its dependencies to Toad
 <b><u>Single Responsibility Principle</b></u>: Creating new TradingAction instances for each Tradable item  
@@ -69,3 +68,11 @@ usability
 <b><u>Interface Segregation Principle</b></u>: None  
 <b><u>Dependency Inversion Principle</b></u>: None
 
+### Changes from Assignment 1 to Assignment 2  
+I decided that a Tradable interface and TradingInjector class was required after Week 8. The Tradable
+interface follows DIP which allows the TradingAction class to only use those methods in the Tradable. This is good
+design since it will prevent TradingAction class to access from unnecessary methods in the Item instance.  
+
+For the TradingInjector class, I learned from Week 8 that it is good to lift off dependencies from Toad.
+As more Tradable items appear in the game, it is only wise to create these Item objects in another class
+instead of Toad and be dependent on that class instead. Therefore, I have created a Dependency Injector class to be used for Toad class.
