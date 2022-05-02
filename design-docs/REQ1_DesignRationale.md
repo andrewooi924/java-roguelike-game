@@ -20,6 +20,9 @@ design.
 
 ## Rationale
 
+WalletKeeper is in REQ1 because REQ1 is the place where you pick up coins to earn money. The Trading REQ5 expands on this
+by using this interface for buying/selling items.
+
 A Coin extends an Item, like in the real world, it is a physical "thing" that
 we can _see_ and _pick up_. In the engine, this helps us be able to re-use logic to
 display the item, and pick it up, without having to worry about the
