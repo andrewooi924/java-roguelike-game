@@ -35,6 +35,20 @@ public class Tree extends HigherGround implements Resettable {
         registerInstance();
     }
 
+    private void setTreeState(TreeState treeState) {
+        this.treeState = treeState;
+        switch (treeState) {
+            case SPROUT:
+                setDisplayChar('+');
+                break;
+            case SAPLING:
+                setDisplayChar('t');
+                break;
+            case MATURE:
+                setDisplayChar('T');
+                break;
+        };
+    }
 
     /**
      * Goes through the tick of a tree.
@@ -57,13 +71,14 @@ public class Tree extends HigherGround implements Resettable {
             this.removeCapability(Status.RESETTABLE);
         }
         else {
+            // Note that the age is incremented first before the end.
+            // This allows age to start at 1 instead of 0. E.g: The first round, age would be equal to 1.
+            // The 10th rounds the age would be 10 instead of 90, etc.
             age++;
             if (age == SAPLING_GROWTH_AGE) {
-                this.treeState = TreeState.SAPLING;
-                setDisplayChar('t');
+                setTreeState(TreeState.SAPLING);
             } else if (age == MATURE_GROWTH_AGE) {
-                this.treeState = TreeState.MATURE;
-                setDisplayChar('T');
+                setTreeState(TreeState.MATURE);
             }
 
             final double GOOMBA_SPAWN_PROB = 0.10;
