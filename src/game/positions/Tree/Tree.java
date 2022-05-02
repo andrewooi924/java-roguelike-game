@@ -63,14 +63,14 @@ public abstract class Tree extends HigherGround implements Resettable {
 
     /**
      * Determines whether the actor is allowed to step onto the tree.
-     * @param actor
+     * @param actor the Actor acting
      * @return can be entered?
      */
     @Override
     public boolean canActorEnter(Actor actor) {
         // The only way to get onto the tree is through have the Power Star status, where you will destroy the tree,
         // or by jumping on the tree.
-        return actor.hasCapability(Status.POWER_STAR) || actor.hasCapability(Status.CAN_JUMP);
+        return actor.hasCapability(Status.POWER_STAR);
     }
 
     /**
@@ -78,14 +78,12 @@ public abstract class Tree extends HigherGround implements Resettable {
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return
+     * @return actions
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();
-        if (location.canActorEnter(actor)) {
-            actions.add(new JumpActorAction(location, direction, this));
-        }
+        actions.add(new JumpActorAction(location, direction, this));
         return actions;
     }
     /**
