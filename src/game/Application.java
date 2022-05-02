@@ -64,7 +64,6 @@ public class Application {
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
 
-			// TO-DO: Add a WALL around Toad.
 			gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
 
 			world.run();

@@ -10,6 +10,9 @@ import java.util.Random;
 
 import static game.Status.POWER_STAR;
 
+/**
+ * An action where the Actor is talking to the palyer.
+ */
 public class MonologueAction extends Action {
 
     private String hotkey;
@@ -17,11 +20,21 @@ public class MonologueAction extends Action {
 
     private final Random random;
 
+    /**
+     * Constructor
+     * @param targetActor
+     */
     public MonologueAction(Actor targetActor) {
         this.actor = targetActor;
         random = new Random();
     }
 
+    /**
+     * Executes the MonologueAction
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a String indicating that the player has talked with the other actor.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         ArrayList<String> dialoguePossibilities = new ArrayList<String>();
@@ -44,6 +57,11 @@ public class MonologueAction extends Action {
         return this.actor + ": \"" + dialoguePossibilities.get(random.nextInt(dialoguePossibilities.size())) + "\"";
     }
 
+    /**
+     * A description once the player has talked with the monologue-er.
+     * @param actor The actor performing the action.
+     * @return a string that indicates the player hastalked with the other actor.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " talks with " + this.actor;

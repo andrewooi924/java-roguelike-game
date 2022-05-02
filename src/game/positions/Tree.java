@@ -15,6 +15,9 @@ import game.items.Coin;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * A class that represents a Tree (a type of Ground, at any part of its growth cycle) in the game.
+ */
 public class Tree extends HigherGround implements Resettable {
     private int age;
     private Random random;
@@ -33,10 +36,19 @@ public class Tree extends HigherGround implements Resettable {
     }
 
 
+    /**
+     * Goes through the tick of a tree.
+     * @param location Location of the tree
+     */
     @Override
     public void tick(Location location){
+        // Parent function handles the coins spawning if tree is destroyed using a power star, and
+        // other stuff that is common to all HigherGround classes.
         super.tick(location);
         final double CONVERT_TO_DIRT = 0.50;
+
+        final int SAPLING_GROWTH_AGE = 10;
+        final int MATURE_GROWTH_AGE = 20;
 
         if (this.hasCapability(Status.RESETTABLE)){
             if (random.nextDouble() <= CONVERT_TO_DIRT) {
@@ -46,10 +58,10 @@ public class Tree extends HigherGround implements Resettable {
         }
         else {
             age++;
-            if (age == 10) {
+            if (age == SAPLING_GROWTH_AGE) {
                 this.treeState = TreeState.SAPLING;
                 setDisplayChar('t');
-            } else if (age == 20) {
+            } else if (age == MATURE_GROWTH_AGE) {
                 this.treeState = TreeState.MATURE;
                 setDisplayChar('T');
             }
@@ -80,7 +92,6 @@ public class Tree extends HigherGround implements Resettable {
                         location.addActor(new Koopa());
                     }
 
-                    // TO-DO: Does "every 5 turns" include the first turn?  Yes, right?
                     if (age % SPROUT_SPAWN_CYCLE == 0) {
 
                         ArrayList<Location> fertileSurroundings = new ArrayList<Location>();
@@ -107,11 +118,25 @@ public class Tree extends HigherGround implements Resettable {
         }
     }
 
+    /**
+     * Determines whether the actor is allowed to step onto the tree.
+     * @param actor
+     * @return can be entered?
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
+        // The only way to get onto the tree is through have the Power Star status, where you will destroy the tree,
+        // or by jumping on the tree.
         return actor.hasCapability(Status.POWER_STAR) || actor.hasCapability(Status.CAN_JUMP);
     }
 
+    /**
+     * Gets a list of actions that can be done to the tree.
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();
@@ -121,6 +146,10 @@ public class Tree extends HigherGround implements Resettable {
         return actions;
     }
 
+    /**
+     * Returns the fall damage that is dealt for falling off of this tree.
+     * @return fall damage if fallen off this tree.
+     */
     @Override
     public int getFallDamageRate() {
         // No need for breaks since it's directly returning anyway.
@@ -136,6 +165,10 @@ public class Tree extends HigherGround implements Resettable {
         return 0;
     }
 
+    /**
+     * Get the probability of falling of this tree if you fall off when trying to jump on it.
+     * @return  probability of falling off this tree
+     */
     @Override
     public double getFallProb() {
         // No need for breaks since it's directly returning anyway.
@@ -151,6 +184,10 @@ public class Tree extends HigherGround implements Resettable {
         return 0;
     }
 
+    /**
+     * Returns a string representation of this tree.
+     * @return string representation of this tree.
+     */
     @Override
     public String toString() {
         // No need for breaks since it's directly returning anyway.

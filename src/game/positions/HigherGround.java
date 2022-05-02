@@ -48,11 +48,20 @@ public abstract class HigherGround extends Ground {
 
     }
 
+    /**
+     * Checks whether the actor can go on the higher ground.
+     * @param actor the Actor to check
+     * @return
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         return actor.hasCapability(Status.POWER_STAR);
     }
 
+    /**
+     * Ticks each game tick for this higher ground.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         super.tick(location);
