@@ -14,12 +14,20 @@ public class Wall extends HigherGround {
 	 */
 	public Wall() {
 		super('#');
-		this.addCapability(GroundCharacteristics.JUMPABLE);
 	}
 
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		return actor.hasCapability(Status.POWER_STAR);
+	}
+
+	@Override
+	public ActionList allowableActions(Actor actor, Location location, String direction){
+		ActionList actions = new ActionList();
+		if(!direction.isEmpty()) {
+			actions.add(new JumpActorAction(location, direction, this));
+		}
+		return actions;
 	}
 
 	@Override
