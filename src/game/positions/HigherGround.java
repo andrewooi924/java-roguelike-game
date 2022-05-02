@@ -67,6 +67,7 @@ public abstract class HigherGround extends Ground {
         super.tick(location);
         if (location.containsAnActor() && location.getActor().hasCapability(Status.POWER_STAR)) {
             location.addItem(new Coin(5));
+            location.setGround(new Dirt());
         }
     }
 }
