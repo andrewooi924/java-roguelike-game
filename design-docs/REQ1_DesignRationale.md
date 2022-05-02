@@ -110,16 +110,22 @@ separate sequence diagrams, each quite short, and all with less width than this
 sequence diagram, because it would not need to worry about the classes that it
 won't communicate with in that current stage, for example, in a Sprout sequence
 diagram, it won't have a `coin :Coin` or `koopa :Koopa` because those are only
-interacted wi th in the other stages. This is quite nice as we can separate the
+interacted with in the other stages. This is quite nice as we can separate the
 concerns of the behaviour of different stages of the tree into separate
 classes. If we were want to change some of the behaviour of a particular stage
 of the tree (e.g: Sprout) , we could do it in the Sprout class instead which is specifically
 single responsibility for that stage of the tree.
 
 The problem with that approach is that it would be harder to have the common
-attributes shared across all the tree stage classes. For example, what if we
+attributes instances shared across all the tree stage classes. For example, what if we
 want to give trees a HP bar and ability to be punched down in any stage of the
-tree? Then, all three classes would need to be modified to account for this.
+tree? Then, all three classes would need to be modified to account for this. For example, 
+the instance of the age of the tree needs to be kept across all stages of the tree, if we were to destroy the tree and
+create a new more matured tree to replace it with, we would need to put an "age" in the constructor to keep this age value.
+As we add more variables that stay the same across all the stages of the tree (e.g: Colour of the tree, Ground Characteristics,
+etc.) they would have to all be in the constructor as well. Additionally, the logic for tree growth would be scattered
+instead of being in a single place, e.g: The logic for a sprout growing to a sapling would be in the Sprout class, 
+but the logic for the Sapling growing to a Mature tree would be in the Sapling class. 
 Hence, we use a TreeState enum to keep track of the tree's stage of growth
 instead.
 
