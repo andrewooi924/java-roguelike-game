@@ -59,11 +59,9 @@ As for the actions for dropping coins, there would be no more coins to drop.
 For the trading problem, the WalletKeeper interface would enforce
 a way to withdraw or deposit to-and-fro your wallet.
 
-It also adds some additioanal functionality. We can now use it for _any_ actor
+It also adds some additional functionality. We can now use it for _any_ actor
 that implements WalletKeeper, not just the Player. Looking at PickUpCoinAction,
-note how it has a dependency on WalletKeeper. Folowing the Liskov Substitution
-Principle, we could use the methods of WalletKeeper (so here, to add money
-to the wallet) as a substitute for any class that implements it. This
+note how it has a dependency on WalletKeeper. This
 abstraction is useful, because ideally we want a Single Responsibility for the
 class and not hard-code wallet functionality into specific classes like Player,
 which we only want to do a single thing. Now, we can, if needed, create a new
