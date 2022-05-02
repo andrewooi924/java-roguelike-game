@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
 import game.actions.KickAction;
 import game.actions.PunchAction;
 import game.actors.Goomba;
@@ -43,10 +44,10 @@ public class AttackBehaviour implements Behaviour {
         for (Exit exit : here.getExits()){
             Location destination = exit.getDestination();
             if (destination == there){
-                if(actor instanceof Goomba) {
+                if(actor.hasCapability(Status.CAN_KICK)) {
                     return new KickAction(target, exit.getName());
                 }
-                else if(actor instanceof Koopa){
+                else if(actor.hasCapability(Status.CAN_PUNCH)){
                     return new PunchAction(target, exit.getName());
                 }
             }
