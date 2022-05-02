@@ -1,10 +1,12 @@
 package game.positions;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
+import game.actions.JumpActorAction;
 import game.items.Coin;
 
 import java.util.Random;
@@ -56,6 +58,13 @@ public abstract class HigherGround extends Ground {
     @Override
     public boolean canActorEnter(Actor actor) {
         return actor.hasCapability(Status.POWER_STAR);
+    }
+
+    @Override
+    public ActionList allowableActions(Actor actor, Location location, String direction) {
+        ActionList actions = new ActionList();
+        actions.add(new JumpActorAction(location, direction, this));
+        return actions;
     }
 
     /**
