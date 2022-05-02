@@ -132,6 +132,13 @@ but the logic for the Sapling growing to a Mature tree would be in the Sapling c
 Hence, we use a TreeState enum to keep track of the tree's stage of growth
 instead.
 
+### GroundCharacteristic
+The reason for a GroundCharacteristic enum is to check for fertile grounds
+on the surrounding. In the Dirt class (not pictured), the constructor would
+add the capability of it being FERTILE. This way, it would be easy to extend in
+the future, if we have other types of ground besides dirt that we want to be
+fertile enough to grow trees on.
+
 ### Changes from Assignment 1 to Assignment 2
 ### Design of Tree
 It was decided to go with the alternative approach with having separate classes, each extending the "Tree"  class,
@@ -141,10 +148,3 @@ specific stage of the tree. For example, now although there are more classes, th
 class. Before, the Tree class needed to have a dependency on `Koopa`, `Goomba`, and `Coin` because it needed to spawn them.
 Now, the dependency can be kept on the specific stage that is required, for example only the `SproutTree` class needs
 to have a dependency on `Goomba`. The sequence diagrams for the tick() functions are a lot shorter and simpler now.
-
-### GroundCharacteristic
-The reason for a GroundCharacteristic enum is to check for fertile grounds
-on the surrounding. In the Dirt class (not pictured), the constructor would
-add the capability of it being FERTILE. This way, it would be easy to extend in
-the future, if we have other types of ground besides dirt that we want to be
-fertile enough to grow trees on.
