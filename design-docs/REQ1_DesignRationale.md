@@ -98,7 +98,7 @@ status to see if it is possible to add money to wallet of the actor or not. An
 example would be perhaps if there was a debuff to cause Mario not to be able to
 pick up any coins for X amount of turns.
 
-### Design of Tree
+### Design of Tree (OLD, see next section)
 
 Looking at the sequence diagram for the tree's `tick()` method, you can see how
 long it is with a lot of alternating logic on class communication depending on what
@@ -132,6 +132,16 @@ but the logic for the Sapling growing to a Mature tree would be in the Sapling c
 Hence, we use a TreeState enum to keep track of the tree's stage of growth
 instead.
 
+### Assignment 2 Design of Tree
+It was decided to go with the alternative approach with having separate classes, each extending the "Tree"  class,
+for the different stages of the tree. The drawbacks are outweighted by the simplicity this new design has by
+leveraging a Single Responsibility Principle, with each class being able to concentrate on its own logic for that 
+specific stage of the tree. For example, now although there are more classes, there are now less dependencies on a single
+class. Before, the Tree class needed to have a dependency on `Koopa`, `Goomba`, and `Coin` because it needed to spawn them.
+Now, the dependency can be kept on the specific stage that is required, for example only the `SproutTree` class needs
+to have a dependency on `Goomba`. The sequence diagrams for the tick() functions are a lot shorter and simpler now.
+
+### GroundCharacteristic
 The reason for a GroundCharacteristic enum is to check for fertile grounds
 on the surrounding. In the Dirt class (not pictured), the constructor would
 add the capability of it being FERTILE. This way, it would be easy to extend in

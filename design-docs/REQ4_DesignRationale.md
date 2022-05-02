@@ -57,4 +57,5 @@ didn't go with this approach is because
    classes! Perhaps the best we can do is create a class called
    ConsumableDrinkableItem and inherit from that instead, and you can see how this would get messy very
    quickly as we add other types of item classes, and not having a base type we
-   can use, for example in the ConsumeAction class.
+   can use, for example in the ConsumeAction class. This would adhere to the Interface Segregation Principle, where the
+large interface of "DrinkableConsumableItem" is split into smaller ones called "ConsumableItem" and "DrinkableItem".
