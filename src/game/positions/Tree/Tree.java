@@ -83,7 +83,7 @@ public abstract class Tree extends HigherGround implements Resettable {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions = new ActionList();
-        if (!direction.isEmpty()) {
+        if (!direction.isEmpty()){
             actions.add(new JumpActorAction(location, direction, this));
         }
         return actions;
