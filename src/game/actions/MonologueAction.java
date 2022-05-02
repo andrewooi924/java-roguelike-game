@@ -51,7 +51,7 @@ public class MonologueAction extends Action {
         if (!hasWrench) {
             dialoguePossibilities.add("You might need a wrench to smash Koopa's hard shells.");
         }
-        if (!hasWrench) {
+        if (!hasPowerStar) {
             dialoguePossibilities.add("You better get back to finding the Power Stars.");
         }
         return this.actor + ": \"" + dialoguePossibilities.get(random.nextInt(dialoguePossibilities.size())) + "\"";
