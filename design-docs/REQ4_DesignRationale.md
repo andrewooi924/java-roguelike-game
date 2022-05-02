@@ -59,3 +59,6 @@ didn't go with this approach is because
    quickly as we add other types of item classes, and not having a base type we
    can use, for example in the ConsumeAction class. This would adhere to the Interface Segregation Principle, where the
 large interface of "DrinkableConsumableItem" is split into smaller ones called "ConsumableItem" and "DrinkableItem".
+
+### Changes from Assignment 1 to Assignment 2
+None.

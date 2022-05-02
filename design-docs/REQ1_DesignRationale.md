@@ -132,7 +132,8 @@ but the logic for the Sapling growing to a Mature tree would be in the Sapling c
 Hence, we use a TreeState enum to keep track of the tree's stage of growth
 instead.
 
-### Assignment 2 Design of Tree
+### Changes from Assignment 1 to Assignment 2
+### Design of Tree
 It was decided to go with the alternative approach with having separate classes, each extending the "Tree"  class,
 for the different stages of the tree. The drawbacks are outweighted by the simplicity this new design has by
 leveraging a Single Responsibility Principle, with each class being able to concentrate on its own logic for that 

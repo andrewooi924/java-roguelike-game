@@ -50,3 +50,6 @@ such as "You need item X but not item Y and also have status Z for this status t
 status, such as if we want to add a condition based on the Actor's location, we
 would need to have another `addDialogue` method. This is the reason that it is
 currently coded in MonologueAction.
+
+### Changes from Assignment 1 to Assignment 2
+None.
