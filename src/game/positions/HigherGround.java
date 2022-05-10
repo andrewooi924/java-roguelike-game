@@ -60,6 +60,14 @@ public abstract class HigherGround extends Ground {
         return actor.hasCapability(Status.POWER_STAR);
     }
 
+    /**
+     * Returns an empty Action list.
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return a new, empty collection of Actions
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
