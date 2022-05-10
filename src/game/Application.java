@@ -1,5 +1,6 @@
 package game;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.positions.Dirt;
 import game.positions.Floor;
+import game.positions.Lava;
 import game.positions.Tree.SproutTree;
 import game.positions.Wall;
 
@@ -24,11 +26,12 @@ import game.positions.Wall;
  */
 public class Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 			World world = new World(new Display());
 
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree());
+			FancyGroundFactory lavaFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new Lava());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
@@ -52,7 +55,9 @@ public class Application {
 				".......................................................##.......................");
 
 			GameMap gameMap = new GameMap(groundFactory, map);
+			GameMap lavaMap = new GameMap(lavaFactory, "LavaZone");
 			world.addGameMap(gameMap);
+			world.addGameMap(lavaMap);
 
 			final int MARIO_POS_X = 44;
 			final int MARIO_POS_Y = 10;

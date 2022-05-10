@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.TeleportAction;
 import game.reset.Resettable;
 import game.Status;
 import game.items.WalletKeeper;
@@ -20,7 +21,6 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 	private final Menu menu = new Menu();
 	private int balance = 0;
 	private boolean resetTimes = true;
-	private ActionList actionList;
 	/**
 	 * Constructor.
 	 *
@@ -34,7 +34,6 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		this.addCapability(Status.CAN_JUMP);
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
 		this.addCapability(Status.CAN_MANAGE_MONEY);
-		this.addCapability(Status.CAN_TELEPORT);
 		registerInstance();
 	}
 
@@ -61,8 +60,8 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		if (resetTimes) {
 			actions.add(new ResetAction());
 		}
-		for (Action action: actionList) {
-			actions.add(action);
+		if (this.hasCapability(Status.CAN_TELEPORT)) {
+			actions.add(new TeleportAction(new GameMap()));
 		}
 		return menu.showMenu(this, actions, display);
 	}
@@ -112,9 +111,5 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		heal(getMaxHp());
 		this.removeCapability(Status.POWER_STAR);
 		this.removeCapability(Status.TALL);
-	}
-
-	public void addAction(Action action) {
-		actionList.add(action);
 	}
 }
