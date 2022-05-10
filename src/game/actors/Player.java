@@ -31,7 +31,7 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CAN_JUMP);
-		this.addCapability(Status.CAN_WALK_ON_FLOOR);
+		this.addCapability(Status.WALKABLE_FOR_PLAYER);
 		this.addCapability(Status.CAN_MANAGE_MONEY);
 		registerInstance();
 	}

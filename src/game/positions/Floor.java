@@ -15,6 +15,6 @@ public class Floor extends Ground {
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		// Only those who can walk on the floor can enter the floor.
-		return actor.hasCapability(Status.CAN_WALK_ON_FLOOR);
+		return actor.hasCapability(Status.WALKABLE_FOR_PLAYER);
 	}
 }
