@@ -13,6 +13,9 @@ import game.Status;
 import game.items.WalletKeeper;
 import game.reset.ResetAction;
 
+import java.util.HashMap;
+import java.util.Stack;
+
 /**
  * Class representing the Player.
  */
@@ -21,6 +24,7 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 	private final Menu menu = new Menu();
 	private int balance = 0;
 	private boolean resetTimes = true;
+	private HashMap<Location, Location> teleportPoints = new HashMap<Location, Location>();
 	/**
 	 * Constructor.
 	 *
@@ -60,9 +64,9 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		if (resetTimes) {
 			actions.add(new ResetAction());
 		}
-		if (this.hasCapability(Status.CAN_TELEPORT)) {
-			actions.add(new TeleportAction(new GameMap()));
-		}
+//		if (this.hasCapability(Status.CAN_TELEPORT)) {
+//			actions.add(new TeleportAction(teleportPoints.get(n)));
+//		}
 		return menu.showMenu(this, actions, display);
 	}
 

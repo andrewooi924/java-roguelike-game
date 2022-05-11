@@ -2,18 +2,23 @@ package game;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Goomba;
 import game.actors.Player;
 import game.actors.Toad;
+import game.injectors.LocationInjector;
+import game.injectors.MapInjector;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
+import game.map.Maps;
 import game.positions.Dirt;
 import game.positions.Floor;
 import game.positions.Lava;
@@ -28,50 +33,30 @@ public class Application {
 
 	public static void main(String[] args) throws IOException {
 
-			World world = new World(new Display());
+		World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree());
-			FancyGroundFactory lavaFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new Lava());
+		MapInjector mapInjector = new MapInjector();
+		HashMap<Maps, GameMap> maps = mapInjector.addingMaps();
+		for (GameMap map: maps.values()) {
+			world.addGameMap(map);
+		}
+		// adding teleport points throughout the map
+		LocationInjector locationInjector = new LocationInjector();
+		HashMap<String, Location> locations = locationInjector.addLocations(maps);
 
-			List<String> map = Arrays.asList(
-				"..........................................##..........+.........................",
-				"............+............+..................#............................C......",
-				"............................................#...................................",
-				"............C................................##......................+..........",
-				"...............................................#................................",
-				"................................................#...............................",
-				".................+................................#.............................",
-				".................................................##.............................",
-				"..............................................c.##..............................",
-				".........+..............................+#____####.................+............",
-				".......................................+#_____###++.............................",
-				".......................................+#______###..............................",
-				"........................................+#_____###..............................",
-				"........................+........................##.............+...............",
-				"...................................................#............................",
-				"..........C.........................................#...........................",
-				"...................+.................................#..........................",
-				"......................................................#.........................",
-				".......................................................##.......................");
+		// We can choose which gamemap to start from
+		GameMap gameMap = maps.get(Maps.MAP_BASIC); // basic zone is the application's starting point
+		final int MARIO_POS_X = 44;
+		final int MARIO_POS_Y = 10;
+		Actor mario = new Player("Player", 'm', 100);
+		world.addPlayer(mario, gameMap.at(MARIO_POS_X, MARIO_POS_Y));
+		gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new PowerStar());
+		gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new SuperMushroom());
 
-			GameMap gameMap = new GameMap(groundFactory, map);
-			GameMap lavaMap = new GameMap(lavaFactory, "LavaZone");
-			world.addGameMap(gameMap);
-			world.addGameMap(lavaMap);
+		gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
 
-			final int MARIO_POS_X = 44;
-			final int MARIO_POS_Y = 10;
-			Actor mario = new Player("Player", 'm', 100);
-			world.addPlayer(mario, gameMap.at(MARIO_POS_X, MARIO_POS_Y));
-			gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new PowerStar());
-			gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new SuperMushroom());
 
-			// FIXME: the Goomba should be generated from the Tree
-			gameMap.at(35, 10).addActor(new Goomba());
-
-			gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
-
-			world.run();
+		world.run();
 
 	}
 }

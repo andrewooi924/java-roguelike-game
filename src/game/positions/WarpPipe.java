@@ -6,7 +6,11 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class WarpPipe extends HigherGround {
+
     /**
      * Constructor.
      *
@@ -34,6 +38,6 @@ public class WarpPipe extends HigherGround {
         if (location.containsAnActor()) {
             location.getActor().addCapability(Status.CAN_TELEPORT);
         }
-    }
 
+    }
 }

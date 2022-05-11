@@ -7,7 +7,11 @@ import game.Status;
 
 public class TeleportAction extends Action {
 
-    private GameMap lavaZone;
+    private GameMap map;
+
+    public TeleportAction(GameMap map) {
+        this.map = map;
+    }
 
     @Override
     public String execute(Actor actor, GameMap map) {
