@@ -14,7 +14,5 @@ public enum Status {
     CAN_MANAGE_MONEY, // use this to indicate that an actor is able to pick up money
     WALKABLE_FOR_PLAYER, // use this to indicate that an actor is able to enter a floor ground area or lava area.
     CAN_TELEPORT, // whoever uses this can teleport
-    CAN_KICK, // use this status to indicate that an actor is able to kick.
-    CAN_PUNCH, // use this status to indicate that an actor is able to punch.
     RESETTABLE,
 }

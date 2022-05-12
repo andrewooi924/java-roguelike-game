@@ -7,8 +7,10 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
+import game.items.SuperMushroom;
 
 /**
  * Special Action for attacking other Actors.
@@ -59,6 +61,15 @@ public class AttackAction extends Action {
 				target.removeCapability(Status.TALL);
 			}
 			if (!target.isConscious() || actor.hasCapability(Status.POWER_STAR)) {
+				if (target.toString().equalsIgnoreCase("Koopa") ) {
+					if (target.getDisplayChar() == 'D' && weapon.toString().equalsIgnoreCase("Wrench")){
+						Location location = map.locationOf(target);
+						map.removeActor(target);
+						location.addItem(new SuperMushroom());
+						return "Shell breaks";
+					}
+					return target + " becomes a shell.";
+				}
 				ActionList dropActions = new ActionList();
 				// drop all items
 				for (Item item : target.getInventory())
@@ -75,6 +86,9 @@ public class AttackAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
+		if(target.getDisplayChar() == 'D'){
+			return actor + " breaks shell";
+		}
 		return actor + " attacks " + target + " at " + direction;
 	}
 }

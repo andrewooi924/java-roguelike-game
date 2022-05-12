@@ -22,7 +22,7 @@ import java.util.Stack;
 public class Player extends Actor implements WalletKeeper, Resettable {
 
 	private final Menu menu = new Menu();
-	private int balance = 0;
+	private int balance = 1000;
 	private boolean resetTimes = true;
 	private HashMap<Location, Location> teleportPoints = new HashMap<Location, Location>();
 	/**

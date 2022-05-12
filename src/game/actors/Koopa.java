@@ -31,7 +31,6 @@ public class Koopa extends Actor implements Resettable {
         super("Koopa", 'K', 100);
         this.behaviours.put(10, new WanderBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-        this.addCapability(Status.CAN_PUNCH);
         registerInstance();
     }
 
