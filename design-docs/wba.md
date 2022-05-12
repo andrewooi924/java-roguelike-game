@@ -8,8 +8,9 @@ Dates are YYYY-MM-DD.
 
 - `REQ6: Monologue` by 2022-04-08
 - `REQ1: Let it grow!` by 2022-04-08
+- `Assignment 3 - REQ3: Magical fountain` by 2022-05-20
 
-#### WBA Acceptance 
+#### WBA Acceptance
 
 I accept this WBA
 
@@ -31,17 +32,16 @@ I accept this WBA
 
 #### WBA Acceptance
 
-I accept this WBA 
+I accept this WBA
 
 ### Team tasks
 
-- `Assignment 3 - REQ4: Minecraft` by 2022-05-20  
-- `REQ4: Magical Items` by 2022-04-08  
+- `Assignment 3 - REQ4: Minecraft` by 2022-05-20
+- `REQ4: Magical Items` by 2022-04-08
 - `Assignment 3 - REQ5: Ranged Combat` by 2022-05-20
 
 #### WBA Acceptance
 
 Naavin Ravinthran - I accept this WBA  
 Yi Zhen Nicholas Wong - I accept this WBA  
-Yu Zhang Ooi - I accept this WBA  
-
+Yu Zhang Ooi - I accept this WBA
