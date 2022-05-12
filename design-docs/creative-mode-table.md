@@ -1,10 +1,9 @@
 # Requirement 4
 
-**Title**: Master Sword
+**Title**: Minecraft
 
-**Description**: There's an item called Master Sword in the Lava Zone which mario can pick up after
-traversing the dangerous terrains. By picking up the Master Sword, mario turns into Link which he now
-has a sword, some bombs and a bow with some arrows.
+**Description**: The player can now punch trees and collect wood just like Minecraft! With wood, they can also create
+walls to fend off the enemies! 
 
 **Explanation why it adheres to SOLID principles** (WHY):  
 <b><u>Single Responsibility Principle</b></u>: Each projectile will have a different class and will only
