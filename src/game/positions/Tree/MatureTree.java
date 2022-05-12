@@ -3,6 +3,7 @@ package game.positions.Tree;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.FlyingKoopa;
 import game.actors.Koopa;
 import game.positions.Dirt;
 import game.positions.GroundCharacteristics;
@@ -53,11 +54,17 @@ public class MatureTree extends Tree {
 
         final double KOOPA_SPAWN_PROB = 0.15;
         final double DIE_PROB = 0.20;
+        final double KOOPA_VARIATION_PROB = 0.50;
 
         final int SPROUT_SPAWN_CYCLE = 5;
         if (!location.containsAnActor() &&
                 random.nextDouble() <= KOOPA_SPAWN_PROB) {
-            location.addActor(new Koopa());
+            if (random.nextDouble() <= KOOPA_VARIATION_PROB) {
+                location.addActor(new Koopa());
+            }
+            else{
+                location.addActor(new FlyingKoopa());
+            }
         }
 
         if (age % SPROUT_SPAWN_CYCLE == 0) {

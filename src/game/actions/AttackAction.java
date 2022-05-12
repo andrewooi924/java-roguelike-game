@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
+import game.items.Fire;
 import game.items.SuperMushroom;
 
 /**
@@ -57,6 +58,9 @@ public class AttackAction extends Action {
 
 			result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
+			if (actor.hasCapability(Status.FIRE_BREATHER)){
+				map.locationOf(target).addItem(new Fire());
+			}
 			if(target.hasCapability(Status.TALL)){
 				target.removeCapability(Status.TALL);
 			}

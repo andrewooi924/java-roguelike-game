@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static game.Status.POWER_STAR;
+import static game.Status.*;
 
 /**
  * An action where the Actor is talking to the palyer.
@@ -22,7 +22,7 @@ public class MonologueAction extends Action {
 
     /**
      * Constructor
-     * @param targetActor
+     * @param targetActor The target actor
      */
     public MonologueAction(Actor targetActor) {
         this.actor = targetActor;
@@ -38,8 +38,13 @@ public class MonologueAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         ArrayList<String> dialoguePossibilities = new ArrayList<String>();
-        dialoguePossibilities.add("The Princess is depending on you! You are our only hope.");
-        dialoguePossibilities.add("Being imprisoned in these walls can drive a fungus crazy :(");
+        if (actor.hasCapability(IS_TOAD)) {
+            dialoguePossibilities.add("The Princess is depending on you! You are our only hope.");
+            dialoguePossibilities.add("Being imprisoned in these walls can drive a fungus crazy :(");
+        }
+        if (actor.hasCapability(IS_PEACH)){
+            dialoguePossibilities.add("Oh Mario, thank you for coming to save me!");
+        }
         boolean hasWrench = false;
         boolean hasPowerStar = actor.hasCapability(POWER_STAR);
         for (Item i: actor.getInventory()) {

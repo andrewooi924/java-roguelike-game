@@ -40,7 +40,7 @@ public class AttackBehaviour implements Behaviour {
 
         for (Exit exit : here.getExits()){
             Location destination = exit.getDestination();
-            if (destination == there){
+            if (destination == there && !target.hasCapability(Status.INVULNERABLE)){
                 return new AttackAction(target, exit.getName());
             }
         }

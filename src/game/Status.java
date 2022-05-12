@@ -15,4 +15,10 @@ public enum Status {
     WALKABLE_FOR_PLAYER, // use this to indicate that an actor is able to enter a floor ground area or lava area.
     CAN_TELEPORT, // whoever uses this can teleport
     RESETTABLE,
+    INVULNERABLE, // use this status to be considered unable to be attacked
+    HAS_KEY, // use this status to indicate that the actor has obtained the key
+    IS_TOAD, // use this status to be considered Toad
+    IS_PEACH, // use this status to be considered Princess Peach
+    FIRE_BREATHER, // use this status to be considered to be able to breathe fire (drop fire on the ground)
+    CAN_FLY, // use this status to be considered an actor that has the ability to fly (walk to higher grounds)
 }

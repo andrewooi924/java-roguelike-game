@@ -92,11 +92,6 @@ public class Goomba extends Actor implements Resettable {
 		this.addCapability(Status.RESETTABLE);
 	}
 
-	/**
-	 * Returns hit rate of the Goomba
-	 * @return hit rate of the Goomba
-	 */
-
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon(){
 		return new IntrinsicWeapon(10, "kicks");

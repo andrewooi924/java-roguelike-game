@@ -70,7 +70,7 @@ public abstract class Tree extends HigherGround implements Resettable {
     public boolean canActorEnter(Actor actor) {
         // The only way to get onto the tree is through have the Power Star status, where you will destroy the tree,
         // or by jumping on the tree.
-        return actor.hasCapability(Status.POWER_STAR);
+        return actor.hasCapability(Status.POWER_STAR) || actor.hasCapability(Status.CAN_FLY);
     }
 
     /**

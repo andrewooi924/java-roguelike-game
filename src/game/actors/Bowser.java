@@ -16,16 +16,16 @@ import game.reset.Resettable;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-public class PiranhaPlant extends Actor implements Resettable {
-    //TODO spawn it in turn 2
+public class Bowser extends Actor implements Resettable {
+    //TODO spawn in lava zone next to Peach
 
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
-    public PiranhaPlant() {
-        super("PiranhaPlant", 'Y', 150);
+    public Bowser() {
+        super("Bowser", 'B', 500);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
+        this.addCapability(Status.FIRE_BREATHER);
         registerInstance();
     }
 
@@ -37,17 +37,20 @@ public class PiranhaPlant extends Actor implements Resettable {
             actions.add(new AttackAction(this,direction));
         }
         if (otherActor instanceof Player) {
+            this.behaviours.put(8, new FollowBehaviour(otherActor));
             this.behaviours.put(9, new AttackBehaviour(otherActor));
         }
         return actions;
     }
+
+    //TODO, implement special stackable fire that lands on Player's spot and lasts for 3 turns, (tick)?
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        //resetting will increase alive/existing Piranha Plants hit points by an additional 50 hit points and heal to the maximum
         if (this.hasCapability(Status.RESETTABLE)) {
-            this.resetMaxHp(this.getMaxHp() + 50);
+            map.removeActor(this);
+            this.removeCapability(Status.RESETTABLE);
         } else {
-            for (game.behaviours.Behaviour Behaviour : behaviours.values()) {
+            for (Behaviour Behaviour : behaviours.values()) {
                 Action action = Behaviour.getAction(this, map);
                 if (action != null)
                     return action;
@@ -66,6 +69,6 @@ public class PiranhaPlant extends Actor implements Resettable {
 
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon(){
-        return new IntrinsicWeapon(90, "chomps");
+        return new IntrinsicWeapon(80, "punches");
     }
 }
