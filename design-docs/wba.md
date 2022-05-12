@@ -27,6 +27,7 @@ I accept this WBA
 
 - `REQ2: Jump Up, Super Star!` by 2022-04-08
 - `REQ3: Enemies` by 2022-04-08
+- `Assignment 3 - REQ2: More allies and enemies!` by 2022-05-20
 
 #### WBA Acceptance
 
