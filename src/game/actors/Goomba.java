@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.*;
 import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
@@ -90,5 +91,15 @@ public class Goomba extends Actor implements Resettable {
 	@Override
 	public void resetInstance() {
 		this.addCapability(Status.RESETTABLE);
+	}
+
+	/**
+	 * Returns hit rate of the Goomba
+	 * @return hit rate of the Goomba
+	 */
+
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon(){
+		return new IntrinsicWeapon(10, "kicks");
 	}
 }

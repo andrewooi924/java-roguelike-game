@@ -55,6 +55,9 @@ public class AttackAction extends Action {
 
 			result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
+			if(target.hasCapability(Status.TALL)){
+				target.removeCapability(Status.TALL);
+			}
 			if (!target.isConscious() || actor.hasCapability(Status.POWER_STAR)) {
 				ActionList dropActions = new ActionList();
 				// drop all items
