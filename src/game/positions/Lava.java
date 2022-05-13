@@ -15,10 +15,7 @@ public class Lava extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        if (actor.hasCapability(Status.WALKABLE_FOR_PLAYER)) {
-            return true;
-        }
-        return false;
+        return actor.hasCapability(Status.WALKABLE_FOR_PLAYER);
     }
 
     @Override
@@ -27,6 +24,10 @@ public class Lava extends Ground {
         if (location.containsAnActor()) {
             player = location.getActor();
             player.hurt(15);
+
+            // if lesser than 0 hp then gg.
+            if (!player.isConscious())
+                location.map().removeActor(player);
         }
     }
 }
