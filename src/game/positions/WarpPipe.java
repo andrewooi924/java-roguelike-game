@@ -23,6 +23,7 @@ public class WarpPipe extends HigherGround implements Resettable {
     public WarpPipe() {
         super('C');
         locations = TeleportPointsInjector.getLocations();
+        registerInstance();
     }
 
     @Override
@@ -66,12 +67,12 @@ public class WarpPipe extends HigherGround implements Resettable {
     public void tick(Location location) {
         super.tick(location);
         age++;
-        if (age == 1)
-            location.addActor(new PiranhaPlant());
-        if (this.hasCapability(Status.RESETTABLE)){
-            this.age = 0;
+        if (this.hasCapability(Status.RESETTABLE)) {
+            this.age = 1;
             this.removeCapability(Status.RESETTABLE);
         }
+        if (age == 1 && !location.containsAnActor())
+            location.addActor(new PiranhaPlant());
     }
 
     /**
