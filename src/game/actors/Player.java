@@ -26,7 +26,6 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 	private final Menu menu = new Menu();
 	private int balance = 1000;
 	private boolean resetTimes = true;
-	private HashMap<Location, Location> teleportPoints = new HashMap<Location, Location>();
 	/**
 	 * Constructor.
 	 *
@@ -40,6 +39,7 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		this.addCapability(Status.CAN_JUMP);
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
 		this.addCapability(Status.CAN_MANAGE_MONEY);
+		this.addCapability(Status.CAN_TELEPORT);
 		Bottle b = new Bottle();
 		this.addItemToInventory(b);
 		b.addConsumable(new HealingWater());
@@ -69,9 +69,6 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		if (resetTimes) {
 			actions.add(new ResetAction());
 		}
-//		if (this.hasCapability(Status.CAN_TELEPORT)) {
-//			actions.add(new TeleportAction(teleportPoints.get(n)));
-//		}
 		return menu.showMenu(this, actions, display);
 	}
 

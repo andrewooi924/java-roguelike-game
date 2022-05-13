@@ -35,14 +35,16 @@ public class Application {
 
 		World world = new World(new Display());
 
-		MapInjector mapInjector = new MapInjector();
-		HashMap<Maps, GameMap> maps = mapInjector.addingMaps();
+		// process of adding maps into the world
+		MapInjector.addingMaps();
+		HashMap<Maps, GameMap> maps = MapInjector.getMaps();
+
 		for (GameMap map: maps.values()) {
 			world.addGameMap(map);
 		}
+
 		// adding teleport points throughout the map
-		LocationInjector locationInjector = new LocationInjector();
-		HashMap<String, Location> locations = locationInjector.addLocations(maps);
+		LocationInjector.addLocations(maps);
 
 		// We can choose which gamemap to start from
 		GameMap gameMap = maps.get(Maps.MAP_BASIC); // basic zone is the application's starting point
