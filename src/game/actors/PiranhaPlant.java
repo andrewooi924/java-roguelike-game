@@ -6,25 +6,30 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Status;
 import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
-import game.behaviours.FollowBehaviour;
 import game.reset.Resettable;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
+/**
+ * A plant that is also a piranha, weird
+ */
 public class PiranhaPlant extends Actor implements Resettable {
-    //TODO spawn it in turn 2
 
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+    private int age = 0;
 
+    /**
+     * A constructor for the PiranhaPlant class
+     */
     public PiranhaPlant() {
-        super("PiranhaPlant", 'Y', 150);
+        super("Piranha Plant", 'Y', 150);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         registerInstance();
     }
@@ -41,11 +46,18 @@ public class PiranhaPlant extends Actor implements Resettable {
         }
         return actions;
     }
+
+    /**
+     * Figure out what to do next.
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         //resetting will increase alive/existing Piranha Plants hit points by an additional 50 hit points and heal to the maximum
+        Location spot = map.locationOf(this);
         if (this.hasCapability(Status.RESETTABLE)) {
             this.resetMaxHp(this.getMaxHp() + 50);
+            this.removeCapability(Status.RESETTABLE);
         } else {
             for (game.behaviours.Behaviour Behaviour : behaviours.values()) {
                 Action action = Behaviour.getAction(this, map);

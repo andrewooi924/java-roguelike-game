@@ -20,7 +20,6 @@ public class Toad extends Actor {
      */
     public Toad() {
         super("Toad", 'O', 10);
-        this.addCapability(Status.IS_TOAD);
     }
 
     /**

@@ -8,20 +8,24 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actions.EndGameAction;
-import game.actions.MonologueAction;
 
+/**
+ * The princess that has been captured by Bowser for the 105th time
+ */
 public class PrincessPeach extends Actor{
-    //TODO spawn in lava zone next to Bowser
 
     /**
-     * Constructor
+     * A constructor for the PrincessPeach class
      */
     public PrincessPeach() {
         super("Peach", 'P', 100);
         this.addCapability(Status.INVULNERABLE);
-        this.addCapability(Status.IS_PEACH);
     }
 
+    /**
+     * Figure out what to do next.
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         return new DoNothingAction();
@@ -30,12 +34,10 @@ public class PrincessPeach extends Actor{
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList ret = new ActionList();
-        //TODO, let Princess Peach have his own speech and make Toad's speech unique to him
         if (otherActor.hasCapability(Status.HAS_KEY)) {
             Action talk = new EndGameAction(this);
             ret.add(talk);
         }
-        //TODO, end the game and give single option to reset
         return ret;
     }
 }

@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Status;
 import game.actions.AttackAction;
@@ -17,11 +18,16 @@ import game.reset.Resettable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A gigantic evil Koopa that stole your princess
+ */
 public class Bowser extends Actor implements Resettable {
-    //TODO spawn in lava zone next to Peach
 
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
+    /**
+     * A constructor for the Bowser class
+     */
     public Bowser() {
         super("Bowser", 'B', 500);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
@@ -43,12 +49,16 @@ public class Bowser extends Actor implements Resettable {
         return actions;
     }
 
-    //TODO, implement special stackable fire that lands on Player's spot and lasts for 3 turns, (tick)?
+    /**
+     * Figure out what to do next.
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (this.hasCapability(Status.RESETTABLE)) {
+        Location spot = new Location(map, 3, 8);
+        if (this.hasCapability(Status.RESETTABLE) && map.contains(this)) {
             map.removeActor(this);
-            this.removeCapability(Status.RESETTABLE);
+            map.addActor(new Bowser(), spot);
         } else {
             for (Behaviour Behaviour : behaviours.values()) {
                 Action action = Behaviour.getAction(this, map);

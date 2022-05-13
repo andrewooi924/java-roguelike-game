@@ -2,15 +2,18 @@ package game.positions;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.TeleportAction;
 import game.actors.PiranhaPlant;
 import game.injectors.TeleportPointsInjector;
+import game.reset.Resettable;
 
 import java.util.HashMap;
+import java.util.List;
 
-public class WarpPipe extends HigherGround {
+public class WarpPipe extends HigherGround implements Resettable {
 
     private final HashMap<String, Location> locations;
     private int age = 0;
@@ -67,5 +70,17 @@ public class WarpPipe extends HigherGround {
         age++;
         if (age == 1)
             location.addActor(new PiranhaPlant());
+        if (this.hasCapability(Status.RESETTABLE)){
+            this.age = 0;
+            this.removeCapability(Status.RESETTABLE);
+        }
+    }
+
+    /**
+     * Adds the RESETTABLE capability to this instance
+     */
+    @Override
+    public void resetInstance() {
+        this.addCapability(Status.RESETTABLE);
     }
 }

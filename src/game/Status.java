@@ -17,9 +17,6 @@ public enum Status {
     RESETTABLE,
     INVULNERABLE, // use this status to be considered unable to be attacked
     HAS_KEY, // use this status to indicate that the actor has obtained the key
-    IS_TOAD, // use this status to be considered Toad
-    IS_PEACH, // use this status to be considered Princess Peach
     FIRE_BREATHER, // use this status to be considered to be able to breathe fire (drop fire on the ground)
     CAN_FLY, CAN_INTRINSIC_ATTACK, // use this status to be considered an actor that has the ability to fly (walk to higher grounds)
-    COMPLETED, // use this status to be considered to have completed the game (defeated Bowser and spoke to Peach)
 }
