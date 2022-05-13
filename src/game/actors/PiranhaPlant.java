@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Status;
 import game.actions.AttackAction;
@@ -23,7 +22,6 @@ import java.util.Map;
 public class PiranhaPlant extends Actor implements Resettable {
 
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
-    private int age = 0;
 
     /**
      * A constructor for the PiranhaPlant class
@@ -54,7 +52,6 @@ public class PiranhaPlant extends Actor implements Resettable {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         //resetting will increase alive/existing Piranha Plants hit points by an additional 50 hit points and heal to the maximum
-        Location spot = map.locationOf(this);
         if (this.hasCapability(Status.RESETTABLE)) {
             this.resetMaxHp(this.getMaxHp() + 50);
             this.removeCapability(Status.RESETTABLE);

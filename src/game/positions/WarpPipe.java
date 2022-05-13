@@ -68,7 +68,7 @@ public class WarpPipe extends HigherGround implements Resettable {
         super.tick(location);
         age++;
         if (this.hasCapability(Status.RESETTABLE)) {
-            this.age = 1;
+            this.age = 0;
             this.removeCapability(Status.RESETTABLE);
         }
         if (age == 1 && !location.containsAnActor())
