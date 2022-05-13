@@ -2,7 +2,6 @@ package game.positions;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.TeleportAction;
@@ -11,7 +10,6 @@ import game.injectors.TeleportPointsInjector;
 import game.reset.Resettable;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class WarpPipe extends HigherGround implements Resettable {
 

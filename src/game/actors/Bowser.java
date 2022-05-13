@@ -55,11 +55,14 @@ public class Bowser extends Actor implements Resettable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        Location spot = new Location(map, 3, 8);
-        if (this.hasCapability(Status.RESETTABLE) && map.contains(this)) {
-            map.removeActor(this);
-            map.addActor(new Bowser(), spot);
-        } else {
+        Location spot = map.at(3,8);
+        if (this.hasCapability(Status.RESETTABLE) && !spot.containsAnActor()) {
+            map.moveActor(this, map.at(3,8));
+            this.resetMaxHp(500);
+            this.behaviours.remove(8);
+            this.removeCapability(Status.RESETTABLE);
+        }
+        else {
             for (Behaviour Behaviour : behaviours.values()) {
                 Action action = Behaviour.getAction(this, map);
                 if (action != null)
