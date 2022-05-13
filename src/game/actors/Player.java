@@ -7,25 +7,30 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.TeleportAction;
 import game.items.Bottle;
 import game.items.HealingWater;
+import game.items.PowerWater;
 import game.reset.Resettable;
 import game.Status;
 import game.items.WalletKeeper;
 import game.reset.ResetAction;
 
-import java.util.HashMap;
-import java.util.Stack;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements WalletKeeper, Resettable {
+public class Player extends Actor implements WalletKeeper, Resettable, IntrinsicFighter {
 
 	private final Menu menu = new Menu();
 	private int balance = 1000;
 	private boolean resetTimes = true;
+
+	private int attackDamage = 5;
+
+
+
 	/**
 	 * Constructor.
 	 *
@@ -40,9 +45,11 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
 		this.addCapability(Status.CAN_MANAGE_MONEY);
 		this.addCapability(Status.CAN_TELEPORT);
+		this.addCapability(Status.CAN_INTRINSIC_ATTACK);
 		Bottle b = new Bottle();
 		this.addItemToInventory(b);
 		b.addConsumable(new HealingWater());
+		b.addConsumable(new PowerWater());
 		registerInstance();
 	}
 
@@ -117,5 +124,20 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		heal(getMaxHp());
 		this.removeCapability(Status.POWER_STAR);
 		this.removeCapability(Status.TALL);
+	}
+
+	@Override
+	public void setIntrinsicDamage(int damage) {
+		this.attackDamage = damage;
+	}
+
+	@Override
+	public int getIntrinsicDamage() {
+		return this.attackDamage;
+	}
+
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(this.attackDamage, "punches");
 	}
 }
