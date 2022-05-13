@@ -19,10 +19,6 @@ public class WarpPipe extends HigherGround {
         super('C');
     }
 
-    public boolean canActorEnter(Actor actor) {
-        return false;
-    }
-
     @Override
     public int getFallDamageRate() {
         return 0;
@@ -35,9 +31,9 @@ public class WarpPipe extends HigherGround {
 
     @Override
     public void tick(Location location) {
+
         if (location.containsAnActor()) {
             location.getActor().addCapability(Status.CAN_TELEPORT);
         }
-
     }
 }

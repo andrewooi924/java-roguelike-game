@@ -53,11 +53,11 @@ public abstract class HigherGround extends Ground {
     /**
      * Checks whether the actor can go on the higher ground.
      * @param actor the Actor to check
-     * @return
+     * @return boolean
      */
     @Override
     public boolean canActorEnter(Actor actor) {
-        return actor.hasCapability(Status.POWER_STAR);
+        return actor.hasCapability(Status.CAN_FLY);
     }
 
     /**

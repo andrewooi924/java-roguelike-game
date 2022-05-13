@@ -18,7 +18,8 @@ public class Wall extends HigherGround {
 
 	@Override
 	public boolean canActorEnter(Actor actor) {
-		return actor.hasCapability(Status.POWER_STAR) || actor.hasCapability(Status.CAN_FLY);
+		boolean flag = super.canActorEnter(actor);
+		return actor.hasCapability(Status.POWER_STAR) || flag;
 	}
 
 	@Override
