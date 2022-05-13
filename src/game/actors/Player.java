@@ -8,6 +8,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.TeleportAction;
+import game.items.Bottle;
+import game.items.HealingWater;
 import game.reset.Resettable;
 import game.Status;
 import game.items.WalletKeeper;
@@ -38,6 +40,9 @@ public class Player extends Actor implements WalletKeeper, Resettable {
 		this.addCapability(Status.CAN_JUMP);
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
 		this.addCapability(Status.CAN_MANAGE_MONEY);
+		Bottle b = new Bottle();
+		this.addItemToInventory(b);
+		b.addConsumable(new HealingWater());
 		registerInstance();
 	}
 

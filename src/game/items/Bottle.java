@@ -14,7 +14,7 @@ public class Bottle extends Item {
      * Constructor.
      */
     public Bottle() {
-        super("Bottle", "B", false);
+        super("Bottle", 'B', false);
     }
 
     public void addConsumable(Item consumable) {
