@@ -12,7 +12,7 @@ public class LocationInjector {
 
     private LocationInjector() {}
 
-    public static void addLocations(HashMap<Maps, GameMap> maps) {
+    public static void addFixedLocations(HashMap<Maps, GameMap> maps) {
         GameMap lavaMap = maps.get(Maps.MAP_LAVA);
         GameMap gameMap = maps.get(Maps.MAP_BASIC);
         locations.put(gameMap + "x:12" + "y:3", new Location(lavaMap, 0, 0));
@@ -23,5 +23,9 @@ public class LocationInjector {
 
     public static HashMap<String, Location> getLocations() {
         return locations;
+    }
+
+    public static void addLocation(Location location, Location newLocation) {
+        locations.put(location.map() + "x:" + location.x() + "y:" + location.y(), newLocation);
     }
 }

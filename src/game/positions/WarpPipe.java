@@ -55,6 +55,7 @@ public class WarpPipe extends HigherGround {
             if (actor.hasCapability(Status.CAN_TELEPORT) && locationToTravel != null) {
                 Location actualLocation = locationToTravel.map().at(locationToTravel.x(), locationToTravel.y());
                 lst.add(new TeleportAction(actualLocation));
+                LocationInjector.addLocation(actualLocation, location); // remembers the location from the pipe
             }
         }
         return lst;
