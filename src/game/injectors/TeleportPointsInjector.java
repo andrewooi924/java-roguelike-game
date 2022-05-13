@@ -6,11 +6,11 @@ import game.map.Maps;
 
 import java.util.HashMap;
 
-public class LocationInjector {
+public class TeleportPointsInjector {
 
     private static final HashMap<String, Location> locations = new HashMap<>();
 
-    private LocationInjector() {}
+    private TeleportPointsInjector() {}
 
     public static void addFixedLocations(HashMap<Maps, GameMap> maps) {
         GameMap lavaMap = maps.get(Maps.MAP_LAVA);

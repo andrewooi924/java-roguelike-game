@@ -2,15 +2,13 @@ package game.positions;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.TeleportAction;
 import game.actors.PiranhaPlant;
-import game.injectors.LocationInjector;
+import game.injectors.TeleportPointsInjector;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class WarpPipe extends HigherGround {
 
@@ -23,7 +21,7 @@ public class WarpPipe extends HigherGround {
      */
     public WarpPipe() {
         super('C');
-        locations = LocationInjector.getLocations();
+        locations = TeleportPointsInjector.getLocations();
     }
 
     @Override
@@ -57,7 +55,7 @@ public class WarpPipe extends HigherGround {
             if (actor.hasCapability(Status.CAN_TELEPORT) && locationToTravel != null) {
                 Location actualLocation = locationToTravel.map().at(locationToTravel.x(), locationToTravel.y());
                 lst.add(new TeleportAction(actualLocation));
-                LocationInjector.addLocation(actualLocation, location); // remembers the location from the pipe
+                TeleportPointsInjector.addLocation(actualLocation, location); // remembers the location from the pipe
             }
         }
         return lst;

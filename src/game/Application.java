@@ -11,7 +11,7 @@ import game.actors.Bowser;
 import game.actors.Player;
 import game.actors.PrincessPeach;
 import game.actors.Toad;
-import game.injectors.LocationInjector;
+import game.injectors.TeleportPointsInjector;
 import game.injectors.MapInjector;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
@@ -36,7 +36,7 @@ public class Application {
 		}
 
 		// adding teleport points throughout the map
-		LocationInjector.addFixedLocations(maps);
+		TeleportPointsInjector.addFixedLocations(maps);
 
 		// We can choose which gamemap to start from
 		GameMap gameMap = maps.get(Maps.MAP_BASIC); // basic zone is the application's starting point
