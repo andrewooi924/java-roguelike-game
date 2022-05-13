@@ -26,7 +26,7 @@ public class WarpPipe extends HigherGround {
 
     @Override
     public double getFallProb() {
-        return 0;
+        return 1;
     }
 
     @Override

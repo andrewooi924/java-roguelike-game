@@ -73,22 +73,6 @@ public abstract class Tree extends HigherGround implements Resettable {
         boolean flag = super.canActorEnter(actor);
         return actor.hasCapability(Status.POWER_STAR) || flag;
     }
-
-    /**
-     * Gets a list of actions that can be done to the tree.
-     * @param actor the Actor acting
-     * @param location the current Location
-     * @param direction the direction of the Ground from the Actor
-     * @return actions
-     */
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction){
-        ActionList actions = new ActionList();
-        if (!direction.isEmpty()){
-            actions.add(new JumpActorAction(location, direction, this));
-        }
-        return actions;
-    }
     /**
      * Adds the RESETTABLE status to this tree instance
      */

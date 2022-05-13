@@ -71,7 +71,8 @@ public abstract class HigherGround extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        actions.add(new JumpActorAction(location, direction, this));
+        if (!direction.isEmpty())
+            actions.add(new JumpActorAction(location, direction, this));
         return actions;
     }
 
