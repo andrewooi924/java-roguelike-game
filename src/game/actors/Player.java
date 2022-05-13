@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.TeleportAction;
+import game.actions.EndGameAction;
 import game.items.Bottle;
 import game.items.HealingWater;
 import game.items.PowerWater;

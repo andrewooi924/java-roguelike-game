@@ -47,18 +47,13 @@ public class MonologueAction extends Action {
                 break;
             }
         }
-        if (this.actor.hasCapability(IS_TOAD)) {
-            dialoguePossibilities.add("The Princess is depending on you! You are our only hope.");
-            dialoguePossibilities.add("Being imprisoned in these walls can drive a fungus crazy :(");
-            if (!hasWrench) {
-                dialoguePossibilities.add("You might need a wrench to smash Koopa's hard shells.");
-            }
-            if (!hasPowerStar) {
-                dialoguePossibilities.add("You better get back to finding the Power Stars.");
-            }
+        dialoguePossibilities.add("The Princess is depending on you! You are our only hope.");
+        dialoguePossibilities.add("Being imprisoned in these walls can drive a fungus crazy :(");
+        if (!hasWrench) {
+            dialoguePossibilities.add("You might need a wrench to smash Koopa's hard shells.");
         }
-        if (this.actor.hasCapability(IS_PEACH)) {
-            dialoguePossibilities.add("Oh Mario, thank you for coming to save me!");
+        if (!hasPowerStar) {
+            dialoguePossibilities.add("You better get back to finding the Power Stars.");
         }
         return this.actor + ": \"" + dialoguePossibilities.get(random.nextInt(dialoguePossibilities.size())) + "\"";
     }

@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
+import game.actions.EndGameAction;
 import game.actions.MonologueAction;
 
 public class PrincessPeach extends Actor{
@@ -31,7 +32,7 @@ public class PrincessPeach extends Actor{
         ActionList ret = new ActionList();
         //TODO, let Princess Peach have his own speech and make Toad's speech unique to him
         if (otherActor.hasCapability(Status.HAS_KEY)) {
-            Action talk = new MonologueAction(this);
+            Action talk = new EndGameAction(this);
             ret.add(talk);
         }
         //TODO, end the game and give single option to reset
