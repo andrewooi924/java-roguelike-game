@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actions.MonologueAction;
-import game.injectors.TradableInjector;
 
 public class PrincessPeach extends Actor{
     //TODO spawn in lava zone next to Bowser
@@ -19,6 +18,7 @@ public class PrincessPeach extends Actor{
     public PrincessPeach() {
         super("Peach", 'P', 100);
         this.addCapability(Status.INVULNERABLE);
+        this.addCapability(Status.IS_PEACH);
     }
 
     @Override

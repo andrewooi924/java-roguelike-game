@@ -3,6 +3,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
 
 public class Fire extends Item{
 
@@ -20,6 +21,13 @@ public class Fire extends Item{
         if (currentLocation.containsAnActor()){
             player = currentLocation.getActor();
             player.hurt(20);
+
+            if (!player.isConscious()) {
+                if (player.hasCapability(Status.FIRE_BREATHER)){
+                    currentLocation.addItem(new Key());
+                }
+                currentLocation.map().removeActor(player);
+            }
         }
         if (age >= EXPIRY_TURNS) {
             currentLocation.removeItem(this);

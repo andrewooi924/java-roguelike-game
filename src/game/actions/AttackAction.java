@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
 import game.items.Fire;
+import game.items.Key;
 import game.items.SuperMushroom;
 
 /**
@@ -61,6 +62,7 @@ public class AttackAction extends Action {
 			if (actor.hasCapability(Status.FIRE_BREATHER)){
 				map.locationOf(target).addItem(new Fire());
 			}
+
 			if(target.hasCapability(Status.TALL)){
 				target.removeCapability(Status.TALL);
 			}
@@ -73,6 +75,9 @@ public class AttackAction extends Action {
 						return "Shell breaks";
 					}
 					return target + " becomes a shell.";
+				}
+				if (target.hasCapability(Status.FIRE_BREATHER)){
+					map.locationOf(target).addItem(new Key());
 				}
 				ActionList dropActions = new ActionList();
 				// drop all items

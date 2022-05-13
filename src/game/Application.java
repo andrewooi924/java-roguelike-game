@@ -7,7 +7,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.Bowser;
 import game.actors.Player;
+import game.actors.PrincessPeach;
 import game.actors.Toad;
 import game.injectors.LocationInjector;
 import game.injectors.MapInjector;
@@ -47,7 +49,9 @@ public class Application {
 
 		gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
 
-
+		GameMap lavaMap = maps.get(Maps.MAP_LAVA);
+		lavaMap.at(2,8).addActor(new PrincessPeach());
+		lavaMap.at(3,8).addActor(new Bowser());
 		world.run();
 
 	}

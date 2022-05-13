@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Status;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,13 +39,6 @@ public class MonologueAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         ArrayList<String> dialoguePossibilities = new ArrayList<String>();
-        if (actor.hasCapability(IS_TOAD)) {
-            dialoguePossibilities.add("The Princess is depending on you! You are our only hope.");
-            dialoguePossibilities.add("Being imprisoned in these walls can drive a fungus crazy :(");
-        }
-        if (actor.hasCapability(IS_PEACH)){
-            dialoguePossibilities.add("Oh Mario, thank you for coming to save me!");
-        }
         boolean hasWrench = false;
         boolean hasPowerStar = actor.hasCapability(POWER_STAR);
         for (Item i: actor.getInventory()) {
@@ -53,11 +47,18 @@ public class MonologueAction extends Action {
                 break;
             }
         }
-        if (!hasWrench) {
-            dialoguePossibilities.add("You might need a wrench to smash Koopa's hard shells.");
+        if (this.actor.hasCapability(IS_TOAD)) {
+            dialoguePossibilities.add("The Princess is depending on you! You are our only hope.");
+            dialoguePossibilities.add("Being imprisoned in these walls can drive a fungus crazy :(");
+            if (!hasWrench) {
+                dialoguePossibilities.add("You might need a wrench to smash Koopa's hard shells.");
+            }
+            if (!hasPowerStar) {
+                dialoguePossibilities.add("You better get back to finding the Power Stars.");
+            }
         }
-        if (!hasPowerStar) {
-            dialoguePossibilities.add("You better get back to finding the Power Stars.");
+        if (this.actor.hasCapability(IS_PEACH)) {
+            dialoguePossibilities.add("Oh Mario, thank you for coming to save me!");
         }
         return this.actor + ": \"" + dialoguePossibilities.get(random.nextInt(dialoguePossibilities.size())) + "\"";
     }
