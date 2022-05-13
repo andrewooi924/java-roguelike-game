@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.TeleportAction;
+import game.actors.PiranhaPlant;
 import game.injectors.LocationInjector;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import java.util.List;
 public class WarpPipe extends HigherGround {
 
     private final HashMap<String, Location> locations;
+    private int age = 0;
 
     /**
      * Constructor.
@@ -59,5 +61,13 @@ public class WarpPipe extends HigherGround {
             }
         }
         return lst;
+    }
+
+    @Override
+    public void tick(Location location) {
+        super.tick(location);
+        age++;
+        if (age == 1)
+            location.addActor(new PiranhaPlant());
     }
 }
