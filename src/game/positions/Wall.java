@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.JumpActorAction;
+import game.items.Coin;
 import game.positions.HigherGround;
 
 public class Wall extends HigherGround {
@@ -40,5 +41,14 @@ public class Wall extends HigherGround {
 	@Override
 	public String toString() {
 		return "Wall";
+	}
+
+	@Override
+	public void tick(Location location) {
+		super.tick(location);
+		if (location.containsAnActor() && location.getActor().hasCapability(Status.POWER_STAR)) {
+			location.addItem(new Coin(5));
+			location.setGround(new Dirt());
+		}
 	}
 }

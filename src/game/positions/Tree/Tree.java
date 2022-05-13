@@ -46,8 +46,11 @@ public abstract class Tree extends HigherGround implements Resettable {
         // other stuff that is common to all HigherGround classes.
         super.tick(location);
         final double CONVERT_TO_DIRT = 0.50;
-
-        if (this.hasCapability(Status.RESETTABLE)){
+        if (location.containsAnActor() && location.getActor().hasCapability(Status.POWER_STAR)) {
+            location.addItem(new Coin(5));
+            location.setGround(new Dirt());
+        }
+        else if (this.hasCapability(Status.RESETTABLE)){
             if (random.nextDouble() <= CONVERT_TO_DIRT) {
                 location.setGround(new Dirt());
             }

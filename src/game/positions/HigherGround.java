@@ -75,17 +75,4 @@ public abstract class HigherGround extends Ground {
             actions.add(new JumpActorAction(location, direction, this));
         return actions;
     }
-
-    /**
-     * Ticks each game tick for this higher ground.
-     * @param location The location of the Ground
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        if (location.containsAnActor() && location.getActor().hasCapability(Status.POWER_STAR)) {
-            location.addItem(new Coin(5));
-            location.setGround(new Dirt());
-        }
-    }
 }

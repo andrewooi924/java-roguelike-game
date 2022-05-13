@@ -31,7 +31,6 @@ public class WarpPipe extends HigherGround {
 
     @Override
     public void tick(Location location) {
-
         if (location.containsAnActor()) {
             location.getActor().addCapability(Status.CAN_TELEPORT);
         }
