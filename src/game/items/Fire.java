@@ -21,7 +21,7 @@ public class Fire extends Item{
     private final int EXPIRY_TURNS = 3;
 
     public Fire() {
-        super("Fire", '@', true);
+        super("Fire", 'v', true);
     }
 
     @Override
