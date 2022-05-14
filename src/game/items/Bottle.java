@@ -43,6 +43,6 @@ public class Bottle extends Item implements Consumable{
         if (liquids.size() > 0) {
             liquids.pop().consume(actor, map);
         }
-        return "";
+        return actor.toString() + " tries to drink from Bottle- But Alas! It is empty!";
     }
 }
