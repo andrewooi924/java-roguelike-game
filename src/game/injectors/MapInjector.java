@@ -19,7 +19,7 @@ public class MapInjector {
     private MapInjector() {}
 
     public static void addingMaps() throws IOException {
-        FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new WarpPipe(), new HealthFountain());
+        FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new WarpPipe(), new HealthFountain(), new PowerFountain());
         FancyGroundFactory lavaFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new Lava(), new WarpPipe());
         GameMap lavaMap = new GameMap(lavaFactory, "src/game/map/Lava Zone");
         GameMap gameMap = new GameMap(groundFactory, "src/game/map/Basic Map");
