@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
+import game.items.Axe;
 import game.items.Fire;
 import game.items.Key;
 import game.items.SuperMushroom;
@@ -56,11 +57,12 @@ public class AttackAction extends Action {
 		else {
 			int damage = weapon.damage();
 			boolean hasPowerStar = actor.hasCapability(Status.POWER_STAR);
+			Location location = map.locationOf(target);
 
 			result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
 			if (actor.hasCapability(Status.FIRE_BREATHER)){
-				map.locationOf(target).addItem(new Fire());
+				location.addItem(new Fire());
 			}
 
 			if(target.hasCapability(Status.TALL)){
@@ -69,7 +71,6 @@ public class AttackAction extends Action {
 			if (!target.isConscious() || actor.hasCapability(Status.POWER_STAR)) {
 				if (target.toString().equalsIgnoreCase("Koopa") ) {
 					if (target.getDisplayChar() == 'D' && weapon.toString().equalsIgnoreCase("Wrench")){
-						Location location = map.locationOf(target);
 						map.removeActor(target);
 						location.addItem(new SuperMushroom());
 						return "Shell breaks";
@@ -77,7 +78,13 @@ public class AttackAction extends Action {
 					return target + " becomes a shell.";
 				}
 				if (target.hasCapability(Status.FIRE_BREATHER)){
-					map.locationOf(target).addItem(new Key());
+					location.addItem(new Key());
+				}
+				if (target.toString().equalsIgnoreCase("Goomba")){
+					map.removeActor(target);
+					if (!(rand.nextInt(100) <= 20)){
+						location.addItem(new Axe());
+					}
 				}
 				ActionList dropActions = new ActionList();
 				// drop all items
