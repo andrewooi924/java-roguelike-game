@@ -143,16 +143,13 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 	}
 
 	@Override
-	protected IntrinsicWeapon getIntrinsicWeapon() {
+	public IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(this.attackDamage, "punches");
 	}
 
-	/**
-	 * Returns the weapon with the highest damage as the Player's held weapon or the Player's intrinsic weapon if no weapons are found
-	 * @return the weapon with the highest damage or the Player's intrinsic weapon if no weapons are found
-	 */
 	@Override
 	public Weapon getWeapon() {
+		//chooses weapon with highest damage
 		List<Weapon> weapons = new ArrayList<>();
 		for (Item item : this.getInventory()){
 			if (item.asWeapon() != null){

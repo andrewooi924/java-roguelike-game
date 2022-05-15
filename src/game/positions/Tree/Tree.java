@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.ChopAction;
 import game.positions.Dirt;
 import game.positions.GroundCharacteristics;
 import game.positions.HigherGround;
@@ -24,13 +25,17 @@ import java.util.Random;
 public abstract class Tree extends HigherGround implements Resettable {
     protected int age;
     protected Random random;
+    protected int hp;
 
     /**
-     * Constructor.
+     * Constructor for Trees that can be chopped
+     * @param displayChar the display character for the tree
+     * @param hp the health points of the tree
      */
-    public Tree(char displayChar) {
+    public Tree(char displayChar, int hp) {
         super(displayChar);
         this.age = 0;
+        this.hp = hp;
         this.random = new Random();
         this.addCapability(GroundCharacteristics.JUMPABLE);
         registerInstance();
@@ -82,5 +87,36 @@ public abstract class Tree extends HigherGround implements Resettable {
     @Override
     public void resetInstance() {
         this.addCapability(Status.RESETTABLE);
+    }
+
+    /**
+     * Reduces the HP of the tree from being chopped
+     * @param damage damage from the weapon
+     */
+    public void chop(int damage){
+        this.hp -= damage;
+    }
+
+    /**
+     * Getter for health points of the tree
+     * @return hp of the tree
+     */
+    public int getHp(){
+        return this.hp;
+    }
+
+    /**
+     * Returns an empty Action list.
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return a new, empty collection of Actions
+     */
+    @Override
+    public ActionList allowableActions(Actor actor, Location location, String direction) {
+        ActionList actions = new ActionList();
+        actions.add(new ChopAction(this, direction, location));
+        return actions;
     }
 }

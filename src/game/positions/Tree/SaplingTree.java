@@ -1,6 +1,11 @@
 package game.positions.Tree;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
+import game.actions.ChopAction;
+import game.actions.JumpActorAction;
 import game.items.Coin;
 
 public class SaplingTree extends Tree {
@@ -8,7 +13,8 @@ public class SaplingTree extends Tree {
      * Constructor.
      */
     public SaplingTree() {
-        super('t');
+        super('t', 15);
+        this.addCapability(Status.CAN_BE_CHOPPED);
     }
 
     /**

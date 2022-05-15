@@ -2,6 +2,7 @@ package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Status;
 
 /**
  * An chopping axe
@@ -18,6 +19,7 @@ public class Axe extends Item implements Weapon, Tradable{
      */
     public Axe(){
         super("Axe", 'a', true);
+        this.addCapability(Status.CAN_CHOP);
     }
 
     /**

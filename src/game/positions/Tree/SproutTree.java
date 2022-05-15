@@ -8,7 +8,7 @@ public class SproutTree extends Tree {
      * Constructor.
      */
     public SproutTree() {
-        super('+');
+        super('+', 1);
     }
 
     /**
@@ -35,6 +35,7 @@ public class SproutTree extends Tree {
     public String toString() {
         return "SproutTree";
     }
+
     /**
      * Goes through the tick of a tree.
      * @param location Location of the tree

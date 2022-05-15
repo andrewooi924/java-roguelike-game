@@ -1,8 +1,12 @@
 package game.positions.Tree;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
+import game.actions.ChopAction;
 import game.actors.FlyingKoopa;
 import game.actors.Koopa;
 import game.positions.Dirt;
@@ -15,7 +19,8 @@ public class MatureTree extends Tree {
      * Constructor.
      */
     public MatureTree() {
-        super('T');
+        super('T', 25);
+        this.addCapability(Status.CAN_BE_CHOPPED);
     }
 
     /**

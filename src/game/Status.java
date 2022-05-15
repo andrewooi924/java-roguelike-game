@@ -19,4 +19,6 @@ public enum Status {
     HAS_KEY, // use this status to indicate that the actor has obtained the key
     FIRE_BREATHER, // use this status to be considered to be able to breathe fire (drop fire on the ground)
     CAN_FLY, CAN_INTRINSIC_ATTACK, // use this status to be considered an actor that has the ability to fly (walk to higher grounds)
+    CAN_CHOP, // use this status to be considered a weapon that can chop trees
+    CAN_BE_CHOPPED, // use this status to be considered a tree that can be chopped
 }
