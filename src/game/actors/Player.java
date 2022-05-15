@@ -4,10 +4,12 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actions.EndGameAction;
 import game.items.Bottle;
 import game.items.HealingWater;
@@ -16,6 +18,11 @@ import game.reset.Resettable;
 import game.Status;
 import game.items.WalletKeeper;
 import game.reset.ResetAction;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 /**
@@ -139,5 +146,27 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(this.attackDamage, "punches");
+	}
+
+	@Override
+	public Weapon getWeapon() {
+		List<Weapon> weapons = new ArrayList<>();
+		for (Item item : this.getInventory()){
+			if (item.asWeapon() != null){
+				weapons.add((Weapon)item);
+			}
+		}
+		Collections.sort(weapons, new SortByDamage());
+		if (!weapons.isEmpty()){
+			return weapons.get(0);
+		}
+		return getIntrinsicWeapon();
+	}
+
+	public class SortByDamage implements Comparator<Weapon>{
+
+		public int compare(Weapon x, Weapon y){
+			return y.damage() - x.damage();
+		}
 	}
 }

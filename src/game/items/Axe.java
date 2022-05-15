@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 /**
  * An chopping axe
  */
-//TODO: modify so that Goomba can drop this with 20% chance
 public class Axe extends Item implements Weapon, Tradable{
 
     /**

@@ -1,6 +1,7 @@
 package game.injectors;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import game.items.Axe;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.actions.TradingAction;
@@ -20,6 +21,7 @@ public class TradableInjector {
         lst.add(new TradingAction(new Wrench()));
         lst.add(new TradingAction(new SuperMushroom()));
         lst.add(new TradingAction(new PowerStar()));
+        lst.add(new TradingAction(new Axe()));
         return lst;
     }
 }
