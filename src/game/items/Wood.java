@@ -19,7 +19,7 @@ public class Wood extends Item implements Tradable{
      * A constructor for the Wood class
      */
     public Wood(){
-        super("Wood", 'w', true);
+        super("Wood", 'W', true);
     }
 
     /**
