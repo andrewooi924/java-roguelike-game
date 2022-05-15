@@ -35,7 +35,7 @@ public class Axe extends Item implements Weapon, Tradable{
      */
     @Override
     public int chanceToHit(){
-        return 90;
+        return 100;
     }
 
     /**
