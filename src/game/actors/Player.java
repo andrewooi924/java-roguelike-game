@@ -10,7 +10,6 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actions.EndGameAction;
 import game.items.Bottle;
 import game.items.HealingWater;
 import game.items.PowerWater;
@@ -148,6 +147,10 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 		return new IntrinsicWeapon(this.attackDamage, "punches");
 	}
 
+	/**
+	 * Returns the weapon with the highest damage as the Player's held weapon or the Player's intrinsic weapon if no weapons are found
+	 * @return the weapon with the highest damage or the Player's intrinsic weapon if no weapons are found
+	 */
 	@Override
 	public Weapon getWeapon() {
 		List<Weapon> weapons = new ArrayList<>();
@@ -163,6 +166,9 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 		return getIntrinsicWeapon();
 	}
 
+	/**
+	 * A sorting class that sorts the list of weapons by their damage in descending order.
+	 */
 	public class SortByDamage implements Comparator<Weapon>{
 
 		public int compare(Weapon x, Weapon y){
