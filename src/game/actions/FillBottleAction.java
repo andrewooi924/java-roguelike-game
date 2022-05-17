@@ -6,11 +6,13 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.Bottle;
 import game.items.Consumable;
+import game.positions.Fountain;
+import game.positions.HealthFountain;
 
 public class FillBottleAction extends Action {
-    Consumable fillee;
-    public FillBottleAction(Consumable fillee) {
-        this.fillee = fillee;
+    Fountain fountain;
+    public FillBottleAction(Fountain fountain) {
+        this.fountain = fountain;
     }
 
     /**
@@ -31,7 +33,10 @@ public class FillBottleAction extends Action {
         if (bottle == null) {
             return actor.toString() + " doesn't have a water bottle!";
         }
-        bottle.addConsumable(this.fillee);
+        Consumable fillee = this.fountain.getContents();
+        bottle.addConsumable(fillee);
+        this.fountain.reduceCapacity(); // Reduce the water from the fountain.
+
         return actor.toString() + " has filled their bottle with " + fillee.toString();
     }
 
@@ -42,6 +47,6 @@ public class FillBottleAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor.toString() + " fills their bottle with " + this.fillee.toString();
+        return actor.toString() + " fills their bottle from " + this.fountain.toString();
     }
 }
