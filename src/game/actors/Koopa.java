@@ -9,10 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.*;
 import game.actions.AttackAction;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
-import game.behaviours.FollowBehaviour;
-import game.behaviours.WanderBehaviour;
+import game.behaviours.*;
 import game.reset.Resettable;
 
 import java.util.HashMap;
@@ -29,6 +26,7 @@ public class Koopa extends Actor implements Resettable {
      */
     public Koopa() {
         super("Koopa", 'K', 100);
+        this.behaviours.put(9, new DrinkBehaviour());
         this.behaviours.put(10, new WanderBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         registerInstance();
@@ -42,8 +40,8 @@ public class Koopa extends Actor implements Resettable {
             actions.add(new AttackAction(this,direction));
         }
         if (otherActor instanceof Player) {
-            this.behaviours.put(8, new FollowBehaviour(otherActor));
-            this.behaviours.put(9, new AttackBehaviour(otherActor));
+            this.behaviours.put(7, new FollowBehaviour(otherActor));
+            this.behaviours.put(8, new AttackBehaviour(otherActor));
         }
         return actions;
     }

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
 import game.actions.FillBottleAction;
 import game.items.Consumable;
 import game.items.PowerWater;
@@ -22,6 +23,7 @@ public abstract class Fountain extends Ground {
         this.maxCapacity = maxCapacity;
         this.capacity = this.maxCapacity;
         this.contents = contents;
+        this.addCapability(Status.CAN_BE_DRUNK);
     }
 
     @Override
