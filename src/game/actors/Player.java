@@ -10,12 +10,9 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.items.Bottle;
-import game.items.HealingWater;
-import game.items.PowerWater;
+import game.items.*;
 import game.reset.Resettable;
 import game.Status;
-import game.items.WalletKeeper;
 import game.reset.ResetAction;
 
 import java.util.ArrayList;
@@ -27,10 +24,11 @@ import java.util.List;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements WalletKeeper, Resettable, IntrinsicFighter {
+public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettable, IntrinsicFighter {
 
 	private final Menu menu = new Menu();
 	private int balance = 1000;
+	private int woodBalance = 0;
 	private boolean resetTimes = true;
 
 	private int attackDamage = 5;
@@ -50,12 +48,11 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 		this.addCapability(Status.CAN_JUMP);
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
 		this.addCapability(Status.CAN_MANAGE_MONEY);
+		this.addCapability(Status.CAN_MANAGE_WOOD);
 		this.addCapability(Status.CAN_TELEPORT);
 		this.addCapability(Status.CAN_INTRINSIC_ATTACK);
 		Bottle b = new Bottle();
 		this.addItemToInventory(b);
-		b.addConsumable(new HealingWater());
-		b.addConsumable(new PowerWater());
 		registerInstance();
 	}
 
@@ -74,7 +71,8 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 			return lastAction.getNextAction();
 		Location playerPos = map.locationOf(this);
 		display.println("Mario" + this.printHp() + " at " + "(" + playerPos.x() + ", " + playerPos.y() + ")");
-		display.println("wallet: $" + this.getWalletBalance());
+		display.println("Wallet: $" + this.getWalletBalance());
+		display.println("Wood: " + this.getWoodAmount());
 		// return/print the console menu
 		if (this.hasCapability(Status.POWER_STAR)) {
 			display.println("Mario is INVINCIBLE!");
@@ -151,6 +149,8 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 	public Weapon getWeapon() {
 		//chooses weapon with highest damage
 		List<Weapon> weapons = new ArrayList<>();
+		// Don't forget the base weapon as well.
+		weapons.add(this.getIntrinsicWeapon());
 		for (Item item : this.getInventory()){
 			if (item.asWeapon() != null){
 				weapons.add((Weapon)item);
@@ -161,6 +161,21 @@ public class Player extends Actor implements WalletKeeper, Resettable, Intrinsic
 			return weapons.get(0);
 		}
 		return getIntrinsicWeapon();
+	}
+
+	@Override
+	public int getWoodAmount() {
+		return this.woodBalance;
+	}
+
+	@Override
+	public void addToWood(int amount) {
+		this.woodBalance += amount;
+	}
+
+	@Override
+	public void deductFromWood(int amount) {
+		this.woodBalance -= amount;
 	}
 
 	/**
