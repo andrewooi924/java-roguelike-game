@@ -1,4 +1,4 @@
-package game.manager;
+package game.managers;
 
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -7,19 +7,27 @@ import game.positions.*;
 import game.positions.Tree.SproutTree;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class MapManager {
 
-    private static final HashMap<Maps, GameMap> maps = new HashMap<>();
-    private static final HashMap<GameMap, String> mapNames = new HashMap<>();
+    private HashMap<Maps, GameMap> maps;
+    private HashMap<GameMap, String> mapNames;
+    private static MapManager instance;
 
     private MapManager() {
+        maps = new HashMap<>();
+        mapNames = new HashMap<>();
     }
 
-    public static void addingMaps() throws IOException {
+    public static MapManager getInstance(){
+        if(instance == null){
+            instance = new MapManager();
+        }
+        return instance;
+    }
+
+    public void addingMaps() throws IOException {
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new WarpPipe(), new HealthFountain(), new PowerFountain());
         FancyGroundFactory lavaFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new Lava(), new WarpPipe());
         GameMap lavaMap = new GameMap(lavaFactory, "src/game/map/Lava Zone");
@@ -30,11 +38,11 @@ public class MapManager {
         mapNames.put(lavaMap, "Lava Zone");
     }
 
-    public static HashMap<Maps, GameMap> getMaps() {
+    public HashMap<Maps, GameMap> getMaps() {
         return maps;
     }
 
-    public static HashMap<GameMap, String> getMapNames() {
+    public HashMap<GameMap, String> getMapNames() {
         return mapNames;
     }
 }

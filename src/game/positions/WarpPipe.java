@@ -6,14 +6,13 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.TeleportAction;
 import game.actors.PiranhaPlant;
-import game.manager.TeleportPointsManager;
+import game.managers.TeleportPointsManager;
 import game.reset.Resettable;
 
 import java.util.HashMap;
 
 public class WarpPipe extends HigherGround implements Resettable {
 
-    private final HashMap<String, Location> locations;
     private int age = 0;
 
     /**
@@ -22,7 +21,6 @@ public class WarpPipe extends HigherGround implements Resettable {
      */
     public WarpPipe() {
         super('C');
-        locations = TeleportPointsManager.getLocations();
         registerInstance();
     }
 
@@ -48,6 +46,11 @@ public class WarpPipe extends HigherGround implements Resettable {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList lst = super.allowableActions(actor, location, direction);
 
+        // getting all the locations
+        TeleportPointsManager teleportPointsManager = TeleportPointsManager.getInstance();
+        HashMap<String, Location> locations = teleportPointsManager.getLocations();
+
+
         // checking if the pipe has a location to go
         if (direction.isEmpty()) {
             String key = location.map() + "x:" + location.x() + "y:" + location.y();
@@ -57,7 +60,7 @@ public class WarpPipe extends HigherGround implements Resettable {
             if (actor.hasCapability(Status.CAN_TELEPORT) && locationToTravel != null) {
                 Location actualLocation = locationToTravel.map().at(locationToTravel.x(), locationToTravel.y());
                 lst.add(new TeleportAction(actualLocation));
-                TeleportPointsManager.addLocation(actualLocation, location); // remembers the location from the pipe
+                teleportPointsManager.addLocation(actualLocation, location); // remembers the location from the pipe
             }
         }
         return lst;

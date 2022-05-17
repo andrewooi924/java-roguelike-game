@@ -1,4 +1,4 @@
-package game.manager;
+package game.managers;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -8,11 +8,21 @@ import java.util.HashMap;
 
 public class TeleportPointsManager {
 
-    private static final HashMap<String, Location> locations = new HashMap<>();
+    private HashMap<String, Location> locations;
+    private static TeleportPointsManager instance;
 
-    private TeleportPointsManager() {}
+    private TeleportPointsManager() {
+        locations = new HashMap<>();
+    }
 
-    public static void addFixedLocations(HashMap<Maps, GameMap> maps) {
+    public static TeleportPointsManager getInstance(){
+        if(instance == null){
+            instance = new TeleportPointsManager();
+        }
+        return instance;
+    }
+
+    public void addFixedLocations(HashMap<Maps, GameMap> maps) {
         GameMap lavaMap = maps.get(Maps.MAP_LAVA);
         GameMap gameMap = maps.get(Maps.MAP_BASIC);
         locations.put(gameMap + "x:12" + "y:3", new Location(lavaMap, 0, 0));
@@ -21,11 +31,11 @@ public class TeleportPointsManager {
         locations.put(gameMap + "x:46" + "y:8", new Location(lavaMap, 0,0));
     }
 
-    public static HashMap<String, Location> getLocations() {
+    public HashMap<String, Location> getLocations() {
         return locations;
     }
 
-    public static void addLocation(Location location, Location newLocation) {
+    public void addLocation(Location location, Location newLocation) {
         locations.put(location.map() + "x:" + location.x() + "y:" + location.y(), newLocation);
     }
 }

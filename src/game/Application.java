@@ -11,8 +11,8 @@ import game.actors.Bowser;
 import game.actors.Player;
 import game.actors.PrincessPeach;
 import game.actors.Toad;
-import game.manager.TeleportPointsManager;
-import game.manager.MapManager;
+import game.managers.TeleportPointsManager;
+import game.managers.MapManager;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.map.Maps;
@@ -28,15 +28,17 @@ public class Application {
 		World world = new World(new Display());
 
 		// process of adding maps into the world
-		MapManager.addingMaps();
-		HashMap<Maps, GameMap> maps = MapManager.getMaps();
+		MapManager mapManager = MapManager.getInstance();
+		mapManager.addingMaps();
+		HashMap<Maps, GameMap> maps = mapManager.getMaps();
 
 		for (GameMap map: maps.values()) {
 			world.addGameMap(map);
 		}
 
 		// adding teleport points throughout the map
-		TeleportPointsManager.addFixedLocations(maps);
+		TeleportPointsManager teleportPointsManager = TeleportPointsManager.getInstance();
+		teleportPointsManager.addFixedLocations(maps);
 
 		// We can choose which gamemap to start from
 		GameMap gameMap = maps.get(Maps.MAP_BASIC); // basic zone is the application's starting point
