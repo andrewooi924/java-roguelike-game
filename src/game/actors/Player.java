@@ -157,10 +157,7 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 			}
 		}
 		Collections.sort(weapons, new SortByDamage());
-		if (!weapons.isEmpty()){
-			return weapons.get(0);
-		}
-		return getIntrinsicWeapon();
+		return weapons.get(0);
 	}
 
 	@Override

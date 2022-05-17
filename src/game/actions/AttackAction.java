@@ -69,7 +69,7 @@ public class AttackAction extends Action {
 				target.removeCapability(Status.TALL);
 			}
 			if (!target.isConscious() || actor.hasCapability(Status.POWER_STAR)) {
-				if (target.toString().equalsIgnoreCase("Koopa") ) {
+				if (target.toString().contains("Koopa")) {
 					if (target.getDisplayChar() == 'D' && weapon.toString().equalsIgnoreCase("Wrench")){
 						map.removeActor(target);
 						location.addItem(new SuperMushroom());
