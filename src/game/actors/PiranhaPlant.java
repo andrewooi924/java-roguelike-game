@@ -77,4 +77,9 @@ public class PiranhaPlant extends Actor implements Resettable {
     protected IntrinsicWeapon getIntrinsicWeapon(){
         return new IntrinsicWeapon(90, "chomps");
     }
+
+    @Override
+    public String toString() {
+        return "Warp Pipe";
+    }
 }

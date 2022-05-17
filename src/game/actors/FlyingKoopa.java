@@ -22,4 +22,9 @@ public class FlyingKoopa extends Koopa implements Resettable {
         this.resetMaxHp(150);
         this.addCapability(Status.CAN_FLY);
     }
+
+    @Override
+    public String toString() {
+        return "Flying " + super.toString();
+    }
 }
