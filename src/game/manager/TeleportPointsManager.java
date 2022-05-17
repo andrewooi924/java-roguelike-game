@@ -1,4 +1,4 @@
-package game.injectors;
+package game.manager;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -6,11 +6,11 @@ import game.map.Maps;
 
 import java.util.HashMap;
 
-public class TeleportPointsInjector {
+public class TeleportPointsManager {
 
     private static final HashMap<String, Location> locations = new HashMap<>();
 
-    private TeleportPointsInjector() {}
+    private TeleportPointsManager() {}
 
     public static void addFixedLocations(HashMap<Maps, GameMap> maps) {
         GameMap lavaMap = maps.get(Maps.MAP_LAVA);

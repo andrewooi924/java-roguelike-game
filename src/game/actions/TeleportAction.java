@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.injectors.MapInjector;
+import game.manager.MapManager;
 
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public class TeleportAction extends Action {
     private final Location newLocation;
 
     public TeleportAction(Location newLocation) {
-        mapNames = MapInjector.getMapNames(); // getting the names of the maps
+        mapNames = MapManager.getMapNames(); // getting the names of the maps
         this.newLocation = newLocation;
     }
 

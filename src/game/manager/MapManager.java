@@ -1,4 +1,4 @@
-package game.injectors;
+package game.manager;
 
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapInjector {
+public class MapManager {
 
     private static final HashMap<Maps, GameMap> maps = new HashMap<>();
     private static final HashMap<GameMap, String> mapNames = new HashMap<>();
 
-    private MapInjector() {}
+    private MapManager() {
+    }
 
     public static void addingMaps() throws IOException {
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new WarpPipe(), new HealthFountain(), new PowerFountain());

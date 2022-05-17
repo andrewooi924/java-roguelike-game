@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.TeleportAction;
 import game.actors.PiranhaPlant;
-import game.injectors.TeleportPointsInjector;
+import game.manager.TeleportPointsManager;
 import game.reset.Resettable;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class WarpPipe extends HigherGround implements Resettable {
      */
     public WarpPipe() {
         super('C');
-        locations = TeleportPointsInjector.getLocations();
+        locations = TeleportPointsManager.getLocations();
         registerInstance();
     }
 
@@ -57,7 +57,7 @@ public class WarpPipe extends HigherGround implements Resettable {
             if (actor.hasCapability(Status.CAN_TELEPORT) && locationToTravel != null) {
                 Location actualLocation = locationToTravel.map().at(locationToTravel.x(), locationToTravel.y());
                 lst.add(new TeleportAction(actualLocation));
-                TeleportPointsInjector.addLocation(actualLocation, location); // remembers the location from the pipe
+                TeleportPointsManager.addLocation(actualLocation, location); // remembers the location from the pipe
             }
         }
         return lst;
