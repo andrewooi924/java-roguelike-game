@@ -80,6 +80,6 @@ public class PiranhaPlant extends Actor implements Resettable {
 
     @Override
     public String toString() {
-        return "Warp Pipe";
+        return "Piranha Plant";
     }
 }

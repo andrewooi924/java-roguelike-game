@@ -78,6 +78,11 @@ public class WarpPipe extends HigherGround implements Resettable {
             location.addActor(new PiranhaPlant());
     }
 
+    @Override
+    public String toString() {
+        return "Warp Pipe";
+    }
+
     /**
      * Adds the RESETTABLE capability to this instance
      */
