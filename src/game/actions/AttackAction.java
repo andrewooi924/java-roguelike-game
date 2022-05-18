@@ -45,10 +45,7 @@ public class AttackAction extends Action {
 		this.direction = direction;
 	}
 
-	@Override
-	public String execute(Actor actor, GameMap map) {
-
-		Weapon weapon = actor.getWeapon();
+	protected String attackActor(Actor actor, Weapon weapon, GameMap map) {
 		String result = "";
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
@@ -98,6 +95,12 @@ public class AttackAction extends Action {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public String execute(Actor actor, GameMap map) {
+		Weapon weapon = actor.getWeapon();
+		return attackActor(actor, weapon, map);
 	}
 
 	@Override

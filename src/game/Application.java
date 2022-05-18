@@ -11,6 +11,7 @@ import game.actors.Bowser;
 import game.actors.Player;
 import game.actors.PrincessPeach;
 import game.actors.Toad;
+import game.items.Bow;
 import game.managers.TeleportPointsManager;
 import game.managers.MapManager;
 import game.items.PowerStar;
@@ -43,6 +44,7 @@ public class Application {
 		world.addPlayer(mario, gameMap.at(MARIO_POS_X, MARIO_POS_Y));
 		gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new PowerStar());
 		gameMap.at(MARIO_POS_X, MARIO_POS_Y).addItem(new SuperMushroom());
+		gameMap.at(MARIO_POS_X+2, MARIO_POS_Y+2).addItem(new Bow());
 
 		gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
 
