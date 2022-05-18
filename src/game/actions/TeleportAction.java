@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.managers.MapManager;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class TeleportAction extends Action {

@@ -23,22 +23,17 @@ import game.map.Maps;
  */
 public class Application {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
 		World world = new World(new Display());
 
 		// process of adding maps into the world
 		MapManager mapManager = MapManager.getInstance();
-		mapManager.addingMaps();
 		HashMap<Maps, GameMap> maps = mapManager.getMaps();
 
 		for (GameMap map: maps.values()) {
 			world.addGameMap(map);
 		}
-
-		// adding teleport points throughout the map
-		TeleportPointsManager teleportPointsManager = TeleportPointsManager.getInstance();
-		teleportPointsManager.addFixedLocations(maps);
 
 		// We can choose which gamemap to start from
 		GameMap gameMap = maps.get(Maps.MAP_BASIC); // basic zone is the application's starting point

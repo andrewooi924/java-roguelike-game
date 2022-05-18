@@ -1,12 +1,8 @@
 package game.managers;
 
-import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.injectors.MapInjector;
 import game.map.Maps;
-import game.positions.*;
-import game.positions.Tree.SproutTree;
-
-import java.io.IOException;
 import java.util.HashMap;
 
 public class MapManager {
@@ -16,26 +12,17 @@ public class MapManager {
     private static MapManager instance;
 
     private MapManager() {
-        maps = new HashMap<>();
-        mapNames = new HashMap<>();
+        // adding maps and map names into the hash maps, it also utilizes a dependency injector to help reduce dependency on it
+        MapInjector mapInjector = new MapInjector();
+        maps = mapInjector.addingMaps();
+        mapNames = mapInjector.addingMapNames();
     }
 
-    public static MapManager getInstance(){
+    public static MapManager getInstance() {
         if(instance == null){
             instance = new MapManager();
         }
         return instance;
-    }
-
-    public void addingMaps() throws IOException {
-        FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new WarpPipe(), new HealthFountain(), new PowerFountain());
-        FancyGroundFactory lavaFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SproutTree(), new Lava(), new WarpPipe());
-        GameMap lavaMap = new GameMap(lavaFactory, "src/game/map/Lava Zone");
-        GameMap gameMap = new GameMap(groundFactory, "src/game/map/Basic Map");
-        maps.put(Maps.MAP_LAVA, lavaMap);
-        maps.put(Maps.MAP_BASIC, gameMap);
-        mapNames.put(gameMap, "Basic Map");
-        mapNames.put(lavaMap, "Lava Zone");
     }
 
     public HashMap<Maps, GameMap> getMaps() {
