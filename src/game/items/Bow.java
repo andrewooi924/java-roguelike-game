@@ -16,14 +16,23 @@ import game.actions.RangedAttackAction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bow extends Item implements Weapon {
+/**
+ * A weapon used to fire arrows, useless without arrows.
+ */
+public class Bow extends Item implements Weapon, Craftable {
 
     // Assume infinite arrows for now...
     // ArrayList<Arrow> arrows;
 
+    /**
+     * ActionList containing all the actions for Bow
+     */
     // Unfortunately the one in Item isn't public.
     protected ActionList bowActions = new ActionList();
 
+    /**
+     * The range of the Bow
+     */
     private final int BOW_RANGE = 5;
 
     /**
@@ -76,18 +85,48 @@ public class Bow extends Item implements Weapon {
         return ret;
     }
 
+    /**
+     * The damage dealt by Bow (requires arrows)
+     * @return 40
+     */
     @Override
     public int damage() {
         return 40;
     }
 
+    /**
+     * The sound effect of Bow
+     * @return shoots
+     */
     @Override
     public String verb() {
         return "shoots";
     }
 
+    /**
+     * The hit chance of Bow
+     * @return 100
+     */
     @Override
     public int chanceToHit() {
         return 100;
+    }
+
+    /**
+     * Returns the recipe for crafting Bow
+     * @return the recipe for crafting Bow
+     */
+    @Override
+    public Material getRecipe(){
+        return new Wood(5);
+    }
+
+    /**
+     * Getter for Bow
+     * @return Bow
+     */
+    @Override
+    public Item getCrafted(){
+        return this;
     }
 }

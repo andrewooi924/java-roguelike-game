@@ -4,12 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.GameUtilities;
-import game.Status;
 import game.items.Craftable;
 import game.items.Material;
-import game.items.Pouch;
-import game.items.Wood;
 
 /**
  * Special Action for crafting items at the Crafting Table.
