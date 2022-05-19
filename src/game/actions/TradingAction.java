@@ -30,7 +30,7 @@ public class TradingAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        Pouch moneyPouch = GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_COINS);
+        Pouch moneyPouch = (Pouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_COINS);
         double balance = moneyPouch.getAmount();
         if (balance - item.getPrice() >= 0) {
             moneyPouch.reduceAmount(item.getPrice());
