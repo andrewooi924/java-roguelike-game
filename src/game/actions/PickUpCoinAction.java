@@ -7,7 +7,6 @@ import game.GameUtilities;
 import game.items.Coin;
 import game.Status;
 import game.items.Pouch;
-import game.items.WalletKeeper;
 
 /**
  * The action of picking up a coin

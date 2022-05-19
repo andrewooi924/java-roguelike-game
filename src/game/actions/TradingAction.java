@@ -3,8 +3,10 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.GameUtilities;
+import game.Status;
+import game.items.Pouch;
 import game.items.Tradable;
-import game.items.WalletKeeper;
 
 /**
  * An action to be performed when the player wants to trade with toad
@@ -28,9 +30,10 @@ public class TradingAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        double balance = ((WalletKeeper) actor).getWalletBalance();
+        Pouch moneyPouch = (Pouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_COINS);
+        double balance = moneyPouch.getAmount();
         if (balance - item.getPrice() >= 0) {
-            ((WalletKeeper) actor).deductFromWallet(item.getPrice());
+            moneyPouch.reduceAmount(item.getPrice());
             actor.addItemToInventory(item.getItem());
             return actor + " obtained " + this.item.toString();
         }
