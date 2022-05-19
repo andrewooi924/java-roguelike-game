@@ -44,6 +44,12 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		addingCapabilities();
+		addingItems();
+		registerInstance();
+	}
+
+	private void addingCapabilities() {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CAN_JUMP);
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
@@ -51,9 +57,10 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 		this.addCapability(Status.CAN_MANAGE_WOOD);
 		this.addCapability(Status.CAN_TELEPORT);
 		this.addCapability(Status.CAN_INTRINSIC_ATTACK);
-		Bottle b = new Bottle();
-		this.addItemToInventory(b);
-		registerInstance();
+	}
+
+	private void addingItems() {
+		this.addItemToInventory(new Bottle());
 	}
 
 	/**
