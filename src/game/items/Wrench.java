@@ -21,9 +21,8 @@ public class Wrench extends Item implements Weapon, Tradable {
      * @return an integer of 50
      */
     @Override
-    //TODO: change back to 50
     public int damage() {
-        return 480;
+        return 50;
     }
 
     /**

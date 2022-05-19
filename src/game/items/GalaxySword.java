@@ -6,11 +6,16 @@ package game.items;
 public class GalaxySword extends Sword{
 
     public GalaxySword(){
-        this.setDisplayChar('G');
+        this.setDisplayChar('!');
     }
 
     @Override
     public int damage(){
-        return 500;
+        return 400;
+    }
+
+    @Override
+    public String toString(){
+        return "Galaxy Sword";
     }
 }
