@@ -49,8 +49,8 @@ public class Application {
 		gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
 
 		GameMap lavaMap = maps.get(Maps.MAP_LAVA);
-		lavaMap.at(2,8).addActor(new PrincessPeach());
-		lavaMap.at(3,8).addActor(new Bowser());
+		lavaMap.at(9,13).addActor(new PrincessPeach());
+		lavaMap.at(9,12).addActor(new Bowser());
 		world.run();
 
 	}
