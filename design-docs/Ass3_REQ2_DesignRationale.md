@@ -50,4 +50,6 @@ class, thus inheriting all of Koopa's attributes and methods. All the FlyingKoop
 of its display character, its max hp and its name. Other than that, I've added the capability 'CAN_FLY' to 
 Flying Koopa to have the program allow for actors with this status to enter any higher grounds. I have also
 edited the MatureTree class to allow for a 50% chance of spawning either type of Koopa after a successful 15%
-spawn rate.
+spawn rate. To deal with when FlyingKoopa dies and to not violate the DRY principle by repeating code similar to
+the death of Koopa, I've changed a line in the AttackAction class that checks if the target's name is Koopa to
+if the target's name contains Koopa. 
