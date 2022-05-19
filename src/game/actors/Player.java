@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.GameUtilities;
 import game.Status;
 import game.items.*;
 import game.reset.ResetAction;
@@ -25,8 +26,8 @@ import java.util.List;
 public class Player extends Actor implements Resettable, IntrinsicFighter {
 
   private final Menu menu = new Menu();
-  private Pouch coinPouch = new Pouch("Coin", Status.CAN_CARRY_COINS);
   private boolean resetTimes = true;
+  MagicPouch magicPouch = new MagicPouch();
 
   private int attackDamage = 5;
 
@@ -54,9 +55,8 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
 
   private void addingItems() {
     this.addItemToInventory(new Bottle());
-    this.addItemToInventory(new MagicPouch());
-    this.coinPouch.addAmount(1000);
-    this.addItemToInventory(this.coinPouch);
+    magicPouch.setAmount(Storable.COIN, 1000);
+    this.addItemToInventory(magicPouch);
   }
 
   /**
@@ -79,7 +79,8 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     Location playerPos = map.locationOf(this);
     display.println("Mario" + this.printHp() + " at "
                     + "(" + playerPos.x() + ", " + playerPos.y() + ")");
-    display.println("Wallet: $" + this.coinPouch.getAmount());
+    display.println("Wallet: $" + this.magicPouch.getAmount(Storable.COIN));
+    display.println("Wood: " + this.magicPouch.getAmount(Storable.WOOD));
     // return/print the console menu
     if (this.hasCapability(Status.POWER_STAR)) {
       display.println("Mario is INVINCIBLE!");

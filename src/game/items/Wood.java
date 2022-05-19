@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
-import game.actions.PickUpCoinAction;
 import game.actions.PickUpStackableAction;
 import game.reset.Resettable;
 

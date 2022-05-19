@@ -4,14 +4,16 @@ package game.items;
         import edu.monash.fit2099.engine.items.Item;
         import edu.monash.fit2099.engine.items.PickUpItemAction;
         import edu.monash.fit2099.engine.positions.Location;
+        import game.actions.PickUpStackableAction;
         import game.reset.Resettable;
         import game.Status;
-        import game.actions.PickUpCoinAction;
+
+        import java.util.Stack;
 
 /**
  * The class represents a coin
  */
-public class Coin extends Item implements Resettable {
+public class Coin extends Item implements Resettable, Stackable {
     // Note: amount may be an integer.
     private int amount;
 
@@ -29,18 +31,24 @@ public class Coin extends Item implements Resettable {
      * A getter to get the amount of the coin
      * @return an integer representing the amount of the coin
      */
+    @Override
     public int getAmount(){
         return amount;
     }
 
+    @Override
+    public Storable getStorableType() {
+        return Storable.COIN;
+    }
+
     /**
-     * Returns a new instance of PickUpCoinAction
+     * Returns a new instance of PickUpStorableAction
      * @param actor - the actor picking up this coin
-     * @return a PickUpCoinAction instance to pick up this instance
+     * @return a PickUpStorable instance to pick up this instance
      */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
-        return new PickUpCoinAction(this);
+        return new PickUpStackableAction(this, this);
     }
 
     /**

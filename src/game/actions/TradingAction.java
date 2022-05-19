@@ -5,7 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.GameUtilities;
 import game.Status;
-import game.items.Pouch;
+import game.items.MagicPouch;
+import game.items.Storable;
 import game.items.Tradable;
 
 /**
@@ -30,10 +31,10 @@ public class TradingAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        Pouch moneyPouch = (Pouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_COINS);
-        double balance = moneyPouch.getAmount();
+        MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
+        double balance = magicPouch.getAmount(Storable.COIN);
         if (balance - item.getPrice() >= 0) {
-            moneyPouch.reduceAmount(item.getPrice());
+            magicPouch.decreaseAmount(Storable.COIN, item.getPrice());
             actor.addItemToInventory(item.getItem());
             return actor + " obtained " + this.item.toString();
         }
