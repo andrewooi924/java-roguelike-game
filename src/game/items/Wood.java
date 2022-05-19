@@ -26,7 +26,7 @@ public class Wood extends Item implements Tradable, Resettable, Material{
      * A constructor for the Wood class
      */
     public Wood(int woodAmount){
-        super("Wood (" + woodAmount + ")", 'W', true);
+        super("Wood (" + woodAmount + ")", 'W', false);
         this.woodAmount = woodAmount;
         registerInstance();
     }

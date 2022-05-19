@@ -1,6 +1,7 @@
 package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.Status;
 
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ public class MagicPouch extends Item {
      */
     public MagicPouch() {
         super("Magic Pouch", 'P', false);
+        this.addCapability(Status.CAN_CARRY_STORABLES);
     }
 
     public int getAmount(Storable item) {

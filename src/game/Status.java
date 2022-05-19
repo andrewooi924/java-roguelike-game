@@ -23,5 +23,6 @@ public enum Status {
     CAN_BE_DRUNK, // Can drink this.
     CAN_CARRY_WOOD,
     CAN_CARRY_COINS,
+    CAN_CARRY_STORABLES,
     NEW_MENU
 }
