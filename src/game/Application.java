@@ -37,7 +37,7 @@ public class Application {
 		}
 
 		// We can choose which gamemap to start from
-		GameMap gameMap = maps.get(Maps.MAP_BASIC); // basic zone is the application's starting point
+		GameMap gameMap = maps.get(Maps.MAP_PROCEDURAL);
 		final int MARIO_POS_X = 44;
 		final int MARIO_POS_Y = 10;
 		Actor mario = new Player("Player", 'm', 100);
