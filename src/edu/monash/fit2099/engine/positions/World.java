@@ -24,6 +24,8 @@ public class World {
 	protected Actor player; // We only draw the particular map this actor is on.
 	protected Map<Actor, Action> lastActionMap = new HashMap<Actor, Action>();
 
+	protected Display logDisplay;
+
 	/**
 	 * Constructor.
 	 * 
@@ -32,6 +34,7 @@ public class World {
 	public World(Display display) {
 		Objects.requireNonNull(display);
 		this.display = display;
+		this.logDisplay = new Display("Logger");
 	}
 
 	/**
@@ -81,6 +84,7 @@ public class World {
 		while (stillRunning()) {
 			GameMap playersMap = actorLocations.locationOf(player).map();
 			playersMap.draw(display);
+			logDisplay.refreshScreen();
 
 			// Process all the actors.
 			for (Actor actor : actorLocations) {
@@ -92,9 +96,14 @@ public class World {
 			for (GameMap gameMap : gameMaps) {
 				gameMap.tick();
 			}
+			System.out.println("\n");
 
 		}
 		display.println(endGameMessage());
+		logDisplay.println(endGameMessage());
+		System.out.println(endGameMessage());
+		display.close();
+		logDisplay.close();
 	}
 
 	/**
@@ -147,7 +156,8 @@ public class World {
 		lastActionMap.put(actor, action);
 		
 		String result = action.execute(actor, map);
-		display.println(result);
+		logDisplay.println(result);
+		System.out.println(result);
 	}
 
 	/**

@@ -142,6 +142,7 @@ public class ActorLocationsIterator implements Iterable<Actor> {
 		public ActorIterator(Map<Actor, Location> actorLocations) {
 			this.actorLocations = actorLocations;
 			actors = new ArrayList<Actor>(actorLocations.keySet());
+			Collections.sort(actors);
 			
 			// Make sure the player is first. 
 			if(actors.contains(player)) {

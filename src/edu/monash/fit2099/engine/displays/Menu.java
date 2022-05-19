@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -26,9 +27,16 @@ public class Menu {
 		ArrayList<Character> freeChars = new ArrayList<Character>();
 		HashMap<Character, Action> keyToActionMap = new HashMap<Character, Action>();
 
+		char[] qwertyKeys = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
+		// 'r' is used for reset which is annoying, so I made a custom one instead.
+		char[] gamePad = {'q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c', 't', 'g', 'b', 'y', 'h', 'n','u', 'j', 'm', 'r' ,'f', 'v', 'i', 'k', 'o', 'l', 'p'};
+
+		/*
 		for (char i = 'a'; i <= 'z'; i++)
 			freeChars.add(i);
-
+		*/
+		for (char i: gamePad)
+			freeChars.add(i);
 		// Show with the actions with hotkeys first;
 		for (Action action : actions.sorted(new SortHotkeysFirst())) {
 			String hotKey = action.hotkey();
@@ -44,6 +52,8 @@ public class Menu {
 			keyToActionMap.put(c, action);
 			display.println(c + ": " + action.menuDescription(actor));
 		}
+
+		display.refreshScreen();
 
 		char key;
 		do {

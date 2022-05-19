@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * An entity that is alive by having hit points. It also holds inventory that stores items.
  */
-public abstract class Actor implements Capable, Printable {
+public abstract class Actor implements Capable, Printable, Comparable<Actor> {
 
 	/**
 	 * Actor's name
@@ -268,4 +268,9 @@ public abstract class Actor implements Capable, Printable {
 	 * @return a list of unmodifiable capabilities
 	 */
 	public List<Enum<?>> capabilitiesList() { return capabilitySet.capabilitiesList();	}
+
+	@Override
+	public int compareTo(Actor comparee) {
+		return this.toString().compareTo(comparee.toString());
+	}
 }
