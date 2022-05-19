@@ -1,21 +1,20 @@
 package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.PickUpCoinAction;
-import game.actions.PickUpWoodAction;
 import game.reset.Resettable;
 
 /**
  * Literally just wood, can be used to craft items at a crafting bench
  * or sold to Toad for money
  */
-//TODO, should implement a Crafting interface
 //TODO, should also be sellable by modifying the Tradable interface
-public class Wood extends Item implements Tradable, Resettable {
+public class Wood extends Item implements Tradable, Resettable, Material{
 
     /**
      * The price of the wood if sold to Toad
@@ -27,7 +26,7 @@ public class Wood extends Item implements Tradable, Resettable {
      * A constructor for the Wood class
      */
     public Wood(int woodAmount){
-        super("Wood", 'W', true);
+        super("Wood (" + woodAmount + ")", 'W', true);
         this.woodAmount = woodAmount;
         registerInstance();
     }
@@ -36,6 +35,7 @@ public class Wood extends Item implements Tradable, Resettable {
      * Gets the amount of wood in this item. (It can have multiple wood in a single item)
      * @return int - represents the wood amount
      */
+    @Override
     public int getAmount() {
         return woodAmount;
     }
@@ -59,16 +59,6 @@ public class Wood extends Item implements Tradable, Resettable {
     }
 
     /**
-     * Returns a new instance of PickUpCoinAction
-     * @param actor - the actor picking up this coin
-     * @return a PickUpCoinAction instance to pick up this instance
-     */
-    @Override
-    public PickUpItemAction getPickUpAction(Actor actor) {
-        return new PickUpWoodAction(this);
-    }
-
-    /**
      * If the status is Resettable, then remove the coin from the ground
      * @param currentLocation The location of the ground on which we lie.
      */
@@ -78,6 +68,11 @@ public class Wood extends Item implements Tradable, Resettable {
             currentLocation.removeItem(this);
             this.removeCapability(Status.RESETTABLE);
         }
+    }
+
+    @Override
+    public DropItemAction getDropAction(Actor actor){
+        return null;
     }
 
     /**

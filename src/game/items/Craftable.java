@@ -11,7 +11,7 @@ public interface Craftable {
      * Returns the recipe for crafting the item
      * @return the recipe for crafting the item
      */
-    Item getRecipe();
+    Material getRecipe();
 
     /**
      * Returns the crafted item

@@ -47,7 +47,7 @@ public class Sword extends Item implements Weapon, Craftable {
      * @return the material used to craft Sword
      */
     @Override
-    public Item getRecipe(){
+    public Material getRecipe(){
         return new Wood(3);
     }
 

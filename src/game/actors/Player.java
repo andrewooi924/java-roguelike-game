@@ -25,7 +25,6 @@ import java.util.List;
 public class Player extends Actor implements Resettable, IntrinsicFighter {
 
   private final Menu menu = new Menu();
-  private Pouch woodPouch = new Pouch("Wood", Status.CAN_CARRY_WOOD);
   private Pouch coinPouch = new Pouch("Coin", Status.CAN_CARRY_COINS);
   private boolean resetTimes = true;
 
@@ -57,7 +56,6 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     this.addItemToInventory(new Bottle());
     this.coinPouch.addAmount(1000);
     this.addItemToInventory(this.coinPouch);
-    this.addItemToInventory(this.woodPouch);
   }
 
   /**
@@ -79,7 +77,6 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     display.println("Mario" + this.printHp() + " at "
                     + "(" + playerPos.x() + ", " + playerPos.y() + ")");
     display.println("Wallet: $" + this.coinPouch.getAmount());
-    display.println("Wood: " + this.woodPouch.getAmount());
     // return/print the console menu
     if (this.hasCapability(Status.POWER_STAR)) {
       display.println("Mario is INVINCIBLE!");
