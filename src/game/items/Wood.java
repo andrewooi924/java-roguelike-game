@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.PickUpCoinAction;
+import game.actions.PickUpStackableAction;
 import game.reset.Resettable;
 
 /**
@@ -14,7 +15,7 @@ import game.reset.Resettable;
  * or sold to Toad for money
  */
 //TODO, should also be sellable by modifying the Tradable interface
-public class Wood extends Item implements Tradable, Resettable, Material{
+public class Wood extends Item implements Tradable, Resettable, Stackable{
 
     /**
      * The price of the wood if sold to Toad
@@ -38,6 +39,11 @@ public class Wood extends Item implements Tradable, Resettable, Material{
     @Override
     public int getAmount() {
         return woodAmount;
+    }
+
+    @Override
+    public Storable getStorableType() {
+        return Storable.WOOD;
     }
 
     /**
@@ -73,6 +79,11 @@ public class Wood extends Item implements Tradable, Resettable, Material{
     @Override
     public DropItemAction getDropAction(Actor actor){
         return null;
+    }
+
+    @Override
+    public PickUpItemAction getPickUpAction(final Actor actor) {
+        return new PickUpStackableAction(this, this);
     }
 
     /**

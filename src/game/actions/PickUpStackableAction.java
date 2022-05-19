@@ -7,8 +7,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.GameUtilities;
 import game.Status;
 import game.items.MagicPouch;
-import game.items.Material;
-import game.items.Pouch;
 import game.items.Stackable;
 
 /**

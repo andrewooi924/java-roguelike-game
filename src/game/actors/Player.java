@@ -54,6 +54,7 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
 
   private void addingItems() {
     this.addItemToInventory(new Bottle());
+    this.addItemToInventory(new MagicPouch());
     this.coinPouch.addAmount(1000);
     this.addItemToInventory(this.coinPouch);
   }

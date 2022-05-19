@@ -14,6 +14,7 @@ import game.actions.ConsumeAction;
 import game.actions.RangedAttackAction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -117,8 +118,10 @@ public class Bow extends Item implements Weapon, Craftable {
      * @return the recipe for crafting Bow
      */
     @Override
-    public Material getRecipe(){
-        return new Wood(5);
+    public HashMap<Storable, Integer> getRecipe(){
+        HashMap<Storable, Integer> ret = new HashMap<Storable, Integer>();
+        ret.put(Storable.WOOD, 5);
+        return ret;
     }
 
     /**

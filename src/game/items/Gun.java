@@ -2,6 +2,8 @@ package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
 
+import java.util.HashMap;
+
 /**
  * A Glock, why is this in the game?
  */
@@ -26,7 +28,7 @@ public class Gun extends Bow{
     }
 
     @Override
-    public Material getRecipe(){
+    public HashMap<Storable, Integer> getRecipe(){
         return null;
     }
 

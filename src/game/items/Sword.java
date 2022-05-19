@@ -3,6 +3,8 @@ package game.items;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
 
+import java.util.HashMap;
+
 /**
  * A sword that slashes enemies
  */
@@ -47,8 +49,10 @@ public class Sword extends Item implements Weapon, Craftable {
      * @return the recipe for crafting Sword
      */
     @Override
-    public Material getRecipe(){
-        return new Wood(3);
+    public HashMap<Storable, Integer> getRecipe(){
+        HashMap<Storable, Integer> ret = new HashMap<Storable, Integer>();
+        ret.put(Storable.WOOD, 3);
+        return ret;
     }
 
     /**
