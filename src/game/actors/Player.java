@@ -24,11 +24,11 @@ import java.util.List;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettable, IntrinsicFighter {
+public class Player extends Actor implements Resettable, IntrinsicFighter {
 
 	private final Menu menu = new Menu();
-	private int balance = 1000;
-	private int woodBalance = 0;
+	private Pouch woodPouch = new Pouch("Wood", Status.CAN_CARRY_WOOD);
+	private Pouch coinPouch = new Pouch("Coin", Status.CAN_CARRY_COINS);
 	private boolean resetTimes = true;
 
 	private int attackDamage = 5;
@@ -47,12 +47,13 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.CAN_JUMP);
 		this.addCapability(Status.WALKABLE_FOR_PLAYER);
-		this.addCapability(Status.CAN_MANAGE_MONEY);
-		this.addCapability(Status.CAN_MANAGE_WOOD);
 		this.addCapability(Status.CAN_TELEPORT);
 		this.addCapability(Status.CAN_INTRINSIC_ATTACK);
 		Bottle b = new Bottle();
 		this.addItemToInventory(b);
+		this.coinPouch.addAmount(1000);
+		this.addItemToInventory(this.coinPouch);
+		this.addItemToInventory(this.woodPouch);
 		registerInstance();
 	}
 
@@ -71,8 +72,8 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 			return lastAction.getNextAction();
 		Location playerPos = map.locationOf(this);
 		display.println("Mario" + this.printHp() + " at " + "(" + playerPos.x() + ", " + playerPos.y() + ")");
-		display.println("Wallet: $" + this.getWalletBalance());
-		display.println("Wood: " + this.getWoodAmount());
+		display.println("Wallet: $" + this.coinPouch.getAmount());
+		display.println("Wood: " + this.woodPouch.getAmount());
 		// return/print the console menu
 		if (this.hasCapability(Status.POWER_STAR)) {
 			display.println("Mario is INVINCIBLE!");
@@ -91,34 +92,6 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
 	}
-
-	/**
-	 * Returns the balance of the player
-	 * @return an integer representing the balance of the player
-	 */
-	@Override
-	public int getWalletBalance() {
-		return this.balance;
-	}
-
-	/**
-	 * Adds the amount to the balance of the player
-	 * @param amount - an integer representing the amount wanted to be added to the player
-	 */
-	@Override
-	public void addToWallet(int amount) {
-		this.balance += amount;
-	}
-
-	/**
-	 * deducts the amount from the wallet
-	 * @param amount - an integer representing the amount that should be deducted from the player's balance
-	 */
-	@Override
-	public void deductFromWallet(int amount) {
-		this.balance -= amount;
-	}
-
 	/**
 	 * Resets the statuses on the player and heals it to maximum health
 	 */
@@ -159,22 +132,6 @@ public class Player extends Actor implements WalletKeeper, WoodKeeper, Resettabl
 		Collections.sort(weapons, new SortByDamage());
 		return weapons.get(0);
 	}
-
-	@Override
-	public int getWoodAmount() {
-		return this.woodBalance;
-	}
-
-	@Override
-	public void addToWood(int amount) {
-		this.woodBalance += amount;
-	}
-
-	@Override
-	public void deductFromWood(int amount) {
-		this.woodBalance -= amount;
-	}
-
 	/**
 	 * A sorting class that sorts the list of weapons by their damage in descending order.
 	 */

@@ -3,8 +3,10 @@ package game.actions;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.GameUtilities;
 import game.items.Coin;
 import game.Status;
+import game.items.Pouch;
 import game.items.WalletKeeper;
 
 /**
@@ -30,9 +32,9 @@ public class PickUpCoinAction extends PickUpItemAction {
     @Override
     public String execute(Actor actor, GameMap map) {
         String ret = super.execute(actor, map);
-        if (actor.hasCapability(Status.CAN_MANAGE_MONEY)) {
-            WalletKeeper wk = (WalletKeeper) actor;
-            wk.addToWallet(this.coin.getAmount());
+        Pouch moneyPouch = (Pouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_COINS);
+        if (moneyPouch != null) {
+            moneyPouch.reduceAmount(this.coin.getAmount());
             actor.removeItemFromInventory(this.coin);
         }
         return ret;
