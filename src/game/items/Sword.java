@@ -6,8 +6,7 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 /**
  * A sword that slashes enemies
  */
-//TODO, should implement a Craftable interface
-public class Sword extends Item implements Weapon {
+public class Sword extends Item implements Weapon, Craftable {
 
     /**
      * A constructor for the Sword class
@@ -41,5 +40,23 @@ public class Sword extends Item implements Weapon {
     @Override
     public String verb(){
         return "slashes";
+    }
+
+    /**
+     * The material used to craft Sword
+     * @return the material used to craft Sword
+     */
+    @Override
+    public Item getRecipe(){
+        return new Wood(3);
+    }
+
+    /**
+     * Getter for Sword
+     * @return Sword
+     */
+    @Override
+    public Item getCrafted(){
+        return this;
     }
 }

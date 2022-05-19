@@ -111,7 +111,7 @@ public abstract class Tree extends HigherGround implements Resettable {
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
-        ActionList actions = new ActionList();
+        ActionList actions = super.allowableActions(actor, location, direction);
         if (this.hasCapability(Status.CAN_BE_CHOPPED))
             actions.add(new ChopAction(this, direction, location, getWoodAmount()));
         return actions;

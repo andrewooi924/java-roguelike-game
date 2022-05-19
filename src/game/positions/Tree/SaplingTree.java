@@ -63,13 +63,6 @@ public class SaplingTree extends Tree {
     }
 
     @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction) {
-        ActionList actions = new ActionList();
-        actions.add(new ChopAction(this, direction, location, 3));
-        return actions;
-    }
-
-    @Override
     public int getWoodAmount() {
         return 3;
     }
