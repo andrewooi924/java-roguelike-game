@@ -32,16 +32,18 @@ public class ChopAction extends Action {
      */
     private Location location;
 
+    private int woodAmount;
     /**
      * A constructor for the ChopAction class
      * @param target the tree that is to be chopped
      * @param direction the direction of the tree
      * @param location the location of the tree
      */
-    public ChopAction(Tree target, String direction, Location location){
+    public ChopAction(Tree target, String direction, Location location, int woodAmount){
         this.target = target;
         this.direction = direction;
         this.location = location;
+        this.woodAmount = woodAmount;
     }
 
     @Override
@@ -55,8 +57,7 @@ public class ChopAction extends Action {
         target.chop(weapon.damage());
         if (target.getHp() <= 0){
             this.location.setGround(new Dirt());
-            //TODO: let wood stack
-            this.location.addItem(new Wood());
+            this.location.addItem(new Wood(woodAmount));
             return target + " falls";
         }
         return actor + " " + weapon.verb() + " " + target;

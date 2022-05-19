@@ -105,19 +105,15 @@ public abstract class Tree extends HigherGround implements Resettable {
         return this.hp;
     }
 
-    /**
-     * Returns an empty Action list.
-     *
-     * @param actor the Actor acting
-     * @param location the current Location
-     * @param direction the direction of the Ground from the Actor
-     * @return a new, empty collection of Actions
-     */
+    public int getWoodAmount() {
+        return 0;
+    }
+
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-            if (this.hasCapability(Status.CAN_BE_CHOPPED))
-        actions.add(new ChopAction(this, direction, location));
+        if (this.hasCapability(Status.CAN_BE_CHOPPED))
+            actions.add(new ChopAction(this, direction, location, getWoodAmount()));
         return actions;
     }
 }

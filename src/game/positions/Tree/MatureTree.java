@@ -74,7 +74,7 @@ public class MatureTree extends Tree {
 
         if (age % SPROUT_SPAWN_CYCLE == 0) {
 
-            ArrayList<Location> fertileSurroundings = new ArrayList<Location>();
+            ArrayList<Location> fertileSurroundings = new ArrayList<>();
             for (Exit exit : location.getExits()) {
                 Location curLocation = exit.getDestination();
                 Ground curGround = curLocation.getGround();
@@ -93,5 +93,10 @@ public class MatureTree extends Tree {
         if (this.random.nextDouble() <= DIE_PROB) {
             location.setGround(new Dirt());
         }
+    }
+
+    @Override
+    public int getWoodAmount() {
+        return 5;
     }
 }

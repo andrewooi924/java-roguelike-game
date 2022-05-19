@@ -21,21 +21,23 @@ public class Wood extends Item implements Tradable, Resettable {
      * The price of the wood if sold to Toad
      */
     private int price = 20;//sell price, not the buy price
+    private int woodAmount;
 
     /**
      * A constructor for the Wood class
      */
-    public Wood(){
+    public Wood(int woodAmount){
         super("Wood", 'W', true);
+        this.woodAmount = woodAmount;
         registerInstance();
     }
 
     /**
      * Gets the amount of wood in this item. (It can have multiple wood in a single item)
-     * @return
+     * @return int - represents the wood amount
      */
     public int getAmount() {
-        return 1;
+        return woodAmount;
     }
 
     /**
