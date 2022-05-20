@@ -25,7 +25,7 @@ public class TeleportAction extends Action {
         if (newLocation.containsAnActor())
             map.removeActor(newLocation.getActor()); // removes the piranha plant if it is there
         map.moveActor(actor, newLocation);
-        return "Mario teleports to " + mapNames.get(newLocation.map()) + " at x:" + newLocation.x() + " y:" + newLocation.y();
+        return "Mario teleports to " + mapNames.get(newLocation.map());
     }
 
     @Override
