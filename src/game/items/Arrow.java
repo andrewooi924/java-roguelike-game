@@ -69,10 +69,21 @@ public class Arrow extends Item implements Tradable, Stackable {
         return this.arrowCount;
     }
 
+    /**
+     * Returns storable arrows
+     * @return storable arrows
+     */
     @Override
     public Storable getStorableType() {
         return Storable.ARROW;
     }
+
+    /**
+     * Adds arrows to the Player's magic pouch
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
+    @Override
     public void tick(Location currentLocation, Actor actor) {
         MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
         magicPouch.increaseAmount(Storable.ARROW, this.getAmount());

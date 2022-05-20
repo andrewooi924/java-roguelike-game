@@ -42,13 +42,17 @@ public class UnlockChestAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map){
         String ret = "";
-        if (random.nextDouble() <= 0.25){
+        if (random.nextDouble() <= 0.15){
             location.addActor(new Goomba());
             ret += "It was a trap box! A Goomba appears.";
         }
         else{
-            actor.addItemToInventory(new Arrow(2));
-            ret += "Treasure Chest dropped 2 arrows\n";
+            int arrowDrop = random.nextInt(3)+1;
+            int coinDrop = random.nextInt(3)+1;
+            actor.addItemToInventory(new Arrow(arrowDrop));
+            actor.addItemToInventory(new Coin(coinDrop));
+            ret += "Treasure Chest dropped " + arrowDrop + " arrows\n";
+            ret += "Treasure Chest dropped " + coinDrop + " coins\n";
             double rng = random.nextDouble();
             if (rng <= 0.05){
                 actor.addItemToInventory(new Gun());
