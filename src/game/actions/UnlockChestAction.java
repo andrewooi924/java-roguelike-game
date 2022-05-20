@@ -48,7 +48,7 @@ public class UnlockChestAction extends Action {
         }
         else{
             int arrowDrop = random.nextInt(3)+1;
-            int coinDrop = random.nextInt(3)+1;
+            int coinDrop = random.nextInt(101)+20;
             actor.addItemToInventory(new Arrow(arrowDrop));
             actor.addItemToInventory(new Coin(coinDrop));
             ret += "Treasure Chest dropped " + arrowDrop + " arrows\n";
