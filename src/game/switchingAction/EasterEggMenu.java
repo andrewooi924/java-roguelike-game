@@ -1,4 +1,4 @@
-package game;
+package game.switchingAction;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
-public class CraftingMenu extends Menu {
+public class EasterEggMenu extends Menu {
 
 
     /**
