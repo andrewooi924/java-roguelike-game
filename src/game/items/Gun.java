@@ -26,4 +26,13 @@ public class Gun extends RangedWeapon{
     public int damage(){
         return 9999;
     }
+
+    /**
+     * Returns what a Gun does (verb)
+     * @return what a gun does (verb)
+     */
+    @Override
+    public String verb(){
+        return "deletes";
+    }
 }

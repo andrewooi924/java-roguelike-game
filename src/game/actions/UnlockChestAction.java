@@ -5,9 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Goomba;
-import game.items.Arrow;
-import game.items.GalaxySword;
-import game.items.Gun;
+import game.items.*;
 import game.positions.Dirt;
 
 import java.util.Random;
@@ -52,7 +50,7 @@ public class UnlockChestAction extends Action {
             actor.addItemToInventory(new Arrow(2));
             ret += "Treasure Chest dropped 2 arrows\n";
             double rng = random.nextDouble();
-            if (rng <= 0.95){
+            if (rng <= 0.05){
                 actor.addItemToInventory(new Gun());
                 ret += "Treasure Chest dropped a gun, what?";
             }
@@ -60,7 +58,18 @@ public class UnlockChestAction extends Action {
                 actor.addItemToInventory(new GalaxySword());
                 ret += "Treasure Chest dropped a purple sword";
             }
-            //TODO: drop enchantment books else statement
+            else if (rng <= 0.30){
+                actor.addItemToInventory(new PowerStar());
+                ret += "Treasure Chest dropped a Power Star";
+            }
+            else if (rng <= 0.60){
+                actor.addItemToInventory(new Wrench());
+                ret += "Treasure Chest dropped a Wrench";
+            }
+            else{
+                actor.addItemToInventory(new SuperMushroom());
+                ret += "Treasure Chest dropped a Super Mushroom";
+            }
         }
         location.setGround(new Dirt());
         return ret;
