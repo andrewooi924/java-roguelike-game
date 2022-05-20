@@ -26,12 +26,12 @@ public class WarpPipe extends HigherGround implements Resettable {
 
     @Override
     public int getFallDamageRate() {
-        return 0;
+        return 10;
     }
 
     @Override
     public double getFallProb() {
-        return 1;
+        return 0.9;
     }
 
     /**

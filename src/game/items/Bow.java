@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * A weapon used to fire arrows, useless without arrows.
  */
-public class Bow extends Item implements Weapon, Craftable {
+public class Bow extends RangedWeapon implements Craftable {
 
     // Assume infinite arrows for now...
     // ArrayList<Arrow> arrows;
@@ -43,6 +43,11 @@ public class Bow extends Item implements Weapon, Craftable {
         super("Bow", '>', true);
     }
 
+    @Override
+    public int getRange() {
+        return BOW_RANGE;
+    }
+
     /**
      * Each turn, it needs to recalculate the people it can shoot because they all moved.
      * @param currentLocation The location of the actor carrying this Item.
@@ -50,40 +55,11 @@ public class Bow extends Item implements Weapon, Craftable {
      */
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        bowActions.clear();
-        bowActions.add(bfsAddEnemies(currentLocation, 0, new ArrayList<Location>()));
+        // Change condition to "has at least one arrow" in the future.
+        if (true) {
+            super.tick(currentLocation, actor);
+        }
         // this.addAction(new AttackAction(, this));
-    }
-
-    @Override
-    public List<Action> getAllowableActions() {
-        return this.bowActions.getUnmodifiableActionList();
-    }
-
-    private ActionList bfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
-        ActionList ret = new ActionList();
-        // Base case
-        if (curDepth == BOW_RANGE) {
-            // Empty action list
-            return new ActionList();
-        }
-        if (currentLocation.containsAnActor()) {
-            Actor toBeAttacked = currentLocation.getActor();
-            // Without this you can probably kill princess peach and toad.
-            if (toBeAttacked.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-                ret.add(new RangedAttackAction(toBeAttacked, this));
-            }
-        }
-
-        visited.add(currentLocation);
-        for (Exit exit: currentLocation.getExits()) {
-            Location destination = exit.getDestination();
-            if (visited.contains(destination)) {
-                continue;
-            }
-            ret.add(bfsAddEnemies(destination, curDepth+1, visited));
-        }
-        return ret;
     }
 
     /**
