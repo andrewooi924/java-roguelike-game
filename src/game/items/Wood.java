@@ -11,7 +11,6 @@ import game.reset.Resettable;
 
 /**
  * Literally just wood, can be used to craft items at a crafting bench
- * or sold to Toad for money
  */
 public class Wood extends Item implements Resettable, Stackable{
 

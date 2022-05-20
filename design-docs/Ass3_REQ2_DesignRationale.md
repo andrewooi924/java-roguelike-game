@@ -8,7 +8,8 @@ For reference here are the class and sequence diagrams.
 
 ## Sequence Diagrams
 
-![ass3 req2 sequence diagram](./Ass3_REQ2_sequence.png "Ass3 REQ2 Sequence Diagram")
+![ass3 req2 sequence 01 diagram](./Ass3_REQ2_sequence_01.png)
+![ass3 req2 sequence 02 diagram](./Ass3_REQ2_sequence_02.png)
 
 ## Rationale
 
@@ -46,10 +47,10 @@ which is done by once again checking if it has the 'RESETTABLE' status in its ow
 to its own max hp plus 50, effectively healing it back to maximum health in the process as well.
 
 To prevent violation of the Liskov Substitution Principle, I had the FlyingKoopa class I created extend the Koopa
-class, thus inheriting all of Koopa's attributes and methods. All the FlyingKoopa class contains is the changing
-of its display character, its max hp and its name. Other than that, I've added the capability 'CAN_FLY' to 
-Flying Koopa to have the program allow for actors with this status to enter any higher grounds. I have also
-edited the MatureTree class to allow for a 50% chance of spawning either type of Koopa after a successful 15%
+class, inheriting all of Koopa's attributes and methods and not overriding any of the methods. All the FlyingKoopa 
+class contains is the changing of its display character, its max hp and its name. Other than that, I've added the 
+capability 'CAN_FLY' to Flying Koopa to have the program allow for actors with this status to enter any higher grounds. 
+I have also edited the MatureTree class to allow for a 50% chance of spawning either type of Koopa after a successful 15%
 spawn rate. To deal with when FlyingKoopa dies and to not violate the DRY principle by repeating code similar to
 the death of Koopa, I've changed a line in the AttackAction class that checks if the target's name is Koopa to
 if the target's name contains Koopa. 
