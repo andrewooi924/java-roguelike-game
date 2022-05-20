@@ -2,16 +2,17 @@
 
 **Title**: Minecraft
 
-**Description**: The player can now punch trees and collect wood just like Minecraft! With wood, they can also create
-walls to fend off the enemies! 
+**Description**: Mario can now punch trees and collect wood just like Minecraft! With wood, mario can also craft
+tools to defend himself such as a sword from the crafting table! On top of that, there are treasures around the map which drop good loot
+when you unlock it, may have a galaxy sword! With the menu piling up with many options, the crafting menu comes
+in handy to provide easier focus on what the player would like to do.
 
 **Explanation why it adheres to SOLID principles** (WHY):  
-<b><u>Single Responsibility Principle</b></u>: Each projectile will have a different class and will only
-have a single responsibility  
-<b><u>Open-Closed Principle</b></u>: I have extended from item class for each of the items and the projectile
-class will allow easy extensibility for other projectiles  
+<b><u>Single Responsibility Principle</b></u>: 
+<b><u>Open-Closed Principle</b></u>: 
 <b><u>Liskov Substitution Principle</b></u>: -   
 <b><u>Interface Segregation Principle</b></u>: None
+<b><u>Dependency Inversion Principle</b></u>: 
 -
 
 | Requirements                                                                                                            | Features (HOW) / Your Approach / Answer                                                                                                                               |
@@ -25,13 +26,11 @@ class will allow easy extensibility for other projectiles
 
 # Requirement 5
 
-(for group of 3 ONLY -- please remove it before submission)
-
 **Title**:
-_write down the title of your requirement here..._
+Ranged Combat
 
 **Description**:
-_write down the summary of the feature here..._
+Bows, arrows and guns now exist in the game. They can shoot at a distance 
 
 **Explanation why it adheres to SOLID principles** (WHY):
 
