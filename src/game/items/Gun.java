@@ -7,10 +7,15 @@ import java.util.HashMap;
 /**
  * A Glock, why is this in the game?
  */
-public class Gun extends Bow{
+public class Gun extends RangedWeapon{
 
     public Gun(){
-        this.setDisplayChar('G');
+        super("Gun", 'G',true);
+    }
+
+    @Override
+    public int getRange() {
+        return Integer.MAX_VALUE;
     }
 
     /**
@@ -20,20 +25,5 @@ public class Gun extends Bow{
     @Override
     public int damage(){
         return 9999;
-    }
-
-    @Override
-    public String toString(){
-        return "Gun";
-    }
-
-    @Override
-    public HashMap<Storable, Integer> getRecipe(){
-        return null;
-    }
-
-    @Override
-    public Item getCrafted(){
-        return null;
     }
 }
