@@ -1,12 +1,11 @@
 package game.actors;
 
 import game.Status;
-import game.reset.Resettable;
 
 /**
  * A Koopa, but flying
  */
-public class FlyingKoopa extends Koopa implements Resettable {
+public class FlyingKoopa extends Koopa{
 
     /**
      * A constructor for the FlyingKoopa class
