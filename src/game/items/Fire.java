@@ -26,17 +26,17 @@ public class Fire extends Item{
 
     @Override
     public void tick(Location currentLocation) {
-        Actor player;
+        Actor actor;
         age++;
         if (currentLocation.containsAnActor()){
-            player = currentLocation.getActor();
-            player.hurt(20);
+            actor = currentLocation.getActor();
+            actor.hurt(20);
 
-            if (!player.isConscious()) {
-                if (player.hasCapability(Status.FIRE_BREATHER)){
+            if (!actor.isConscious()) {
+                if (actor.hasCapability(Status.FIRE_BREATHER)){
                     currentLocation.addItem(new Key());
                 }
-                currentLocation.map().removeActor(player);
+                currentLocation.map().removeActor(actor);
             }
         }
         if (age >= EXPIRY_TURNS) {
