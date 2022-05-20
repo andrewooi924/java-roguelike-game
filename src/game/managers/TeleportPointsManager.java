@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class TeleportPointsManager {
 
-    private final HashMap<String, Location> locations;
+    private final HashMap<Location, Location> locations;
     private static TeleportPointsManager instance;
 
     private TeleportPointsManager() {
@@ -23,20 +23,12 @@ public class TeleportPointsManager {
         return instance;
     }
 
-    public HashMap<String, Location> getLocations() {
-        return locations;
-    }
-
     public void addLocation(Location location, Location newLocation) {
-        locations.put(location.map() + "x:" + location.x() + "y:" + location.y(), newLocation);
+        locations.put(location, newLocation);
     }
 
     public Location findLocationToTravel(Location location) {
-        return locations.get(location.map() + "x:" + location.x() + "y:" + location.y());
-    }
-
-    public Location getActualLocationInMap(Location location) {
-        return location.map().at(location.x(), location.y());
+        return locations.get(location);
     }
 
     private void addFixedLocations() {
@@ -47,9 +39,9 @@ public class TeleportPointsManager {
         // adding the teleport locations to the maps
         GameMap lavaMap = maps.get(Maps.MAP_LAVA);
         GameMap gameMap = maps.get(Maps.MAP_BASIC);
-        locations.put(gameMap + "x:12" + "y:3", new Location(lavaMap, 0, 0));
-        locations.put(gameMap + "x:73" + "y:1", new Location(lavaMap, 0,0));
-        locations.put(gameMap + "x:10" + "y:15", new Location(lavaMap, 0,0));
-        locations.put(gameMap + "x:46" + "y:8", new Location(lavaMap, 0,0));
+        locations.put(gameMap.at(12, 3), lavaMap.at(0,0));
+        locations.put(gameMap.at(73, 1), lavaMap.at(0,0));
+        locations.put(gameMap.at(10, 15), lavaMap.at(0, 0));
+        locations.put(gameMap.at(46, 8),lavaMap.at(0, 0));
     }
 }

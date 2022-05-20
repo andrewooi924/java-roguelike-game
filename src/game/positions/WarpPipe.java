@@ -51,9 +51,8 @@ public class WarpPipe extends HigherGround implements Resettable {
 
             // it may be a broken pipe
             if (locationToTravel != null) {
-                Location actualLocation = teleportPointsManager.getActualLocationInMap(locationToTravel);
-                lst.add(new TeleportAction(actualLocation));
-                teleportPointsManager.addLocation(actualLocation, location); // remembers the location from the pipe
+                lst.add(new TeleportAction(locationToTravel));
+                teleportPointsManager.addLocation(locationToTravel, location); // remembers the location from the pipe
             }
         }
         return lst;
