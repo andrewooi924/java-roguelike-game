@@ -11,15 +11,15 @@ import game.Status;
 public abstract class SwitchingAction extends Action {
 
     private final Menu menu = new Menu();
-    private Display display = new Display();
+    private final Display display = new Display();
     private final ActionList actionList = new ActionList();
     private Actor actor;
-    private String name;
 
     @Override
     public String execute(Actor actor, GameMap map) {
         this.actor = actor;
         actor.addCapability(Status.NEW_MENU);
+        actionList.add(new SwitchToNormalMenu());
         return "Switching to " + getName() + " Mode";
     }
 
@@ -27,22 +27,12 @@ public abstract class SwitchingAction extends Action {
     public String menuDescription(Actor actor) {
         return "Switch to " + getName() + " Menu";
     }
-
     protected abstract String getName();
 
-    protected Menu getMenu() {
-        return menu;
-    }
+    protected abstract Action getNextAction(Menu menu, Actor actor, ActionList actionList, Display display);
 
-    protected Actor getActor() {
-        return actor;
-    }
-
-    protected ActionList getActionList() {
-        return actionList;
-    }
-
-    protected Display getDisplay() {
-        return display;
+    @Override
+    public Action getNextAction() {
+        return getNextAction(menu, actor, actionList, display);
     }
 }

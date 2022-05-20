@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import game.Status;
 import game.actions.MonologueAction;
 import game.injectors.TradableInjector;
+import game.switchingAction.SwitchToShopMenu;
 
 /**
  * A mushroom head Actor named Toad
@@ -47,14 +48,7 @@ public class Toad extends Actor {
         ActionList ret = new ActionList();
         Action talk = new MonologueAction(this);
         ret.add(talk);
-
-        TradableInjector injector = new TradableInjector();
-
-        // creating all the tradable items in an injector to reduce dependencies on toad
-        ActionList tradableItems = injector.addingTradableItems();
-        for (Action action: tradableItems) {
-            ret.add(action);
-        }
+        ret.add(new SwitchToShopMenu());
         return ret;
     }
 }

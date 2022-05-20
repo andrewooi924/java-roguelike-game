@@ -71,19 +71,19 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
   @Override
   public Action playTurn(ActionList actions, Action lastAction, GameMap map,
                          Display display) {
-    // Handle multi-turn Actions
-    if (this.hasCapability(Status.NEW_MENU) || lastAction.getNextAction() != null) {
-      this.removeCapability(Status.NEW_MENU);
-      return lastAction.getNextAction();
-    }
     Location playerPos = map.locationOf(this);
     display.println("Mario" + this.printHp() + " at "
-                    + "(" + playerPos.x() + ", " + playerPos.y() + ")");
+            + "(" + playerPos.x() + ", " + playerPos.y() + ")");
     display.println("Wallet: $" + this.magicPouch.getAmount(Storable.COIN));
     display.println("Wood: " + this.magicPouch.getAmount(Storable.WOOD));
     // return/print the console menu
     if (this.hasCapability(Status.POWER_STAR)) {
       display.println("Mario is INVINCIBLE!");
+    }
+    // Handle multi-turn Actions
+    if (this.hasCapability(Status.NEW_MENU) || lastAction.getNextAction() != null) {
+      this.removeCapability(Status.NEW_MENU);
+      return lastAction.getNextAction();
     }
     if (resetTimes) {
       actions.add(new ResetAction());
