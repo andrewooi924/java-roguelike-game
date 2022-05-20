@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class TeleportPointsManager {
 
-    private HashMap<String, Location> locations;
+    private final HashMap<String, Location> locations;
     private static TeleportPointsManager instance;
 
     private TeleportPointsManager() {
