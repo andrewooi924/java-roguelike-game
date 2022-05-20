@@ -31,6 +31,14 @@ public class TeleportPointsManager {
         locations.put(location.map() + "x:" + location.x() + "y:" + location.y(), newLocation);
     }
 
+    public Location findLocationToTravel(Location location) {
+        return locations.get(location.map() + "x:" + location.x() + "y:" + location.y());
+    }
+
+    public Location getActualLocationInMap(Location location) {
+        return location.map().at(location.x(), location.y());
+    }
+
     private void addFixedLocations() {
         // getting the maps
         MapManager mapManager = MapManager.getInstance();
