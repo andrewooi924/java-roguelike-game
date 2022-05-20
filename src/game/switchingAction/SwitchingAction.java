@@ -27,6 +27,7 @@ public abstract class SwitchingAction extends Action {
     public String menuDescription(Actor actor) {
         return "Switch to " + getName() + " Menu";
     }
+
     protected abstract String getName();
 
     protected abstract Action getNextAction(Menu menu, Actor actor, ActionList actionList, Display display);
