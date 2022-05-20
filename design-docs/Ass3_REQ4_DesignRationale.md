@@ -28,6 +28,7 @@ TODO:
 Implementation of Wood
 Implementation of Crafting
 Implementation of Menus
+Implementation of Magic Pouch
 Implementation of Treasure Chests
 Implementation of Galaxy Sword (LSP)
 Implementation of new getWeapon() method for Player class
