@@ -39,7 +39,7 @@ Purpose: A global Singleton manager that stores and adds teleport points through
 <b><u>Dependency Inversion Principle</b></u>: None  
 
 ### MapManager Class  
-Purpose: A global Singleton manager that manages all the map and map names respectively
+Purpose: A global Singleton manager that manages all the map and map names respectively  
 <b><u>Single Responsibility Principle</b></u>:  Followed, as it stores maps and map names and provides them when any class requires it  
 <b><u>Open-Closed Principle</b></u>: None  
 <b><u>Liskov Substitution Principle</b></u>: None  
@@ -47,15 +47,15 @@ Purpose: A global Singleton manager that manages all the map and map names respe
 <b><u>Dependency Inversion Principle</b></u>: None  
 
 ### MapInjector Class  
-Purpose: It reduces dependencies for the MapManager class and creates all the game maps, and their names respectively!
-<b><u>Single Responsibility Principle</b></u>: Followed, it's only responsibility is to generate game maps, and their names as well.
+Purpose: It reduces dependencies for the MapManager class and creates all the game maps, and their names respectively!  
+<b><u>Single Responsibility Principle</b></u>: Followed, it's only responsibility is to generate game maps, and their names as well.  
 <b><u>Open-Closed Principle</b></u>: None  
 <b><u>Liskov Substitution Principle</b></u>: None  
 <b><u>Interface Segregation Principle</b></u>: None    
 <b><u>Dependency Inversion Principle</b></u>: None   
 
 ### WarpPipe Class  
-Purpose: It will create and provide the teleport action as a possible action to the player when there is a location to teleport to
+Purpose: It will create and provide the teleport action as a possible action to the player when there is a location to teleport to  
 <b><u>Single Responsibility Principle</b></u>: Followed, it's only responsibility is to add teleport action as a possible action
 to player if there is a location to teleport to  
 <b><u>Open-Closed Principle</b></u>: Followed, it is extended from HigherGround class and does not modify any of the code from
@@ -73,7 +73,7 @@ Purpose: New grounds for the player to interact with that deals damage when they
 <b><u>Interface Segregation Principle</b></u>: None    
 <b><u>Dependency Inversion Principle</b></u>: None  
 
-### Changes from Assignment 2 to Assignment 3
+### Changes from Assignment 2 to Assignment 3  
 For the map generation, instead of creating it in the Application class, it is created in the MapInjector class.
 This allows our Application to have lesser responsibilities. Furthermore, our maps are files instead of being in the class
 as arrays. It makes it easier to see as well. Our Maps can also be accessed easily through the MapManager depending on which map 
