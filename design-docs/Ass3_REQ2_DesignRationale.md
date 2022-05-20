@@ -2,9 +2,9 @@
 
 For reference here are the class and sequence diagrams.
 
-## Class Diagrams
+## Class Diagram
 
-
+![ass3 req2 class diagram](./Ass3_REQ2_class.png "Ass3 REQ2 Class Diagram")
 
 ## Sequence Diagrams
 
