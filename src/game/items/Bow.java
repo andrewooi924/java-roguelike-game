@@ -51,7 +51,7 @@ public class Bow extends Item implements Weapon, Craftable {
     @Override
     public void tick(Location currentLocation, Actor actor) {
         bowActions.clear();
-        bowActions.add(bfsAddEnemies(currentLocation, 0, new ArrayList<Location>()));
+        bowActions.add(dfsAddEnemies(currentLocation, 0, new ArrayList<Location>()));
         // this.addAction(new AttackAction(, this));
     }
 
@@ -60,10 +60,10 @@ public class Bow extends Item implements Weapon, Craftable {
         return this.bowActions.getUnmodifiableActionList();
     }
 
-    private ActionList bfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
+    private ActionList dfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
         ActionList ret = new ActionList();
         // Base case
-        if (curDepth == BOW_RANGE) {
+        if (curDepth == BOW_RANGE+1) {
             // Empty action list
             return new ActionList();
         }
@@ -78,10 +78,10 @@ public class Bow extends Item implements Weapon, Craftable {
         visited.add(currentLocation);
         for (Exit exit: currentLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (visited.contains(destination)) {
+            if (visited.contains(destination) || destination.getGround().blocksThrownObjects()) {
                 continue;
             }
-            ret.add(bfsAddEnemies(destination, curDepth+1, visited));
+            ret.add(dfsAddEnemies(destination, curDepth+1, visited));
         }
         return ret;
     }
