@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.Bowser;
 import game.actors.Player;
 import game.actors.PrincessPeach;
+import game.actors.Terminator;
 import game.actors.Toad;
 import game.items.Bow;
 import game.managers.TeleportPointsManager;
@@ -47,6 +48,7 @@ public class Application {
 		gameMap.at(MARIO_POS_X+2, MARIO_POS_Y+2).addItem(new Bow());
 
 		gameMap.at(MARIO_POS_X, MARIO_POS_Y+1).addActor(new Toad());
+		gameMap.at(0, 0).addActor(new Terminator(mario));
 
 		GameMap lavaMap = maps.get(Maps.MAP_LAVA);
 		lavaMap.at(9,13).addActor(new PrincessPeach());
