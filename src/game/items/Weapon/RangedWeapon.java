@@ -83,7 +83,7 @@ public abstract class RangedWeapon extends Item implements Weapon {
     private ActionList dfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
         ActionList ret = new ActionList();
         // Base case
-        if (curDepth == getRange()+1) {
+        if (curDepth == getRange()) {
             // Empty action list
             return new ActionList();
         }
@@ -98,10 +98,9 @@ public abstract class RangedWeapon extends Item implements Weapon {
         visited.add(currentLocation);
         for (Exit exit: currentLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (visited.contains(destination) || destination.getGround().blocksThrownObjects()) {
-                continue;
+            if (!visited.contains(destination) && !destination.getGround().blocksThrownObjects()) {
+                ret.add(dfsAddEnemies(destination, curDepth+1, visited));
             }
-            ret.add(dfsAddEnemies(destination, curDepth+1, visited));
         }
         return ret;
     }
