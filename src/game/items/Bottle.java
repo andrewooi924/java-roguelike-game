@@ -19,6 +19,7 @@ public class Bottle extends Consumable {
      */
     public Bottle() {
         super("Bottle", 'B', false);
+        this.addCapability(Status.CAN_CARRY_LIQUIDS);
         this.consumeAction = new ConsumeAction(this);
         this.addAction(consumeAction);
     }
