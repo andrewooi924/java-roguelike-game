@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.Consumable;
+import game.items.Consumable.Consumable;
 
 /**
  * An action where the player can consume the item
@@ -28,7 +28,6 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.addCapability(this.consumable.effect());
         String additionalInfo = this.consumable.consume(actor, map);
         additionalInfo = (additionalInfo == null || additionalInfo.isEmpty()) ? "" : " - " + additionalInfo;
         return actor.toString() + " consumes " + consumable.toString() + additionalInfo;

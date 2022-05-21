@@ -1,13 +1,14 @@
-package game.items;
+package game.items.Weapon;
 
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
+import game.items.Tradable;
 
 /**
  * An chopping axe
  */
-public class Axe extends Item implements Weapon, Tradable{
+public class Axe extends Item implements Weapon, Tradable {
 
     /**
      * The price of the Axe

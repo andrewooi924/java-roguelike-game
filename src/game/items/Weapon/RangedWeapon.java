@@ -1,4 +1,4 @@
-package game.items;
+package game.items.Weapon;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,8 +7,11 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.GameUtilities;
 import game.Status;
 import game.actions.RangedAttackAction;
+import game.items.MagicPouch;
+import game.items.Storable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +31,35 @@ public abstract class RangedWeapon extends Item implements Weapon {
 
     public abstract int getRange();
 
-    public int getAmmoAmount(Actor actor) {
-        // Infinite by default
-        return 1;
-    }
+    public abstract int getAmmoAmount(Actor actor);
 
-    public void reduceAmmo(Actor actor, int amount) {
+    /**
+     * @return a string for the shooting verb
+     */
+    @Override
+    public abstract String verb();
+
+    /**
+     * Reduces the ammo once it was used
+     * @param actor - the actor shooting the arrow
+     * @param amount - the amount of ammo shot
+     */
+    public abstract void reduceAmmo(Actor actor, int amount);
+
+    /**
+     * The damage dealt by ranged weapons.
+     * @return an integer
+     */
+    @Override
+    public abstract int damage();
+
+    /**
+     * The hit chance of all ranged weapon
+     * @return 100
+     */
+    @Override
+    public int chanceToHit() {
+        return 100;
     }
 
     /**
@@ -57,7 +83,7 @@ public abstract class RangedWeapon extends Item implements Weapon {
     private ActionList dfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
         ActionList ret = new ActionList();
         // Base case
-        if (curDepth == getRange()+1) {
+        if (curDepth == getRange()) {
             // Empty action list
             return new ActionList();
         }
@@ -72,40 +98,10 @@ public abstract class RangedWeapon extends Item implements Weapon {
         visited.add(currentLocation);
         for (Exit exit: currentLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (visited.contains(destination) || destination.getGround().blocksThrownObjects()) {
-                continue;
+            if (!visited.contains(destination) && !destination.getGround().blocksThrownObjects()) {
+                ret.add(dfsAddEnemies(destination, curDepth+1, visited));
             }
-            ret.add(dfsAddEnemies(destination, curDepth+1, visited));
         }
         return ret;
     }
-
-    /**
-     * The default damage dealt by ranged weapons.
-     * @return 40
-     */
-    @Override
-    public int damage() {
-        return 40;
-    }
-
-    /**
-     * The default sound effect of Ranged weapon
-     * @return shoots
-     */
-    @Override
-    public String verb() {
-        return "shoots";
-    }
-
-    /**
-     * The default hit chance of Ranged Weapon
-     * @return 100
-     */
-    @Override
-    public int chanceToHit() {
-        return 100;
-    }
-
-
 }

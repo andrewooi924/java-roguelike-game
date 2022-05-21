@@ -1,22 +1,16 @@
-package game.items;
+package game.items.Weapon;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import game.GameUtilities;
 import game.Status;
-import game.actions.AttackAction;
-import game.actions.ConsumeAction;
-import game.actions.RangedAttackAction;
+import game.items.Craftable;
+import game.items.MagicPouch;
+import game.items.Storable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A weapon used to fire arrows, useless without arrows.
@@ -44,11 +38,20 @@ public class Bow extends RangedWeapon implements Craftable {
         super("Bow", '>', true);
     }
 
+    /**
+     * Returns the bow range
+     * @return an integer
+     */
     @Override
     public int getRange() {
         return BOW_RANGE;
     }
 
+    /**
+     * Gets the amount of arrows the actor has
+     * @param actor - the actor
+     * @return either 0 or the number of arrows the actor has
+     */
     @Override
     public int getAmmoAmount(Actor actor) {
         MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
@@ -58,6 +61,11 @@ public class Bow extends RangedWeapon implements Craftable {
         return magicPouch.getAmount(Storable.ARROW);
     }
 
+    /**
+     * Reduces the arrows once it was used
+     * @param actor - the actor shooting the arrow
+     * @param amount - the amount of arrows shot
+     */
     @Override
     public void reduceAmmo(Actor actor, int amount) {
         MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
@@ -96,15 +104,6 @@ public class Bow extends RangedWeapon implements Craftable {
     @Override
     public String verb() {
         return "shoots";
-    }
-
-    /**
-     * The hit chance of Bow
-     * @return 100
-     */
-    @Override
-    public int chanceToHit() {
-        return 100;
     }
 
     /**

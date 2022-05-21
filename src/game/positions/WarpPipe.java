@@ -9,6 +9,9 @@ import game.actors.PiranhaPlant;
 import game.managers.TeleportPointsManager;
 import game.reset.Resettable;
 
+/**
+ * Green pipes that mario can use to teleport to other locations
+ */
 public class WarpPipe extends HigherGround implements Resettable {
 
     private int age = 0;
@@ -22,18 +25,26 @@ public class WarpPipe extends HigherGround implements Resettable {
         registerInstance();
     }
 
+    /**
+     * Mario gets hurt for 10 damage if he fails to jump
+     * @return an integer, 10
+     */
     @Override
     public int getFallDamageRate() {
         return 10;
     }
 
+    /**
+     * Chances to fall is 10% when jumping to warp pipe
+     * @return 0.9 - success chance
+     */
     @Override
     public double getFallProb() {
         return 0.9;
     }
 
     /**
-     * Returns an empty Action list.
+     * Adds the teleport action as a possible action for the player if they would like to teleport to the other map
      *
      * @param actor the Actor acting
      * @param location the current Location
@@ -58,6 +69,10 @@ public class WarpPipe extends HigherGround implements Resettable {
         return lst;
     }
 
+    /**
+     * After one turn, piranha plant will spawn on the warp pipe
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         super.tick(location);
@@ -70,6 +85,10 @@ public class WarpPipe extends HigherGround implements Resettable {
             location.addActor(new PiranhaPlant());
     }
 
+    /**
+     * "Warp Pipe" - the name of this object
+     * @return "Warp Pipe"
+     */
     @Override
     public String toString() {
         return "Warp Pipe";

@@ -1,4 +1,4 @@
-package game.items;
+package game.items.Consumable;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -8,11 +8,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.ConsumeAction;
+import game.items.Tradable;
 
 /**
  * An item that grants mario invincibility for 10 rounds
  */
-public class PowerStar extends Item implements Consumable, Tradable {
+public class PowerStar extends Consumable implements Tradable {
     private int age = 0;
     private final int EXPIRY_TURNS = 10;
     private Action consumeAction;
@@ -41,8 +42,7 @@ public class PowerStar extends Item implements Consumable, Tradable {
      * Grants the player the POWER_STAR effect
      * @return a Status enum of POWER_STAR
      */
-    @Override
-    public Status effect() {
+    private Status effect() {
         return Status.POWER_STAR;
     }
 
@@ -80,6 +80,8 @@ public class PowerStar extends Item implements Consumable, Tradable {
      */
     @Override
     public String consume(Actor actor, GameMap map) {
+        actor.addCapability(this.effect());
+
         actor.heal(200);
         // Don't allow to consume again- even if it's still in your inventory.
 

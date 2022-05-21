@@ -4,11 +4,15 @@ For reference here are the class and sequence diagrams.
 
 ## Class Diagram
 
-![ass3 req4 class diagram]()
+![ass3 req4 class diagram](./Ass3_REQ4_class.png "Ass3 REQ4 Class Diagram")
 
-## Sequence Diagram
+## Sequence Diagrams
 
-![ass3 req4 sequence diagram]()
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_01.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_02.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_03.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_04.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_05.png)
 
 ## Rationale
 
@@ -38,8 +42,8 @@ The CraftAction class utilises the aforementioned Magic Pouch and checks if the 
 to craft the item from the recipe. If so, the method will craft the item and add it to the Player's 
 inventory, otherwise it will display a message saying the Player's does not have enough materials.
 
-TODO here: 
-Implementation of Menus
+As the menu will be more congested with options for the player to choose, we have decided that a separate menu
+for the crafting would be useful and easier for the user to choose the options.
 
 The TreasureChest class contains a Treasure Chest ground that can be "unlocked" by the Player to 
 gain surprises. It utilises the UnlockChestAction class where it takes a random generated probability

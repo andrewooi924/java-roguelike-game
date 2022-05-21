@@ -46,6 +46,12 @@ public class ChopAction extends Action {
         this.woodAmount = woodAmount;
     }
 
+    /**
+     * Selects the axe if the player has it, if not, the player punches the tree
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a string in which the actor chops or punches the type of tree
+     */
     @Override
     public String execute(Actor actor, GameMap map){
         Weapon weapon = ((Player) actor).getIntrinsicWeapon();
@@ -63,6 +69,11 @@ public class ChopAction extends Action {
         return actor + " " + weapon.verb() + " " + target;
     }
 
+    /**
+     * The menu description which the player can select it
+     * @param actor The actor performing the action.
+     * @return a string stating if the player wishes to chop the tree at that direction
+     */
     @Override
     public String menuDescription(Actor actor){
         return actor + " chops " +  target + " at " + direction;

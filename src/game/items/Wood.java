@@ -37,6 +37,10 @@ public class Wood extends Item implements Resettable, Stackable{
         return woodAmount;
     }
 
+    /**
+     * Get the storable type
+     * @return a Storable enum of wood
+     */
     @Override
     public Storable getStorableType() {
         return Storable.WOOD;

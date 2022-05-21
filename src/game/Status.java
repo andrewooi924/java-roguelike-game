@@ -22,5 +22,6 @@ public enum Status {
     CAN_BE_CHOPPED, // use this status to be considered a tree that can be chopped
     CAN_BE_DRUNK, // Can drink this.
     CAN_CARRY_STORABLES,
+    CAN_CARRY_LIQUIDS,
     NEW_MENU
 }

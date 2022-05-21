@@ -4,10 +4,10 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Status;
 import game.items.Bottle;
-import game.items.Consumable;
-import game.positions.Fountain;
-import game.positions.HealthFountain;
+import game.items.Consumable.Consumable;
+import game.positions.Fountain.Fountain;
 
 public class FillBottleAction extends Action {
     Fountain fountain;
@@ -25,8 +25,7 @@ public class FillBottleAction extends Action {
     public String execute(Actor actor, GameMap map) {
         Bottle bottle = null;
         for (Item i: actor.getInventory()) {
-            // if (i.getDisplayChar() == 'B')
-            if (i instanceof Bottle) {
+            if (i.hasCapability(Status.CAN_CARRY_LIQUIDS)) {
                 bottle = (Bottle)i;
             }
         }

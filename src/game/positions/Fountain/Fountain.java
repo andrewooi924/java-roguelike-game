@@ -1,4 +1,4 @@
-package game.positions;
+package game.positions.Fountain;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -6,8 +6,8 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.FillBottleAction;
-import game.items.Consumable;
-import game.items.PowerWater;
+import game.items.Consumable.Consumable;
+import game.positions.Dirt;
 
 public abstract class Fountain extends Ground {
     private int maxCapacity;

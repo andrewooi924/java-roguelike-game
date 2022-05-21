@@ -10,10 +10,10 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
-import game.items.Axe;
+import game.items.Weapon.Axe;
 import game.items.Fire;
 import game.items.Key;
-import game.items.SuperMushroom;
+import game.items.Consumable.SuperMushroom;
 
 /**
  * Special Action for attacking other Actors.

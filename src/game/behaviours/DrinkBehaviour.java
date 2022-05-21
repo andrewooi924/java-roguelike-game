@@ -7,12 +7,12 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.actions.ConsumeAction;
-import game.positions.Fountain;
+import game.positions.Fountain.Fountain;
 
 import java.util.Random;
 
 public class DrinkBehaviour implements Behaviour{
-    final double DRINK_CHANCE = 1.0;
+    final double DRINK_CHANCE = 0.8;
     private Random random = new Random();
 
     @Override
