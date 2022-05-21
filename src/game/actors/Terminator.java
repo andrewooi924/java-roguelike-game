@@ -45,8 +45,6 @@ public class Terminator extends Actor{
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this,direction));
-        }
-        if (otherActor instanceof Player) {
             this.behaviours.put(8, new AttackBehaviour(otherActor));
         }
         return actions;
