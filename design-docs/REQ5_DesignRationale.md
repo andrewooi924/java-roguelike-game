@@ -11,8 +11,7 @@ For reference, here are the class diagrams and sequence diagrams.
 ![req5 sequence diagram](./REQ5_sequence.png "REQ5 Sequence Diagram")
 
 ## Rationale  
-In summary, Toad is an interactive actor who the player can interact with. When designing the code, I have
-decided that Toad will have the code to perform trading with the Player instead of the Player having
+When designing the code, I have decided that Toad will have the code to perform trading with the Player instead of the Player having
 the code as it will have too many responsibilities. By creating a dependency injector for the Toad class called
 TradableInjector, I managed to reduce the dependencies on Toad. I have also created a Tradable interface
 as to follow the Dependency Inversion Principle so that the TradingAction class is only required to know
@@ -36,7 +35,7 @@ if they decide to choose to buy the item from Toad and perform the execution of 
 deducting the coins from the player!  
 <b><u>Open-Closed Principle</b></u>: This is followed since it will be easy to just add more methods
 to it, for example: adding a discount to certain items  
-<b><u>Liskov Substitution Principle</b></u>: This is followed as well, as we extended from the Action class  
+<b><u>Liskov Substitution Principle</b></u>: None   
 <b><u>Interface Segregation Principle</b></u>: None 
 <b><u>Dependency Inversion Principle</b></u>:  I created the Tradable interface so to follow this principle.
 The main reason behind it is that, instead of this class having to depend on a full Item instance where
@@ -49,11 +48,7 @@ Purpose: To perform trading with the Player
 to know what items to trade or what actions to be added to its allowableActions  
 <b><u>Open-Closed Principle</b></u>:  This is followed as we extended from the Actor class without
 modifying the source code  
-<b><u>Liskov Substitution Principle</b></u>: The reason we extended Toad as an Actor is because in the
-World engine, the player actually detects its surroundings and check for what allowableActions 
-the surrounding actor has. By making Toad an Actor, we are not required to re-code existing
-checkings of surrounding and just implement the allowableActions which can be performed with Toad.
-Thus, we decided that it will be better to make Toad an Actor.  
+<b><u>Liskov Substitution Principle</b></u>: None   
 <b><u>Interface Segregation Principle</b></u>: No interface created   
 <b><u>Dependency Inversion Principle</b></u>: None
 

@@ -43,10 +43,7 @@ on the Resettable interface and not the instances themselves to be reseted!
 Purpose: It's an action class which is used when the reset option is chosen by the player  
 <b><u>Single Responsibility Principle</b></u>:  It's only responsibility is to reset the entire game  
 <b><u>Open-Closed Principle</b></u>: It is extended from Action and can be modified to suit its usability!   
-<b><u>Liskov Substitution Principle</b></u>: Since it is an Action which can be performed by the player, 
-I decided that it will be great to extend from Action class since it requires the menu, the hotkey and even
-the execute method! The other reason also being that the player can only call the Reset option if it is an 
-Action, so undoubtedly it is not possible to not extend it from an Action.  
+<b><u>Liskov Substitution Principle</b></u>: None   
 <b><u>Interface Segregation Principle</b></u>: None  
 <b><u>Dependency Inversion Principle</b></u>: None
 
