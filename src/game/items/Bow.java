@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.GameUtilities;
 import game.Status;
 import game.actions.AttackAction;
 import game.actions.ConsumeAction;
@@ -46,6 +47,23 @@ public class Bow extends RangedWeapon implements Craftable {
     @Override
     public int getRange() {
         return BOW_RANGE;
+    }
+
+    @Override
+    public int getAmmoAmount(Actor actor) {
+        MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
+        if (magicPouch == null) {
+            return 0;
+        }
+        return magicPouch.getAmount(Storable.ARROW);
+    }
+
+    @Override
+    public void reduceAmmo(Actor actor, int amount) {
+        MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
+        if (magicPouch != null) {
+            magicPouch.decreaseAmount(Storable.ARROW, 1);
+        }
     }
 
     /**

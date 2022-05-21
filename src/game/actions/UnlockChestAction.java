@@ -5,9 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Goomba;
-import game.items.Arrow;
-import game.items.GalaxySword;
-import game.items.Gun;
+import game.items.*;
 import game.positions.Dirt;
 
 import java.util.Random;
@@ -44,15 +42,19 @@ public class UnlockChestAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map){
         String ret = "";
-        if (random.nextDouble() <= 0.25){
+        if (random.nextDouble() <= 0.15){
             location.addActor(new Goomba());
             ret += "It was a trap box! A Goomba appears.";
         }
         else{
-            actor.addItemToInventory(new Arrow(2));
-            ret += "Treasure Chest dropped 2 arrows\n";
+            int arrowDrop = random.nextInt(3)+1;
+            int coinDrop = random.nextInt(101)+20;
+            actor.addItemToInventory(new Arrow(arrowDrop));
+            actor.addItemToInventory(new Coin(coinDrop));
+            ret += "Treasure Chest dropped " + arrowDrop + " arrows\n";
+            ret += "Treasure Chest dropped " + coinDrop + " coins\n";
             double rng = random.nextDouble();
-            if (rng <= 0.95){
+            if (rng <= 0.05){
                 actor.addItemToInventory(new Gun());
                 ret += "Treasure Chest dropped a gun, what?";
             }
@@ -60,7 +62,18 @@ public class UnlockChestAction extends Action {
                 actor.addItemToInventory(new GalaxySword());
                 ret += "Treasure Chest dropped a purple sword";
             }
-            //TODO: drop enchantment books else statement
+            else if (rng <= 0.30){
+                actor.addItemToInventory(new PowerStar());
+                ret += "Treasure Chest dropped a Power Star";
+            }
+            else if (rng <= 0.60){
+                actor.addItemToInventory(new Wrench());
+                ret += "Treasure Chest dropped a Wrench";
+            }
+            else{
+                actor.addItemToInventory(new SuperMushroom());
+                ret += "Treasure Chest dropped a Super Mushroom";
+            }
         }
         location.setGround(new Dirt());
         return ret;

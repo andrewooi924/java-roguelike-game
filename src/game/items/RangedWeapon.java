@@ -28,6 +28,14 @@ public abstract class RangedWeapon extends Item implements Weapon {
 
     public abstract int getRange();
 
+    public int getAmmoAmount(Actor actor) {
+        // Infinite by default
+        return 1;
+    }
+
+    public void reduceAmmo(Actor actor, int amount) {
+    }
+
     /**
      * Each turn, it needs to recalculate the people it can shoot because they all moved.
      * @param currentLocation The location of the actor carrying this Item.
@@ -36,7 +44,9 @@ public abstract class RangedWeapon extends Item implements Weapon {
     @Override
     public void tick(Location currentLocation, Actor actor) {
         shootActions.clear();
-        shootActions.add(dfsAddEnemies(currentLocation, 0, new ArrayList<Location>()));
+        if (this.getAmmoAmount(actor) > 0) {
+            shootActions.add(dfsAddEnemies(currentLocation, 0, new ArrayList<Location>()));
+        }
     }
 
     @Override
@@ -96,5 +106,6 @@ public abstract class RangedWeapon extends Item implements Weapon {
     public int chanceToHit() {
         return 100;
     }
+
 
 }

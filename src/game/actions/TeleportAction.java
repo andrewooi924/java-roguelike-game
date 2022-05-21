@@ -6,30 +6,29 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.managers.MapManager;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class TeleportAction extends Action {
 
     private final HashMap<GameMap, String> mapNames;
-    private final Location newLocation;
+    private final Location locationToTravel;
 
-    public TeleportAction(Location newLocation) {
+    public TeleportAction(Location locationToTravel) {
         MapManager mapManager = MapManager.getInstance();
         mapNames = mapManager.getMapNames(); // getting the names of the maps
-        this.newLocation = newLocation;
+        this.locationToTravel = locationToTravel;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        if (newLocation.containsAnActor())
-            map.removeActor(newLocation.getActor()); // removes the piranha plant if it is there
-        map.moveActor(actor, newLocation);
-        return "Mario teleports to " + mapNames.get(newLocation.map()) + " at x:" + newLocation.x() + " y:" + newLocation.y();
+        if (locationToTravel.containsAnActor())
+            map.removeActor(locationToTravel.getActor()); // removes the piranha plant if it is there
+        map.moveActor(actor, locationToTravel);
+        return "Mario teleports to " + mapNames.get(locationToTravel.map());
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "Teleport to " + mapNames.get(newLocation.map());
+        return "Teleport to " + mapNames.get(locationToTravel.map());
     }
 }

@@ -9,8 +9,6 @@ import game.actors.PiranhaPlant;
 import game.managers.TeleportPointsManager;
 import game.reset.Resettable;
 
-import java.util.HashMap;
-
 public class WarpPipe extends HigherGround implements Resettable {
 
     private int age = 0;
@@ -46,21 +44,15 @@ public class WarpPipe extends HigherGround implements Resettable {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList lst = super.allowableActions(actor, location, direction);
 
-        // getting all the locations
-        TeleportPointsManager teleportPointsManager = TeleportPointsManager.getInstance();
-        HashMap<String, Location> locations = teleportPointsManager.getLocations();
-
-
-        // checking if the pipe has a location to go
-        if (direction.isEmpty()) {
-            String key = location.map() + "x:" + location.x() + "y:" + location.y();
-            Location locationToTravel = locations.get(key);
+        // checking if the actor is on the pipe and can teleport
+        if (direction.isEmpty() && actor.hasCapability(Status.CAN_TELEPORT)) {
+            TeleportPointsManager teleportPointsManager = TeleportPointsManager.getInstance();
+            Location locationToTravel = teleportPointsManager.findLocationToTravel(location);
 
             // it may be a broken pipe
-            if (actor.hasCapability(Status.CAN_TELEPORT) && locationToTravel != null) {
-                Location actualLocation = locationToTravel.map().at(locationToTravel.x(), locationToTravel.y());
-                lst.add(new TeleportAction(actualLocation));
-                teleportPointsManager.addLocation(actualLocation, location); // remembers the location from the pipe
+            if (locationToTravel != null) {
+                lst.add(new TeleportAction(locationToTravel));
+                teleportPointsManager.addLocation(locationToTravel, location); // remembers the location from the pipe
             }
         }
         return lst;

@@ -21,8 +21,6 @@ public enum Status {
     CAN_CHOP, // use this status to be considered a weapon that can chop trees
     CAN_BE_CHOPPED, // use this status to be considered a tree that can be chopped
     CAN_BE_DRUNK, // Can drink this.
-    CAN_CARRY_WOOD,
-    CAN_CARRY_COINS,
     CAN_CARRY_STORABLES,
     NEW_MENU
 }

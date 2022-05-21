@@ -4,6 +4,7 @@ package game.items;
         import edu.monash.fit2099.engine.items.Item;
         import edu.monash.fit2099.engine.items.PickUpItemAction;
         import edu.monash.fit2099.engine.positions.Location;
+        import game.GameUtilities;
         import game.actions.PickUpStackableAction;
         import game.reset.Resettable;
         import game.Status;
@@ -36,6 +37,10 @@ public class Coin extends Item implements Resettable, Stackable {
         return amount;
     }
 
+    /**
+     * Returns storable coins
+     * @return storable coins
+     */
     @Override
     public Storable getStorableType() {
         return Storable.COIN;
@@ -61,6 +66,18 @@ public class Coin extends Item implements Resettable, Stackable {
             currentLocation.removeItem(this);
             this.removeCapability(Status.RESETTABLE);
         }
+    }
+
+    /**
+     * Adds coins to the Player's magic pouch
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+        MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
+        magicPouch.increaseAmount(Storable.COIN, this.getAmount());
+        actor.removeItemFromInventory(this);
     }
 
     /**

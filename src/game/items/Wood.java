@@ -11,15 +11,12 @@ import game.reset.Resettable;
 
 /**
  * Literally just wood, can be used to craft items at a crafting bench
- * or sold to Toad for money
  */
-//TODO, should also be sellable by modifying the Tradable interface
-public class Wood extends Item implements Tradable, Resettable, Stackable{
+public class Wood extends Item implements Resettable, Stackable{
 
     /**
-     * The price of the wood if sold to Toad
+     * The number of Wood
      */
-    private int price = 20;//sell price, not the buy price
     private int woodAmount;
 
     /**
@@ -46,25 +43,7 @@ public class Wood extends Item implements Tradable, Resettable, Stackable{
     }
 
     /**
-     * Getter for the price of the Wood
-     * @return the price of the Wood
-     */
-    @Override
-    public int getPrice() {
-        return this.price;
-    }
-
-    /**
-     * Getter for the Wood
-     * @return the Wood
-     */
-    @Override
-    public Item getItem() {
-        return this;
-    }
-
-    /**
-     * If the status is Resettable, then remove the coin from the ground
+     * If the status is Resettable, then remove the wood from the ground
      * @param currentLocation The location of the ground on which we lie.
      */
     @Override
