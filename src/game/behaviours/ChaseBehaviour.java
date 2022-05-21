@@ -10,20 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import java.util.*;
 
 public class ChaseBehaviour implements Behaviour {
-
-
    private final Actor target;
-   HashMap<Location, Double> notVisited= new HashMap<>();
-
-   private void setUnvisitedToExplorable(Location location, Location source, Actor actor) {
-      notVisited.put(location, squaredDistance(location, source));
-      for (Exit exit: location.getExits()) {
-         Location destination = exit.getDestination();
-         if (!notVisited.containsKey(destination) && location.canActorEnter(actor)) {
-            setUnvisitedToExplorable(destination, source, actor);
-         }
-      }
-   }
    private double squaredDistance(Location a, Location b) {
       double p = (double)b.x() - (double)a.x();
       double q = (double)b.y() - (double)a.y();
@@ -40,19 +27,6 @@ public class ChaseBehaviour implements Behaviour {
       this.target = subject;
    }
 
-   private Location popNearest() {
-      Location least = null;
-      Double leastDist = null;
-      for (Map.Entry<Location, Double> set: this.notVisited.entrySet()) {
-         if (least == null || leastDist < set.getValue()) {
-            least = set.getKey();
-            leastDist = set.getValue();
-         }
-      }
-      this.notVisited.remove(least);
-      return least;
-   }
-
    @Override
    public Action getAction(Actor actor, GameMap map) {
       if(!map.contains(target) || !map.contains(actor))
@@ -60,8 +34,6 @@ public class ChaseBehaviour implements Behaviour {
 
       Location here = map.locationOf(actor);
       Location there = map.locationOf(target);
-      this.notVisited.clear();
-      setUnvisitedToExplorable(here, here, actor);
 
       ArrayList<Location> visited = new ArrayList<Location>();
       ArrayList<Location> unvisited = new ArrayList<Location>();
@@ -70,6 +42,9 @@ public class ChaseBehaviour implements Behaviour {
       visited.add(here);
       unvisited.add(here);
       while (!unvisited.isEmpty()) {
+         // Bad complexity but eh.
+         // We want to get the shortest distance version.
+         Collections.sort(unvisited, Comparator.comparing((Location a) -> squaredDistance(here, a)));
          Location v = unvisited.get(0);
          unvisited.remove(0);
 
