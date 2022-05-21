@@ -5,9 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.Bottle;
-import game.items.Consumable;
-import game.positions.Fountain;
-import game.positions.HealthFountain;
+import game.items.Consumable.Consumable;
+import game.positions.Fountain.Fountain;
 
 public class FillBottleAction extends Action {
     Fountain fountain;

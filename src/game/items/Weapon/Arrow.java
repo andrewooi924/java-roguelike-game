@@ -1,4 +1,4 @@
-package game.items;
+package game.items.Weapon;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropItemAction;
@@ -8,6 +8,10 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.GameUtilities;
 import game.Status;
 import game.actions.PickUpStackableAction;
+import game.items.MagicPouch;
+import game.items.Stackable;
+import game.items.Storable;
+import game.items.Tradable;
 import game.reset.Resettable;
 
 /**

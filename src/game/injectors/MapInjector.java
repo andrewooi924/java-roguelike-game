@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.map.Maps;
 import game.positions.*;
+import game.positions.Fountain.HealthFountain;
+import game.positions.Fountain.PowerFountain;
 import game.positions.Tree.SproutTree;
 import java.io.IOException;
 import java.util.HashMap;

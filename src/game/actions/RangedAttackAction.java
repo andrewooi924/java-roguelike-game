@@ -2,8 +2,7 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.Weapon;
-import game.items.RangedWeapon;
+import game.items.Weapon.RangedWeapon;
 
 /**
  * Ranged attack, a far distance attack to an enemy

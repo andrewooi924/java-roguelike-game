@@ -1,6 +1,5 @@
 package game;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import edu.monash.fit2099.engine.actors.Actor;
@@ -11,11 +10,10 @@ import game.actors.Bowser;
 import game.actors.Player;
 import game.actors.PrincessPeach;
 import game.actors.Toad;
-import game.items.Bow;
-import game.managers.TeleportPointsManager;
+import game.items.Weapon.Bow;
 import game.managers.MapManager;
-import game.items.PowerStar;
-import game.items.SuperMushroom;
+import game.items.Consumable.PowerStar;
+import game.items.Consumable.SuperMushroom;
 import game.map.Maps;
 
 /**

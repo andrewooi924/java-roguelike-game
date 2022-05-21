@@ -3,6 +3,10 @@ package game.injectors;
 import edu.monash.fit2099.engine.actions.ActionList;
 import game.items.*;
 import game.actions.TradingAction;
+import game.items.Consumable.PowerStar;
+import game.items.Consumable.SuperMushroom;
+import game.items.Weapon.Arrow;
+import game.items.Weapon.Axe;
 
 /**
  * Injector for tradable, instantiates all the required tradable items and actions to be given to toad

@@ -1,12 +1,11 @@
-package game.items;
+package game.items.Consumable;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
-import game.actions.ConsumeAction;
 
-public class HealingWater extends Item implements Consumable{
+public class HealingWater extends Consumable{
     final int HEAL_AMOUNT = 50;
 
     /***
@@ -17,11 +16,6 @@ public class HealingWater extends Item implements Consumable{
      */
     public HealingWater() {
         super("Healing Water", 'H', true);
-    }
-
-    @Override
-    public Status effect() {
-        return null;
     }
 
     @Override
