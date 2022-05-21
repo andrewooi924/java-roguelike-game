@@ -28,7 +28,6 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.addCapability(this.consumable.effect());
         String additionalInfo = this.consumable.consume(actor, map);
         additionalInfo = (additionalInfo == null || additionalInfo.isEmpty()) ? "" : " - " + additionalInfo;
         return actor.toString() + " consumes " + consumable.toString() + additionalInfo;

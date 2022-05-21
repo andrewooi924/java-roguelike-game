@@ -12,7 +12,7 @@ import game.items.Tradable;
 /**
  * An item which makes mario bigger
  */
-public class SuperMushroom extends Item implements Consumable, Tradable {
+public class SuperMushroom extends Consumable implements Tradable {
     private Action consumeAction;
     private int price = 400;
 
@@ -21,27 +21,15 @@ public class SuperMushroom extends Item implements Consumable, Tradable {
      * Constructor and adds the consume action to it also, allowing the player to consume this SuperMushroom
      */
     public SuperMushroom() {
-        super("Super Mushroom", '^', true);
+        super("Super Mushroom", '^', false);
         this.consumeAction = new ConsumeAction(this);
         this.addAction(consumeAction);
     }
-
-    /**
-     * This SuperMushroom cannot be dropped
-     * @param actor - the player
-     * @return null
-     */
-    @Override
-    public DropItemAction getDropAction(Actor actor) {
-        return null;
-    }
-
     /**
      * returns the status of this SuperMushroom
      * @return a Status called TALL
      */
-    @Override
-    public Status effect() {
+    private Status effect() {
         return Status.TALL;
     }
 
@@ -53,6 +41,7 @@ public class SuperMushroom extends Item implements Consumable, Tradable {
      */
     @Override
     public String consume(Actor actor, GameMap map) {
+        actor.addCapability(this.effect());
         this.removeAction(this.consumeAction);
 
         // Remove it from your inventory if it is there.

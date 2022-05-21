@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actors.IntrinsicFighter;
 
-public class PowerWater extends Item implements Consumable {
+public class PowerWater extends Consumable {
     final int BASEATTACK_BOOST = 15;
 
     /***
@@ -14,11 +14,6 @@ public class PowerWater extends Item implements Consumable {
      */
     public PowerWater() {
         super("Power Water", 'A', false);
-    }
-
-    @Override
-    public Status effect() {
-        return null;
     }
 
     @Override

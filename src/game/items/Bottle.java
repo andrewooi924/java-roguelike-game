@@ -9,7 +9,7 @@ import game.items.Consumable.Consumable;
 
 import java.util.Stack;
 
-public class Bottle extends Item implements Consumable {
+public class Bottle extends Consumable {
 
     // TO-DO: Merge Item and Consumable somehow.
     Stack<Consumable> liquids = new Stack<Consumable>();
@@ -30,11 +30,6 @@ public class Bottle extends Item implements Consumable {
     @Override
     public String toString() {
         return (super.toString() + liquids);
-    }
-
-    @Override
-    public Status effect() {
-        return null;
     }
 
     @Override
