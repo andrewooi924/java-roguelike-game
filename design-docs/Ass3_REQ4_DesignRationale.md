@@ -4,7 +4,7 @@ For reference here are the class and sequence diagrams.
 
 ## Class Diagram
 
-![ass3 req4 class diagram]()
+![ass3 req4 class diagram](./Ass3_REQ4_class.png "Ass3 REQ4 Class Diagram")
 
 ## Sequence Diagram
 
