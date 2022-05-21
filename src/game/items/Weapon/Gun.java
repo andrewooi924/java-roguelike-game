@@ -1,8 +1,4 @@
-package game.items;
-
-import edu.monash.fit2099.engine.items.Item;
-
-import java.util.HashMap;
+package game.items.Weapon;
 
 /**
  * A Glock, why is this in the game?

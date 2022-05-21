@@ -1,7 +1,9 @@
-package game.items;
+package game.items.Weapon;
 
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.items.Craftable;
+import game.items.Storable;
 
 import java.util.HashMap;
 

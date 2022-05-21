@@ -1,4 +1,4 @@
-package game.items;
+package game.items.Consumable;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actions.ConsumeAction;
+import game.items.Tradable;
 
 /**
  * An item which makes mario bigger

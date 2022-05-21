@@ -6,6 +6,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Goomba;
 import game.items.*;
+import game.items.Consumable.PowerStar;
+import game.items.Consumable.SuperMushroom;
+import game.items.Weapon.Arrow;
+import game.items.Weapon.GalaxySword;
+import game.items.Weapon.Gun;
 import game.positions.Dirt;
 
 import java.util.Random;

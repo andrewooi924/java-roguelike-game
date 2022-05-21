@@ -1,22 +1,16 @@
-package game.items;
+package game.items.Weapon;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import game.GameUtilities;
 import game.Status;
-import game.actions.AttackAction;
-import game.actions.ConsumeAction;
-import game.actions.RangedAttackAction;
+import game.items.Craftable;
+import game.items.MagicPouch;
+import game.items.Storable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A weapon used to fire arrows, useless without arrows.

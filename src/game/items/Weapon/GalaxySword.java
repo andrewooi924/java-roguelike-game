@@ -1,4 +1,4 @@
-package game.items;
+package game.items.Weapon;
 
 /**
  * A super overpowered sword that slashes through dimensions.

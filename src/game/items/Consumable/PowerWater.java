@@ -1,11 +1,10 @@
-package game.items;
+package game.items.Consumable;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actors.IntrinsicFighter;
-import game.actors.Player;
 
 public class PowerWater extends Item implements Consumable {
     final int BASEATTACK_BOOST = 15;
