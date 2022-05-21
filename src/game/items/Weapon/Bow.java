@@ -107,15 +107,6 @@ public class Bow extends RangedWeapon implements Craftable {
     }
 
     /**
-     * The hit chance of Bow
-     * @return 100
-     */
-    @Override
-    public int chanceToHit() {
-        return 100;
-    }
-
-    /**
      * Returns the recipe for crafting Bow
      * @return the recipe for crafting Bow
      */
