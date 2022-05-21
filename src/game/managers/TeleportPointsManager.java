@@ -6,6 +6,9 @@ import game.map.Maps;
 
 import java.util.HashMap;
 
+/**
+ * Global singleton which manages the teleport points throughout the maps
+ */
 public class TeleportPointsManager {
 
     private final HashMap<Location, Location> locations;
@@ -16,6 +19,10 @@ public class TeleportPointsManager {
         addFixedLocations();
     }
 
+    /**
+     * Static factory method
+     * @return an instance of this class
+     */
     public static TeleportPointsManager getInstance(){
         if(instance == null){
             instance = new TeleportPointsManager();
@@ -23,10 +30,20 @@ public class TeleportPointsManager {
         return instance;
     }
 
+    /**
+     * Adds 2 locations to the hash map, one to go from and the other to teleport to
+     * @param location - the starting location where you can teleport to somewhere else
+     * @param newLocation - the destination location where you will end up
+     */
     public void addLocation(Location location, Location newLocation) {
         locations.put(location, newLocation);
     }
 
+    /**
+     * Returns a location to teleport to
+     * @param location - the starting location where you can teleport to somewhere else
+     * @return a location where you will end up or null
+     */
     public Location findLocationToTravel(Location location) {
         return locations.get(location);
     }

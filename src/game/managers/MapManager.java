@@ -5,6 +5,9 @@ import game.injectors.MapInjector;
 import game.map.Maps;
 import java.util.HashMap;
 
+/**
+ * A global singleton manager which manages all the map in this file
+ */
 public class MapManager {
 
     private HashMap<Maps, GameMap> maps;
@@ -18,6 +21,10 @@ public class MapManager {
         mapNames = mapInjector.addingMapNames();
     }
 
+    /**
+     * A static factory method of the class
+     * @return an instance of this class
+     */
     public static MapManager getInstance() {
         if(instance == null){
             instance = new MapManager();
@@ -25,10 +32,18 @@ public class MapManager {
         return instance;
     }
 
+    /**
+     * Getter of maps
+     * @return a hash map of <Maps, GameMap>
+     */
     public HashMap<Maps, GameMap> getMaps() {
         return maps;
     }
 
+    /**
+     * Getter of mapNames
+     * @return a hash map of <GameMap, String>
+     */
     public HashMap<GameMap, String> getMapNames() {
         return mapNames;
     }
