@@ -8,11 +8,12 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.GameUtilities;
 import game.Status;
 import game.actions.PickUpStackableAction;
+import game.reset.Resettable;
 
 /**
  * A stick with a sharp metal tip used for killing
  */
-public class Arrow extends Item implements Tradable, Stackable {
+public class Arrow extends Item implements Tradable, Stackable, Resettable {
 
     /**
      * The price of an arrow
@@ -30,6 +31,7 @@ public class Arrow extends Item implements Tradable, Stackable {
     public Arrow(int arrowCount){
         super("Arrow", 'A', false);
         this.arrowCount = arrowCount;
+        registerInstance();
     }
 
     /**
@@ -88,5 +90,22 @@ public class Arrow extends Item implements Tradable, Stackable {
         MagicPouch magicPouch = (MagicPouch) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_STORABLES);
         magicPouch.increaseAmount(Storable.ARROW, this.getAmount());
         actor.removeItemFromInventory(this);
+    }
+
+    /**
+     * If the status is Resettable, then remove the arrow from the ground
+     * @param currentLocation The location of the ground on which we lie.
+     */
+    @Override
+    public void tick(Location currentLocation) {
+        if (this.hasCapability(Status.RESETTABLE)) {
+            currentLocation.removeItem(this);
+            this.removeCapability(Status.RESETTABLE);
+        }
+    }
+
+    @Override
+    public void resetInstance() {
+        this.addCapability(Status.RESETTABLE);
     }
 }

@@ -43,7 +43,7 @@ public class Wood extends Item implements Resettable, Stackable{
     }
 
     /**
-     * If the status is Resettable, then remove the coin from the ground
+     * If the status is Resettable, then remove the wood from the ground
      * @param currentLocation The location of the ground on which we lie.
      */
     @Override
