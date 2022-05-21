@@ -38,8 +38,8 @@ The CraftAction class utilises the aforementioned Magic Pouch and checks if the 
 to craft the item from the recipe. If so, the method will craft the item and add it to the Player's 
 inventory, otherwise it will display a message saying the Player's does not have enough materials.
 
-TODO here: 
-Implementation of Menus
+As the menu will be more congested with options for the player to chose, we have decided that a separate menu
+for the crafting would be useful and easier for the user to choose the options.
 
 The TreasureChest class contains a Treasure Chest ground that can be "unlocked" by the Player to 
 gain surprises. It utilises the UnlockChestAction class where it takes a random generated probability
