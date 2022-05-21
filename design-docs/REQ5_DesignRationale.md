@@ -76,3 +76,11 @@ design since it will prevent TradingAction class to access from unnecessary meth
 For the TradingInjector class, I learned from Week 8 that it is good to lift off dependencies from Toad.
 As more Tradable items appear in the game, it is only wise to create these Item objects in another class
 instead of Toad and be dependent on that class instead. Therefore, I have created a Dependency Injector class to be used for Toad class.
+
+### Changes from Assignment 2 to Assignment 3
+Instead of the WalletKeeper interface, we have now created a MagicPouch which holds many storable items such
+as coins. By doing this, we do not need to implement the keeping of balance in player, which follows the
+SRP principle!  
+
+In addition, we do also have the SwitchToShopMenu which makes it easier for the player to see which 
+action it would like to perform. 
