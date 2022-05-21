@@ -12,7 +12,7 @@ import game.positions.Fountain.Fountain;
 import java.util.Random;
 
 public class DrinkBehaviour implements Behaviour{
-    final double DRINK_CHANCE = 1.0;
+    final double DRINK_CHANCE = 0.8;
     private Random random = new Random();
 
     @Override
