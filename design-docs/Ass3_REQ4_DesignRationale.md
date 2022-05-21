@@ -6,9 +6,11 @@ For reference here are the class and sequence diagrams.
 
 ![ass3 req4 class diagram](./Ass3_REQ4_class.png "Ass3 REQ4 Class Diagram")
 
-## Sequence Diagram
+## Sequence Diagrams
 
-![ass3 req4 sequence diagram]()
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_01.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_02.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_03.png)
 
 ## Rationale
 
