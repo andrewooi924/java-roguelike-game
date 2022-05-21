@@ -11,6 +11,8 @@ For reference here are the class and sequence diagrams.
 ![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_01.png)
 ![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_02.png)
 ![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_03.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_04.png)
+![ass3 req4 sequence diagram](./Ass3_REQ4_sequence_05.png)
 
 ## Rationale
 
