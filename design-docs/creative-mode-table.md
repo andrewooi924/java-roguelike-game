@@ -21,7 +21,7 @@ when you unlock it such as a galaxy sword! With the menu piling up with many opt
 Ranged Combat
 
 **Description**:
-Bows, arrows and guns now exist in the game! They utilize dfs to search through the enemies and finish them! Bows have a range of 5 and have arrows to shoot while guns have unlimited POWER(unlimited range and unlimited bullets)!! With these weapons, we're confident mario can one shot Bowser and Peach(who needs Peach when we got guns).
+Bows, arrows and guns now exist in the game! They utilize dfs to search through the enemies and finish them! Bows have a range of 5 and have arrows to shoot while guns have unlimited POWER(unlimited range and unlimited bullets)!! With these weapons, we're confident mario can one shot Bowser(who needs Peach when we got guns).
 
 **Explanation why it adheres to SOLID principles** (WHY):
 - All classes follow SRP. When the player wants to shoot an enemy, it must have a bow or gun and calls the RangedAttackAction which attacks the enemy. All classes mentioned have their single responsibility which meets the principle.
