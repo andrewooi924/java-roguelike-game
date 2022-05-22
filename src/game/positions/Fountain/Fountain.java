@@ -57,13 +57,29 @@ public abstract class Fountain extends Ground {
         this.addCapability(Status.CAN_BE_DRUNK);
     }
 
+    /**
+     * Starts the timer for the Fountain to refill its contents of liquids.
+     */
+    private void startRefillProcess() {
+        this.refill = true;
+        this.refillCounter = this.REFILL_TICKS;
+    }
+
+    /**
+     * Stops the timer for the Fountain to refill its contents of liquids.
+     * and adds the contents to its maximum amount of liquid in the fountain.
+     */
+    private void stopRefillProcess() {
+        this.refill = false;
+        this.capacity = this.maxCapacity;
+    }
+
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList ret = new ActionList();
         if (this.capacity == 0) {
             if (!this.refill) {
-                this.refill = true;
-                this.refillCounter = this.REFILL_TICKS;
+                this.startRefillProcess();
             }
             return ret;
         }
@@ -79,8 +95,7 @@ public abstract class Fountain extends Ground {
         if (this.refill) {
             this.refillCounter--;
             if (this.refillCounter == 0) {
-                this.refill = false;
-                this.capacity = this.maxCapacity;
+                this.stopRefillProcess();
             }
         }
     }

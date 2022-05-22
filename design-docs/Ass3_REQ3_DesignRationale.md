@@ -12,6 +12,9 @@ For reference, here are the class diagrams and sequence diagrams.
 ![ass 3 req3 sequence_02](./Ass3_REQ3_sequence_02.png "Ass 3 REQ3 Sequence Diagram 1")
 
 ## Rationale  
+I have also implemented the optional challenges, hence the Player does not start with a Bottle and instead Mario has to 
+obtain the Bottle from Toad by talking to him (Select "Player talks with Toad").
+
 ### Water classes
 The `Consumable` class already existed and had similar properties as the new `Power Water` and `Healing Water` would have:
 They're both something you can "pick up", they have an effect when you "consume" them, they have similar menu
