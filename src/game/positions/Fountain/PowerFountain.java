@@ -11,7 +11,7 @@ public class PowerFountain extends Fountain {
      * Constructor.
      */
     public PowerFountain() {
-        super('A', 2, new PowerWater());
+        super('A', 10, new PowerWater());
     }
 
     @Override

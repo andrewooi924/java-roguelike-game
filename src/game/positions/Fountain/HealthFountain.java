@@ -11,7 +11,7 @@ public class HealthFountain extends Fountain {
      * Constructor.
      */
     public HealthFountain() {
-        super('H', 2, new HealingWater());
+        super('H', 10, new HealingWater());
     }
 
     @Override

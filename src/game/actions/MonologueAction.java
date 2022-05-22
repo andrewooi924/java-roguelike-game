@@ -4,7 +4,9 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.GameUtilities;
 import game.Status;
+import game.items.Bottle;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -46,8 +48,15 @@ public class MonologueAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         ArrayList<String> dialoguePossibilities = new ArrayList<String>();
+        boolean hasBottle = GameUtilities.getItemWithCapability(actor, CAN_CARRY_LIQUIDS) != null;
         boolean hasWrench = false;
         boolean hasPowerStar = actor.hasCapability(POWER_STAR);
+
+        if (!hasBottle) {
+            actor.addItemToInventory(new Bottle());
+            return this.actor + ": \"" + "It's dangerous to go alone! Take this Bottle." + "\"";
+        }
+
         for (Item i: actor.getInventory()) {
             if (i.toString().equalsIgnoreCase("Wrench")) {
                 hasWrench = true;

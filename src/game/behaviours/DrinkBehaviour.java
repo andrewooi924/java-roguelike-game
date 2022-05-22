@@ -22,6 +22,11 @@ public class DrinkBehaviour implements Behaviour{
     final double DRINK_CHANCE = 0.8;
 
     /**
+     * The amount of water slots that one sip/drink consumes.
+     */
+    private final int DRINK_CONSUME_AMOUNT = 2;
+
+    /**
      * Random Number Generator
      */
     private Random random = new Random();
@@ -35,7 +40,7 @@ public class DrinkBehaviour implements Behaviour{
             Fountain fountain = (Fountain) ground;
             // Should it drink?
             if (random.nextDouble() <= DRINK_CHANCE) {
-                fountain.reduceCapacity();
+                fountain.reduceCapacity(this.DRINK_CONSUME_AMOUNT);
                 return new ConsumeAction(fountain.getContents());
             }
         }

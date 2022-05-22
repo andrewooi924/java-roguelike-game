@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.GameUtilities;
 import game.Status;
 import game.items.Bottle;
 import game.items.Consumable.Consumable;
@@ -18,6 +19,11 @@ public class FillBottleAction extends Action {
      * The fountain that contains liquid
      */
     private Fountain fountain;
+
+    /**
+     * The amount of water slots filling up a bottle consumes.
+     */
+    private final int FILL_BOTTLE_AMOUNT = 1;
 
     /**
      * Constructor for the FillBottleAction class
@@ -35,18 +41,13 @@ public class FillBottleAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        Bottle bottle = null;
-        for (Item i: actor.getInventory()) {
-            if (i.hasCapability(Status.CAN_CARRY_LIQUIDS)) {
-                bottle = (Bottle)i;
-            }
-        }
+        Bottle bottle = (Bottle) GameUtilities.getItemWithCapability(actor, Status.CAN_CARRY_LIQUIDS);
         if (bottle == null) {
             return actor.toString() + " doesn't have a water bottle!";
         }
         Consumable fillee = this.fountain.getContents();
         bottle.addConsumable(fillee);
-        this.fountain.reduceCapacity(); // Reduce the water from the fountain.
+        this.fountain.reduceCapacity(this.FILL_BOTTLE_AMOUNT); // Reduce the water from the fountain.
 
         return actor.toString() + " has filled their bottle with " + fillee.toString();
     }
