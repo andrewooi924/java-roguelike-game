@@ -8,6 +8,9 @@ import game.actions.JumpActorAction;
 import game.items.Coin;
 import game.positions.HigherGround;
 
+/**
+ * A brick wall
+ */
 public class Wall extends HigherGround {
 
 	/**

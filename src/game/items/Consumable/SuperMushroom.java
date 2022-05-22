@@ -13,7 +13,15 @@ import game.items.Tradable;
  * An item which makes mario bigger
  */
 public class SuperMushroom extends Consumable implements Tradable {
+
+    /**
+     * The action used to consume the Super Mushroom
+     */
     private Action consumeAction;
+
+    /**
+     * The price of the Super Mushroom in Toad's shop
+     */
     private int price = 400;
 
 
@@ -52,7 +60,7 @@ public class SuperMushroom extends Consumable implements Tradable {
         else {
             map.locationOf(actor).removeItem(this);
         }
-        actor.increaseMaxHp(50);
+        actor.increaseMaxHp(500);
         return "";
     }
 

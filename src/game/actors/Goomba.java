@@ -21,7 +21,15 @@ import java.util.Random;
  * A little fungus guy.
  */
 public class Goomba extends Actor implements Resettable {
+
+	/**
+	 * The HashMap that contains all the behaviours of Goomba
+	 */
 	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+
+	/**
+	 * Random Number Generator
+	 */
 	private Random random = new Random();
 
 	/**

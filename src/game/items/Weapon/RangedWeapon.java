@@ -16,7 +16,14 @@ import game.items.Storable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A blueprint for weapons that are ranged
+ */
 public abstract class RangedWeapon extends Item implements Weapon {
+
+    /**
+     * An ActionList that contains all the actions for shooting
+     */
     protected ActionList shootActions = new ActionList();
 
     /***
@@ -29,8 +36,17 @@ public abstract class RangedWeapon extends Item implements Weapon {
         super(name, displayChar, portable);
     }
 
+    /**
+     * Getter for the range of the target from the actor
+     * @return range of the target from the actor
+     */
     public abstract int getRange();
 
+    /**
+     * Getter for the amount of ammo in the ranged weapon
+     * @param actor the actor that holds the ranged weapon
+     * @return the amount of ammo in the ranged weapon
+     */
     public abstract int getAmmoAmount(Actor actor);
 
     /**
@@ -80,6 +96,13 @@ public abstract class RangedWeapon extends Item implements Weapon {
         return this.shootActions.getUnmodifiableActionList();
     }
 
+    /**
+     * Calculates the range between the target and the actor, and shoots the enemy if within the range
+     * @param currentLocation the current location of the target
+     * @param curDepth the range between the target and the actor
+     * @param visited an ArrayList that contains all the locations checked within the range of the actor
+     * @return ActionList that contains all the targets that can be shot
+     */
     private ActionList dfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
         ActionList ret = new ActionList();
         // Base case

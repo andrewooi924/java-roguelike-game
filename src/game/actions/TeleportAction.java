@@ -12,7 +12,14 @@ import java.util.HashMap;
  */
 public class TeleportAction extends Action {
 
+    /**
+     * HashMap containing all the map names
+     */
     private final HashMap<GameMap, String> mapNames;
+
+    /**
+     * The location to be teleported to
+     */
     private final Location locationToTravel;
 
     /**

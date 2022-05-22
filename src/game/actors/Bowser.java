@@ -23,6 +23,9 @@ import java.util.Map;
  */
 public class Bowser extends Actor implements Resettable {
 
+    /**
+     * The HashMap that contains all the behaviours of Bowser
+     */
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
     /**

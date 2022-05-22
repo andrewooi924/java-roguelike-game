@@ -21,6 +21,9 @@ import java.util.Map;
  */
 public class PiranhaPlant extends Actor implements Resettable {
 
+    /**
+     * The HashMap that contains all the behaviours of Piranha Plant
+     */
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
     /**

@@ -14,11 +14,13 @@ import game.reset.Resettable;
  */
 public class WarpPipe extends HigherGround implements Resettable {
 
+    /**
+     * The age of the warp pipe
+     */
     private int age = 0;
 
     /**
-     * Constructor.
-     *
+     * Constructor
      */
     public WarpPipe() {
         super('C');

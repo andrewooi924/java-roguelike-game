@@ -3,7 +3,11 @@ package game.positions.Tree;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Goomba;
 
+/**
+ * A baby tree
+ */
 public class SproutTree extends Tree {
+
     /**
      * Constructor.
      */
@@ -19,6 +23,7 @@ public class SproutTree extends Tree {
     public int getFallDamageRate() {
         return 10;
     }
+
     /**
      * Get the probability of not falling of this tree if you fall off when trying to jump on it.
      * @return  probability of not falling off this tree
@@ -27,6 +32,7 @@ public class SproutTree extends Tree {
     public double getFallProb() {
         return 0.9;
     }
+
     /**
      * Returns a string representation of this tree.
      * @return string representation of this tree.

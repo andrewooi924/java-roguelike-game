@@ -9,14 +9,28 @@ import game.actions.FillBottleAction;
 import game.items.Consumable.Consumable;
 import game.positions.Dirt;
 
+/**
+ * A fountain that contains drinkable liquid
+ */
 public abstract class Fountain extends Ground {
+
+    /**
+     * The maximum capacity of the fountain
+     */
     private int maxCapacity;
+
+    /**
+     * The current capacity of the fountain
+     */
     private int capacity;
 
-    Consumable contents;
+    /**
+     * The contents of the fountain
+     */
+    private Consumable contents;
+
     /**
      * Constructor.
-     *
      */
     public Fountain(char displayChar, int maxCapacity, Consumable contents) {
         super(displayChar);
@@ -44,10 +58,17 @@ public abstract class Fountain extends Ground {
         return "Fountain [%d/%d]".formatted(capacity, maxCapacity);
     }
 
+    /**
+     * Getter for the contents of the fountain
+     * @return the contents of the fountain
+     */
     public Consumable getContents() {
         return this.contents;
     }
 
+    /**
+     * Reduces the current capacity of the fountain
+     */
     public void reduceCapacity() {
         this.capacity--;
     }

@@ -23,8 +23,20 @@ import java.util.Random;
  * A class that represents a Tree (a type of Ground, at any part of its growth cycle) in the game.
  */
 public abstract class Tree extends HigherGround implements Resettable {
+
+    /**
+     * The age of the tree
+     */
     protected int age;
+
+    /**
+     * Random Number Generator
+     */
     protected Random random;
+
+    /**
+     * The health points of the tree
+     */
     protected int hp;
 
     /**
@@ -105,6 +117,10 @@ public abstract class Tree extends HigherGround implements Resettable {
         return this.hp;
     }
 
+    /**
+     * Getter for the amount of wood dropped by the tree
+     * @return the amount of wood dropped by the tree
+     */
     public int getWoodAmount() {
         return 0;
     }

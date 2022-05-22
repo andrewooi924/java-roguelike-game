@@ -9,7 +9,11 @@ import game.items.Weapon.RangedWeapon;
  */
 public class RangedAttackAction extends AttackAction{
 
+    /**
+     * The ranged weapon
+     */
     private final RangedWeapon weapon;
+
     /**
      * Constructor.
      *

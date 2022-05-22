@@ -10,6 +10,9 @@ import game.items.Consumable.Consumable;
  */
 public class ConsumeAction extends Action {
 
+    /**
+     * Item that is to be consumed
+     */
     private Consumable consumable;
 
     /**

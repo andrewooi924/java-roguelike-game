@@ -10,10 +10,24 @@ import java.util.HashMap;
  */
 public class MapManager {
 
+    /**
+     * The HashMap that contains all the maps in the game
+     */
     private HashMap<Maps, GameMap> maps;
+
+    /**
+     * The HashMap that contains all the map names in the game
+     */
     private HashMap<GameMap, String> mapNames;
+
+    /**
+     * An instance of the MapManager class
+     */
     private static MapManager instance;
 
+    /**
+     * Private constructor for the MapManager class
+     */
     private MapManager() {
         // adding maps and map names into the hash maps, it also utilizes a dependency injector to help reduce dependency on it
         MapInjector mapInjector = new MapInjector();

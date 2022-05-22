@@ -2,10 +2,13 @@ package game.positions.Fountain;
 
 import game.items.Consumable.PowerWater;
 
+/**
+ * A type of fountain that contains power water
+ */
 public class PowerFountain extends Fountain {
+
     /**
      * Constructor.
-     *
      */
     public PowerFountain() {
         super('A', 2, new PowerWater());

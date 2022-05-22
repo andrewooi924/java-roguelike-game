@@ -19,6 +19,10 @@ import java.util.Map;
  * A Mjølnir wielding teenage mutant ninja turtle
  */
 public class Koopa extends Actor implements Resettable {
+
+    /**
+     * The HashMap that contains all the behaviours of Koopa
+     */
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
     /**

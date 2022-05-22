@@ -18,13 +18,21 @@ import java.util.Random;
  */
 public abstract class HigherGround extends Ground {
 
+    /**
+     * Getter for the fall damage for falling off the high ground
+     * @return the fall damage for falling off the high ground
+     */
     public abstract int getFallDamageRate();
+
+    /**
+     * Getter for the probability of falling off the high ground
+     * @return the probabilityof falling off the high ground
+     */
     public abstract double getFallProb();
 
 
     /**
-     * Constructor.
-     *
+     * Constructor
      * @param displayChar character to display for this type of terrain
      */
     public HigherGround(char displayChar) {

@@ -9,11 +9,21 @@ import game.items.Consumable.Consumable;
 
 import java.util.Stack;
 
+/**
+ * A glass bottle that holds liquid
+ */
 public class Bottle extends Consumable {
 
-    // TO-DO: Merge Item and Consumable somehow.
-    Stack<Consumable> liquids = new Stack<Consumable>();
-    ConsumeAction consumeAction;
+    /**
+     * A stack that stores all the bottles
+     */
+    private Stack<Consumable> liquids = new Stack<Consumable>();
+
+    /**
+     * The action used to consume the liquid in the bottle
+     */
+    private ConsumeAction consumeAction;
+
     /***
      * Constructor.
      */
@@ -24,6 +34,10 @@ public class Bottle extends Consumable {
         this.addAction(consumeAction);
     }
 
+    /**
+     * Adds a bottle that contains liquid into the stack
+     * @param consumable the bottle that contains liquid
+     */
     public void addConsumable(Consumable consumable) {
         liquids.push(consumable);
     }

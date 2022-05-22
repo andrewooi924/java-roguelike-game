@@ -11,8 +11,19 @@ import game.positions.Fountain.Fountain;
 
 import java.util.Random;
 
+/**
+ * A class that dictates how an actor drinks
+ */
 public class DrinkBehaviour implements Behaviour{
+
+    /**
+     * The probability that an actor drinks
+     */
     final double DRINK_CHANCE = 0.8;
+
+    /**
+     * Random Number Generator
+     */
     private Random random = new Random();
 
     @Override

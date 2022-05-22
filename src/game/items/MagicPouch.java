@@ -10,7 +10,11 @@ import java.util.HashMap;
  */
 public class MagicPouch extends Item {
 
+    /**
+     * The HashMap that stores the storable items
+     */
     private HashMap<Storable, Integer> counter = new HashMap<>();
+
     /***
      * Constructor.
      */

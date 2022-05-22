@@ -22,7 +22,7 @@ public class Wrench extends Item implements Weapon, Tradable {
      */
     @Override
     public int damage() {
-        return 50;
+        return 480;
     }
 
     /**

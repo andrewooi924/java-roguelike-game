@@ -9,8 +9,20 @@ import game.items.Bottle;
 import game.items.Consumable.Consumable;
 import game.positions.Fountain.Fountain;
 
+/**
+ * Special Action that fills up empty bottles
+ */
 public class FillBottleAction extends Action {
-    Fountain fountain;
+
+    /**
+     * The fountain that contains liquid
+     */
+    private Fountain fountain;
+
+    /**
+     * Constructor for the FillBottleAction class
+     * @param fountain the fountain that contains liquid
+     */
     public FillBottleAction(Fountain fountain) {
         this.fountain = fountain;
     }

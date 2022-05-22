@@ -9,8 +9,9 @@ import game.Status;
  * A burning ground
  */
 public class Lava extends Ground {
+
     /**
-     * Constructor.
+     * Constructor
      */
     public Lava() {
         super('L');

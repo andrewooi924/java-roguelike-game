@@ -1,4 +1,5 @@
 package game.items;
+
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
@@ -20,6 +21,9 @@ public class Fire extends Item{
      */
     private final int EXPIRY_TURNS = 3;
 
+    /**
+     * Constructor for the Fire class
+     */
     public Fire() {
         super("Fire", 'v', true);
     }

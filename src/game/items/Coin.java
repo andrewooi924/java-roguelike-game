@@ -1,6 +1,6 @@
 package game.items;
 
-        import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.Actor;
         import edu.monash.fit2099.engine.items.Item;
         import edu.monash.fit2099.engine.items.PickUpItemAction;
         import edu.monash.fit2099.engine.positions.Location;
@@ -15,6 +15,10 @@ package game.items;
  * The class represents a coin
  */
 public class Coin extends Item implements Resettable, Stackable {
+
+    /**
+     * The value of the coin
+     */
     // Note: amount may be an integer.
     private int amount;
 

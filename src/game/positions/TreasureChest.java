@@ -11,6 +11,9 @@ import game.actions.UnlockChestAction;
  */
 public class TreasureChest extends Ground {
 
+    /**
+     * Constructor for the TreasureChest class
+     */
     public TreasureChest(){
         super('X');
     }

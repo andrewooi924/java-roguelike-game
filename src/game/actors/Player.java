@@ -25,9 +25,20 @@ import java.util.List;
  */
 public class Player extends Actor implements Resettable, IntrinsicFighter {
 
+  /**
+   * The display menu
+   */
   private final Menu menu = new Menu();
+
+  /**
+   * The reset trigger
+   */
   private boolean resetTimes = true;
-  MagicPouch magicPouch = new MagicPouch();
+
+  /**
+   * The magic pouch that contains all the materials held by the Player
+   */
+  private MagicPouch magicPouch = new MagicPouch();
 
   private int attackDamage = 5;
 
@@ -45,6 +56,9 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     registerInstance();
   }
 
+  /**
+   * Adds capabilities to the Player
+   */
   private void addingCapabilities() {
     this.addCapability(Status.HOSTILE_TO_ENEMY);
     this.addCapability(Status.CAN_JUMP);
@@ -53,6 +67,9 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     this.addCapability(Status.CAN_INTRINSIC_ATTACK);
   }
 
+  /**
+   * Adds items to the Player's inventory
+   */
   private void addingItems() {
     this.addItemToInventory(new Bottle());
     magicPouch.setAmount(Storable.COIN, 1000);
@@ -143,6 +160,7 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     Collections.sort(weapons, new SortByDamage());
     return weapons.get(0);
   }
+
   /**
    * A sorting class that sorts the list of weapons by their damage in
    * descending order.

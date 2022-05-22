@@ -15,7 +15,14 @@ import java.util.HashMap;
  */
 public class MapInjector {
 
+    /**
+     * The HashMap that contains all the maps in the game
+     */
     private final HashMap<Maps, GameMap> maps;
+
+    /**
+     * The HashMap that contains all the map names in the game
+     */
     private final HashMap<GameMap, String> mapNames;
 
     /**

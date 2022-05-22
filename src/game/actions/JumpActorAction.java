@@ -13,9 +13,24 @@ import java.util.Random;
  */
 public class JumpActorAction extends Action{
 
+    /**
+     * The high ground that the actor can jump onto
+     */
     private HigherGround target;
+
+    /**
+     * The location of the high ground
+     */
     private Location destination;
+
+    /**
+     * The direction of the high ground
+     */
     private String direction;
+
+    /**
+     * Random Number Generator
+     */
     private Random random;
 
     /**

@@ -6,7 +6,14 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actors.IntrinsicFighter;
 
+/**
+ * A liquid that powers up the actor that drinks it
+ */
 public class PowerWater extends Consumable {
+
+    /**
+     * The amount of attack boost gained by the actor
+     */
     final int BASEATTACK_BOOST = 15;
 
     /***

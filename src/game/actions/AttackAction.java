@@ -45,6 +45,13 @@ public class AttackAction extends Action {
 		this.direction = direction;
 	}
 
+	/**
+	 * Allows actors to attack other actors.
+	 * @param actor the actor that is attacking
+	 * @param weapon the weapon used by the actor
+	 * @param map the game map
+	 * @return the result after the attack
+	 */
 	protected String attackActor(Actor actor, Weapon weapon, GameMap map) {
 		String result = "";
 

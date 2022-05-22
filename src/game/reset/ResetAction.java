@@ -10,6 +10,9 @@ import game.reset.ResetManager;
  */
 public class ResetAction extends Action {
 
+    /**
+     * An instance of the ResetManager class
+     */
     private ResetManager resetManager;
 
     /**

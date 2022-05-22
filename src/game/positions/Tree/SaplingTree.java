@@ -8,7 +8,11 @@ import game.actions.ChopAction;
 import game.actions.JumpActorAction;
 import game.items.Coin;
 
+/**
+ * A teenage tree
+ */
 public class SaplingTree extends Tree {
+
     /**
      * Constructor.
      */

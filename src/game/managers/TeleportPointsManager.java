@@ -11,9 +11,19 @@ import java.util.HashMap;
  */
 public class TeleportPointsManager {
 
+    /**
+     * HashMap that contains all the locations that can be teleported to
+     */
     private final HashMap<Location, Location> locations;
+
+    /**
+     * An instance of the TeleportPointsManager class
+     */
     private static TeleportPointsManager instance;
 
+    /**
+     * Private constructor for the TeleportPointsManager class
+     */
     private TeleportPointsManager() {
         locations = new HashMap<>();
         addFixedLocations();

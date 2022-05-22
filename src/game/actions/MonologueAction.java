@@ -16,7 +16,14 @@ import static game.Status.*;
  */
 public class MonologueAction extends Action {
 
+    /**
+     * The hotkey used for the action
+     */
     private String hotkey;
+
+    /**
+     * The actor performing the action
+     */
     private Actor actor;
 
     private final Random random;

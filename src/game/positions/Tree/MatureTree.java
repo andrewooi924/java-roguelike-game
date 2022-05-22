@@ -14,7 +14,11 @@ import game.positions.GroundCharacteristics;
 
 import java.util.ArrayList;
 
+/**
+ * An adult tree
+ */
 public class MatureTree extends Tree {
+
     /**
      * Constructor.
      */

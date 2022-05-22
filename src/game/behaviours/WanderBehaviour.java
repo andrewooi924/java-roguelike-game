@@ -9,8 +9,14 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * A class that dictates how actors should wander
+ */
 public class WanderBehaviour extends Action implements Behaviour {
-	
+
+	/**
+	 * Random Number Generator
+	 */
 	private final Random random = new Random();
 
 	/**

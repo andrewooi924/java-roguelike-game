@@ -13,6 +13,10 @@ import game.items.Tradable;
  * An action to be performed when the player wants to trade with toad
  */
 public class TradingAction extends Action {
+
+    /**
+     * The item that is to be traded
+     */
     private Tradable item;
 
     /**
