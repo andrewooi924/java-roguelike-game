@@ -28,19 +28,3 @@ Bows, arrows and guns now exist in the game! They utilize dfs to search through 
 - Open Closed Principle is followed as well, where Bow and Gun extends to RangedWeapon without modifying the source code and only adds new features.
 
 ![img_1.png](img_1.png)
-
-
-
-
-
-[comment]: <> (| Requirements                                                                                                            | Features &#40;HOW&#41; / Your Approach / Answer                                                                                                                               |)
-
-[comment]: <> (| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |)
-
-[comment]: <> (| Must use at least two &#40;2&#41; classes from the engine package                                                               |We used Item and Action from the engine class. RangedWeapon, Gun, Arrow and Bow all extends Item while RangedAttackAction extends from Action. |)
-
-[comment]: <> (| Must use/re-use at least one&#40;1&#41; existing feature &#40;either from assignment 2 and/or fixed requirements from assignment 3&#41; | Arrows implements the Tradable interface and can be bought from Toad for $40. RangedAttackAction uses AttackAction from assignment 2 as it works similar to how it attacks the enemy&#40;take damage etc&#41;. Arrow also implements the resettable which will be removed when the player resets the game. We also used MagicPouch where it can store coins and now arrows as well! Bow can also be crafted using the craftable interface which was created in Assignment 3 Req 4.                                                                                                                                                      |)
-
-[comment]: <> (| Must use existing or create new abstractions &#40;e.g., abstract or interface, apart from the engine code&#41;                  |  We have created the RangedWeapon abstract class where Gun and Bow extends to it. As all ranged weapons do have the code to search for enemies at a distance and also have limited ammunition, it follows the Open Closed Principle by extending the code and not modifying the base code. Arrows do utilize the existing Stackable interface as well where one arrow item can have multiple amounts of arrow in it which reduces the amount of items on the ground.                                                                                                                                                            |)
-
-[comment]: <> (| Must use existing or create new capabilities                                                                            |  We used the existing capability of HOSTILE_TO_PLAYER capability. In the dfs, if it finds any actor with that capability, it will let the player know that it can shoot that actor. Arrows also uses the existing CAN_CARRY_STORABLES where the magic pouch will then add the amount of arrows to the magic pouch. Furthermore, it also uses the RESETTABLE capability to reset the arrows if they are on the ground.                                                                                                                                                                     |)
