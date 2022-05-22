@@ -12,7 +12,7 @@ For reference, here are the class diagrams and sequence diagrams.
 ![ass 3 req3 sequence_02](./Ass3_REQ3_sequence_02.png "Ass 3 REQ3 Sequence Diagram 1")
 
 ## Rationale  
-## Water classes
+### Water classes
 The `Consumable` class already existed and had similar properties as the new `Power Water` and `Healing Water` would have:
 They're both something you can "pick up", they have an effect when you "consume" them, they have similar menu
 descriptions for the action of consuming (so we can re-use `ConsumeAction` as well), etc.
@@ -37,13 +37,13 @@ is for a `Consumable`. An alternative approach would be to have a `Drinkable` ab
 and then use that instead for the Waters, but the sacrifice of having a deeply nested inheritance tree (`Healing Water`
 extends `Drinkable` extends `Item` implements `Consumable`, etc.) deemed it not worth it.
 
-## Fountains
+### Fountains
 There was no existing class similar enough to `Fountains` as `Water` was to `Consumable`, and `HealthFountain` and
 `PowerFountain` had a lot of similar characteristics (both have a "capacity" and fill up your "bottle", both are types 
 of "Ground" etc.). To follow the DRY (Don't Repeat Yourself) Principle, an abstract class was created (`Fountain`) f
 or the two fountains to extend.
 
-## Drinking Behaviour
+### Drinking Behaviour
 Drinking is added to certain enemies like Goombas and Koopas. If they happen to be on a fountain
 ground, they would have an 80% chance ot drinking it. Since the `ConsumeAction` and `consume` function depends
 on the abstraction of `Actor` instead of specifically relying on a `Player` class, it could easily substitute
