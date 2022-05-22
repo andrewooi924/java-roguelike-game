@@ -18,7 +18,6 @@ public class Wall extends HigherGround {
 	 */
 	public Wall() {
 		super('#');
-		this.addCapability(GroundCharacteristics.BLOCKS_ARROWS);
 	}
 
 	@Override
