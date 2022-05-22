@@ -153,7 +153,7 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     // Don't forget the base weapon as well.
     weapons.add(this.getIntrinsicWeapon());
     for (Item item : this.getInventory()) {
-      if (item.asWeapon() != null && ((RangedWeapon)item.asWeapon()).getAmmoAmount(this)>0) {
+      if (item.asWeapon() != null) {
         weapons.add((Weapon)item);
       }
     }
