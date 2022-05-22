@@ -13,6 +13,7 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 import game.GameUtilities;
 import game.Status;
 import game.items.*;
+import game.items.Weapon.RangedWeapon;
 import game.reset.ResetAction;
 import game.reset.Resettable;
 import java.util.ArrayList;
@@ -152,7 +153,7 @@ public class Player extends Actor implements Resettable, IntrinsicFighter {
     // Don't forget the base weapon as well.
     weapons.add(this.getIntrinsicWeapon());
     for (Item item : this.getInventory()) {
-      if (item.asWeapon() != null) {
+      if (item.asWeapon() != null && ((RangedWeapon)item.asWeapon()).getAmmoAmount(this)>0) {
         weapons.add((Weapon)item);
       }
     }
