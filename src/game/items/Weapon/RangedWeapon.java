@@ -3,6 +3,7 @@ package game.items.Weapon;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
@@ -124,5 +125,10 @@ public abstract class RangedWeapon extends Item implements Weapon {
             ret.add(dfsAddEnemies(destination, curDepth+1, visited));
         }
         return ret;
+    }
+
+    @Override
+    public DropItemAction getDropAction(Actor actor){
+        return null;
     }
 }
