@@ -14,11 +14,8 @@ For reference, here are the class diagrams and the sequence diagrams.
 
 ## Rationale
 
-The Consumable interface will have two methods that need to be implemented.
+The Consumable interface will have one method that need to be implemented.
 
-1. effect() - This will return the `Status` that consuming it will give. For
-   example, consuming a SuperMushroom would give it a TALL status, so this
-   would return `Status.TALL`
 2. consume(Actor, GameMap) - This will execute when the item is eaten. The
    reason for having this is that we want to allow for custom code to be run
    depending on the class implementing it. For example, PowerStar not only
@@ -27,10 +24,6 @@ The Consumable interface will have two methods that need to be implemented.
    only inflict a status (The TALL status given in the code), but also lets you
    increase the _max_ HP, which is different from increasing just the _HP_ like
    what PowerStar does.
-
-Note that we could just handle adding the effect of consuming the item in
-consume(), but we want to make sure that all Consumables have an effect, hence
-the effect() method.
 
 A ConsumeAction was created as well to let the player eat the item. It has
 an association with the Consumable that it is meant to eat.
@@ -50,15 +43,11 @@ didn't go with this approach is because
 1. It would limit the Consumables to only be Items. If we were to decide to
    have a consumable Actor in the future (Eating dead turtles and mushrooms?),
    we would have to re-design the code to account for this.
-2. Allow for pseudo "multiple inheritance". Imagine if we decide to create a
-   another class called Drinkable, which is similar to Consumable. So we go
-   ahead and create a DrinkableItem class. Now, we decide we want to have an
-   item that is _both_ drinkable and consumable, We aren't able to extend both
-   classes! Perhaps the best we can do is create a class called
-   ConsumableDrinkableItem and inherit from that instead, and you can see how this would get messy very
-   quickly as we add other types of item classes, and not having a base type we
-   can use, for example in the ConsumeAction class. This would adhere to the Interface Segregation Principle, where the
-large interface of "DrinkableConsumableItem" is split into smaller ones called "ConsumableItem" and "DrinkableItem".
-
+2. Not have deeply nested inheritance trees, e.g: A SuperMushroom extending a Consumable extending an Item has 3 levels
+deep, and can go deeper if you want a `SuperDuperMushroom` extending a SuperMushroom.
 ### Changes from Assignment 1 to Assignment 2
 None.
+
+### Changes from Assignment 2 to Assignment 3
+- Consumables no longer enforce an effect to be placed on the actor. This is because of new consumables added
+to the game that don't force an effect on the actor.
