@@ -36,7 +36,7 @@ public abstract class HigherGround extends Ground {
      * @param displayChar character to display for this type of terrain
      */
     public HigherGround(char displayChar) {
-        super(displayChar);
+        super(displayChar); this.addCapability(GroundCharacteristics.BLOCKS_ARROWS);
     }
 
     public String jumpOn(Actor jumper, GameMap map, Location destination) {

@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.Status;
 import game.actions.RangedAttackAction;
+import game.positions.GroundCharacteristics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +105,7 @@ public abstract class RangedWeapon extends Item implements Weapon {
     private ActionList dfsAddEnemies(Location currentLocation, int curDepth, ArrayList<Location> visited) {
         ActionList ret = new ActionList();
         // Base case
-        if (curDepth == getRange()) {
+        if (curDepth == getRange()+1) {
             // Empty action list
             return new ActionList();
         }
@@ -119,7 +120,7 @@ public abstract class RangedWeapon extends Item implements Weapon {
         visited.add(currentLocation);
         for (Exit exit: currentLocation.getExits()) {
             Location destination = exit.getDestination();
-            if (visited.contains(destination) || destination.getGround().blocksThrownObjects()) {
+            if (visited.contains(destination) || destination.getGround().hasCapability(GroundCharacteristics.BLOCKS_ARROWS)) {
                 continue;
             }
             ret.add(dfsAddEnemies(destination, curDepth+1, visited));
