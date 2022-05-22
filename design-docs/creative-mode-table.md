@@ -14,37 +14,11 @@ when you unlock it such as a galaxy sword! With the menu piling up with many opt
 - Lastly, DIP is also followed. The CraftAction only needs to know the Craftable methods and not all the item's methods. Therefore, the interface Craftable was created to follow this principle so that only Craftable items can be passed to CraftAction.
 
   | Requirements                                                                                                            | Features (HOW) / Your Approach / Answer                                                                                                                               |
-      | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | Must use at least two (2) classes from the engine package                                                               | We used Action, Item, Ground, Menu, Display in the engine class. ChopAction, PickUpStackableAction, CraftAction and UnlockChestAction all extends Action. Axe, Sword, Galaxy Sword, MagicPouch and Wood extends Item. CraftingTable and TreasureChest extends Ground. Our SwitchAction also depends on the Menu and Display classes. |
-  | Must use/re-use at least one(1) existing feature (either from assignment 2 and/or fixed requirements from assignment 3) | Axe implements Tradable and can be bought from Toad for $50. Also utilized the trees in assignment 2 and we extended it where the player can chop it as well. We also used the MagicPouch which can store coins to store wood as well. Furthermore, wood also implements resettable, just like coins to be removed from the ground when player chooses the reset action. Lastly, wood can be picked up from the ground just like how coins is picked up from the ground, using the same class, PickUpStackableAction.                                                                                                                                                           |
+  | Must use/re-use at least one(1) existing feature (either from assignment 2 and/or fixed requirements <br>from assignment 3) | Axe implements Tradable and can be bought from Toad for $50. Also utilized the trees in assignment 2 and we extended it where the player can chop it as well. We also used the MagicPouch which can store coins to store wood as well. Furthermore, wood also implements resettable, just like coins to be removed from the ground when player chooses the reset action. Lastly, wood can be picked up from the ground just like how coins is picked up from the ground, using the same class, PickUpStackableAction.                                                                                                                                                           |
   | Must use existing or create new abstractions (e.g., abstract or interface, apart from the engine code)                  |   We have created the Craftable and Stackable interface. With the craftable interface, it makes sure that each craftable item have a recipe, a name and a getter to add the item to the inventory when the player crafts it. For the Stackable interface, the wood can now be stacked, which can hold multiple amounts of wood for one single wood item. In addition, we have also created the SwitchingAction abstract class which follows the DRY principle as many methods for the switch action of the menu are repeated. For the existing interfaces, we have used the Tradable interface on Axe which Toad sells it.                                                                                                                                                         |
   | Must use existing or create new capabilities                                                                            |  We have created the CAN_CHOP, CAN_BE_CHOPPED, CAN_CARRY_STORABLES and NEW_MENU capabilities. CAN_CHOP and CAN_BE_CHOPPED allows the player to chop with an axe if they have it and can only chop mature or sapling trees. CAN_CARRY_STORABLES allows the magic pouch to only carry wood, coins and arrows. While NEW_MENU lets the player know that there is a new menu to be shown instead of the old menu. For the existing capabilities, we have used RESETTABLE on wood.                                                                                                                                                              |
-<table>
-<tr>
-<th>Requirements</th>
-<th>Features (HOW) / Your Approach / Answer</th>
-</tr>
-<tr>
-<td>Must use at least two (2) classes from the engine package</td>
-<td>We used Action, Item, Ground, Menu, Display in the engine class. ChopAction, PickUpStackableAction, CraftAction and UnlockChestAction all extends Action. Axe, Sword, Galaxy Sword, MagicPouch and Wood extends Item. CraftingTable and TreasureChest extends Ground. Our SwitchAction also depends on the Menu and Display classes.
-</td>
-</tr>
-<tr>
-<td>Must use/re-use at least one(1) existing feature (either from assignment 2 and/or fixed requirements from assignment 3)</td>
-<td>Axe implements Tradable and can be bought from Toad for $50. Also utilized the trees in assignment 2 and we extended it where the player can chop it as well. We also used the MagicPouch which can store coins to store wood as well. Furthermore, wood also implements resettable, just like coins to be removed from the ground when player chooses the reset action. Lastly, wood can be picked up from the ground just like how coins is picked up from the ground, using the same class, PickUpStackableAction.                                                                                                                                                           |
-</td>
-</tr>
-<tr>
-<td>Must use existing or create new abstractions (e.g., abstract or interface, apart from the engine code)</td>
-<td>We have created the Craftable and Stackable interface. With the craftable interface, it makes sure that each craftable item have a recipe, a name and a getter to add the item to the inventory when the player crafts it. For the Stackable interface, the wood can now be stacked, which can hold multiple amounts of wood for one single wood item. In addition, we have also created the SwitchingAction abstract class which follows the DRY principle as many methods for the switch action of the menu are repeated. For the existing interfaces, we have used the Tradable interface on Axe which Toad sells it.                                                                                                                                                         |
-</td>
-</tr>
-<tr>
-<td>Must use existing or create new capabilities</td>
-<td>We have created the CAN_CHOP, CAN_BE_CHOPPED, CAN_CARRY_STORABLES and NEW_MENU capabilities. CAN_CHOP and CAN_BE_CHOPPED allows the player to chop with an axe if they have it and can only chop mature or sapling trees. CAN_CARRY_STORABLES allows the magic pouch to only carry wood, coins and arrows. While NEW_MENU lets the player know that there is a new menu to be shown instead of the old menu. For the existing capabilities, we have used RESETTABLE on wood.                                                                                                                                                              |
-</td>
-</tr>
-</table>
 
 
 ---
