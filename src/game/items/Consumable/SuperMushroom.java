@@ -60,7 +60,7 @@ public class SuperMushroom extends Consumable implements Tradable {
         else {
             map.locationOf(actor).removeItem(this);
         }
-        actor.increaseMaxHp(500);
+        actor.increaseMaxHp(50);
         return "";
     }
 

@@ -58,6 +58,9 @@ public class TeleportPointsManager {
         return locations.get(location);
     }
 
+    /**
+     * Adds fixed teleport points to the game
+     */
     private void addFixedLocations() {
         // getting the maps
         MapManager mapManager = MapManager.getInstance();
