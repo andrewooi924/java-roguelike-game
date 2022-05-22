@@ -49,9 +49,8 @@ of jumping and no fall damage.
 The Player is given a status called CAN_JUMP that is used by the Tree and Wall classes allow
 actors to jump onto them depending on whether the actors have the CAN_JUMP status.
 
+### Changes from Assignment 1 to Assignment 2
+None.
 
-
-
-
-
-
+### Changes from Assignment 2 to Assignment 3
+None.

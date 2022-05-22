@@ -53,3 +53,6 @@ currently coded in MonologueAction.
 
 ### Changes from Assignment 1 to Assignment 2
 None.
+
+### Changes from Assignment 2 to Assignment 3
+Toad will now give the Player a Bottle if they do not already have one.
